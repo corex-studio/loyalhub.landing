@@ -13,7 +13,10 @@
           <div class="mega-text bold">
             Что вы получите, используя решения от Loyalhub?
           </div>
-          <FunButton label="Подобрать решение" />
+          <FunButton
+            @click="store.requestModal = true"
+            label="Подобрать решение"
+          />
         </div>
         <div style="overflow-y: auto" class="col-6 column gap-6 no-wrap pb-20">
           <div
@@ -34,6 +37,7 @@
 </template>
 <script lang="ts" setup>
 import FunButton from 'src/components/templates/buttons/FunButton.vue';
+import { store } from 'src/models/store';
 
 const blocks = [
   {

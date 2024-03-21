@@ -12,11 +12,16 @@
         Омниканальная платформа для совершенствования опыта между гостем и
         рестораном
       </div>
-      <FunButton label="Подобрать решение" class="mt-20" />
+      <FunButton
+        @click="store.requestModal = true"
+        label="Подобрать решение"
+        class="mt-20"
+      />
     </div>
   </div>
 </template>
 <script lang="ts" setup>
+import { store } from 'src/models/store';
 import Header from './Header.vue';
 import FunButton from 'src/components/templates/buttons/FunButton.vue';
 </script>

@@ -1,13 +1,23 @@
 <template>
   <div class="py-50 bg-black1">
     <div class="c-container">
-      <div class="bg-white rounded-40 pa-20 text-black4 column full-width">
+      <div class="bg-white1 rounded-40 pa-20 text-black4 column full-width">
         <div class="mega-text bold mb-6">Тарифы</div>
         <div class="row full-width justify-between">
           <div class="subtitle-text2">Выберите число торговых точек</div>
-          <div class="row items-center gap-6">
-            <div class="subtitle-text2">Итоговая стоимость:</div>
-            <div class="mega-text3 bold">{{ totalPrice }} ₽</div>
+          <div class="row items-center gap-5">
+            <template v-if="pointsCount <= 20">
+              <div class="subtitle-text2">Итоговая стоимость:</div>
+              <div class="mega-text3 bold">
+                {{ beautifyNumber(totalPrice, true) }} ₽
+              </div>
+            </template>
+            <template v-else>
+              <div class="subtitle-text2">Число ваших точек</div>
+              <div class="mega-text3 bold">
+                x {{ beautifyNumber(currentPrice, true) }} ₽
+              </div>
+            </template>
           </div>
         </div>
 
@@ -17,10 +27,11 @@
           class="mt-12 mb-12"
           v-model="pointsCount"
           :min="1"
+          :max="21"
         />
         <div class="row items-center no-wrap gap-8">
           <div class="mega-text bold text-uppercase">
-            {{ pointsCount }} торговых точек
+            {{ pointsCount > 20 ? '20+' : pointsCount }} торговых точек
           </div>
           <q-chip
             class="rounded-100 bg-primary row items-center text-white"
@@ -43,12 +54,17 @@
                 />
               </svg>
             </div>
-            <div class="subtitle-text2 pl-3">1 = 4990₽</div>
+            <div class="subtitle-text2 pl-3">
+              1 = {{ beautifyNumber(currentPrice, true) }}₽
+            </div>
           </q-chip>
         </div>
         <div class="row full-width justify-between items-center mt-20">
-          <FunButton label="Подобрать решение" />
-          <div class="column items-end gap-4">
+          <FunButton
+            @click="store.requestModal = true"
+            label="Подобрать решение"
+          />
+          <div class="column items-end gap-1">
             <div class="body text-black2">Сроки запуска:</div>
             <div class="body text-black2">от 2 недель</div>
           </div>
@@ -60,10 +76,21 @@
 <script lang="ts" setup>
 import FunButton from 'src/components/templates/buttons/FunButton.vue';
 import { computed, ref } from 'vue';
+import { beautifyNumber, store } from 'src/models/store';
 
 const pointsCount = ref(1);
 
 const totalPrice = computed(() => {
-  return pointsCount.value * 4990;
+  return pointsCount.value * currentPrice.value;
+});
+
+const currentPrice = computed(() => {
+  return pointsCount.value <= 2
+    ? 6000
+    : pointsCount.value <= 4
+      ? 5000
+      : pointsCount.value < 20
+        ? 4000
+        : 3000;
 });
 </script>
