@@ -46,11 +46,11 @@
             <div class="subtitle-text2 pl-3">1 = 4990₽</div>
           </q-chip>
         </div>
-        <div class="row full-width justify-between items-center">
-          <FunButton class="mt-20" label="Подобрать решение" />
-          <div clasc="column gap-4">
-            <div>Сроки запуска:</div>
-            <div></div>
+        <div class="row full-width justify-between items-center mt-20">
+          <FunButton label="Подобрать решение" />
+          <div class="column items-end gap-4">
+            <div class="body text-black2">Сроки запуска:</div>
+            <div class="body text-black2">от 2 недель</div>
           </div>
         </div>
       </div>
