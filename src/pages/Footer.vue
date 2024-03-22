@@ -2,10 +2,14 @@
   <div style="border-top: 1px white solid">
     <div class="c-container py-lg-50 py-md-40 py-sm-30 body">
       <div class="row full-width justify-between items-center gap-15">
-        <div class="row col-lg col-sm-12 items-center gap-10">
+        <div
+          :class="{ 'no-wrap': $q.screen.gt.md }"
+          class="row col-lg-shrink col-sm-12 items-center gap-10"
+        >
           <q-img
             v-if="$q.screen.gt.sm"
             width="65px"
+            style="min-width: 65px"
             height="46px"
             src="src/assets/loyalhubHeart.svg"
           />
@@ -13,10 +17,11 @@
             v-else
             height="58px"
             width="165px"
+            style="min-width: 165px"
             src="src/assets/loyalhubLogo.svg"
           />
 
-          <div class="column col-sm-12 col-md gap-2">
+          <div class="column col-sm-12 col-md-shrink gap-2">
             <div>ООО "Корекс" © 2024 Corex</div>
             <div class="row gap-5">
               <div>ИНН: 3917055493</div>
@@ -24,8 +29,10 @@
             </div>
           </div>
         </div>
-        <div class="row gap-md-15 gap-sm-10 col-sm-12 col-md items-center">
-          <div class="column col-sm-12 col-md gap-2">
+        <div
+          class="row gap-md-15 gap-sm-10 col-sm-12 col-md-shrink items-center"
+        >
+          <div class="column col-sm-12 col-md-shrink gap-2">
             <div class="body">Калининград</div>
 
             <div
@@ -35,7 +42,7 @@
               +7 (900) 351-90-50
             </div>
           </div>
-          <div class="column col-sm-12 col-md gap-2">
+          <div class="column col-sm-12 col-md-shrink gap-2">
             <div class="body">e-mail</div>
             <div
               @click="openLink('mailto:support@loyalhub.ru')"
@@ -45,7 +52,7 @@
             </div>
           </div>
 
-          <div class="column gap-2 col-sm-12 col-md">
+          <div class="column gap-2 col-sm-12 col-md-shrink">
             <div class="body">telegram</div>
             <div
               @click="openLink('https://t.me/loyalhub_news')"

@@ -13,7 +13,7 @@
         position === 'right'
           ? 'border-radius: 10px 0 0 10px'
           : position === 'bottom'
-            ? 'border-radius: 25px 25px 0 0'
+            ? 'border-radius: 30px 30px 0 0 !important'
             : 'border-radius: 40px;'
       }`"
       style="
@@ -25,7 +25,10 @@
       class="relative-position no-overflow no-shadow"
     >
       <div
-        :class="[!noPadding ? 'pa-20' : dialogClass, withOverflow ? '' : '']"
+        :class="[
+          !noPadding ? 'pa-md-20 pa-sm-10' : dialogClass,
+          withOverflow ? '' : '',
+        ]"
         style="
           overflow: auto;
           width: 100%;

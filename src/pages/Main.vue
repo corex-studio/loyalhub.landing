@@ -5,6 +5,7 @@
         ? 'background-image: url(src/assets/mainBGmd.png); background-position-y: 200px'
         : 'background-image: url(src/assets/mainBG.png)'
     "
+    style="overflow-x: hidden"
     class="parent relative-position pt-15"
   >
     <Header />

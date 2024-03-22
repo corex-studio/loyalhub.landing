@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{ 'rounded-40': $q.screen.lt.lg }"
-    class="bg-white1 py-lg-50 py-md-40 py-sm-30"
+    class="bg-white1 py-lg-50 py-md-40 pt-sm-28 pb-sm-25"
   >
     <div class="c-container text-black2">
       <SwiperContainer
@@ -10,6 +10,7 @@
         :space-between="12"
         loop
         :items="blocks"
+        :use-bullets="$q.screen.lt.md"
         no-navigation
         auto-play
       >

@@ -70,7 +70,7 @@
       <swiper-slide
         v-for="(item, index) in items"
         :key="index"
-        :class="useBullets ? 'mb-10' : ''"
+        :class="useBullets ? 'mb-20' : ''"
       >
         <slot name="item" v-bind:item="item"></slot>
       </swiper-slide>
@@ -81,7 +81,7 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Swiper as SwiperClass } from 'swiper';
-import { Mousewheel, Autoplay } from 'swiper';
+import { Mousewheel, Autoplay, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -106,6 +106,9 @@ const modules = computed(() => {
 
   if (props.autoPlay) {
     res.push(Autoplay);
+  }
+  if (props.useBullets) {
+    res.push(Pagination);
   }
 
   return res;
@@ -146,5 +149,14 @@ const prevPage = () => {
   &:deep(.icon) {
     fill: white;
   }
+}
+
+.swiper :deep(.swiper-pagination-bullet-active) {
+  background-color: $primary;
+}
+
+.swiper :deep(.swiper-pagination-bullet):not(.swiper-pagination-bullet-active) {
+  background-color: white;
+  opacity: 1;
 }
 </style>

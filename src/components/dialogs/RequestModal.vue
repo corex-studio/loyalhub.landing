@@ -3,10 +3,15 @@
     :model-value="modelValue"
     @update:model-value="$emit('update:modelValue', $event)"
     width="463px"
+    :position="$q.screen.sm ? 'bottom' : undefined"
+    :maximized="$q.screen.sm"
   >
     <div class="column full-width text-black4 items-center">
       <div class="mega-text3 bold text-center">Оставьте заявку</div>
-      <div class="text-center body mt-6" style="width: 75%">
+      <div
+        class="text-center body mt-6"
+        :style="$q.screen.sm ? '' : 'width: 75%'"
+      >
         Наши менеджеры свяжутся с вами в ближайшее время.
       </div>
       <q-form @submit="send()" @validation-error="validationError = true">
@@ -14,6 +19,7 @@
           :rules="[rules.required]"
           placeholder="Ваше имя"
           v-model="data.name"
+          :height="$q.screen.sm ? '44px' : undefined"
           @blur="rules.required(data.name) ? (validationError = true) : ''"
           class="full-width mt-12"
         />
@@ -26,6 +32,7 @@
           v-model="data.phone"
           mask="+# (###) ###-##-##"
           placeholder="+7 (999) 99 99-99"
+          :height="$q.screen.sm ? '44px' : undefined"
           unmasked-value
           class="full-width"
           :class="'mt-10'"
@@ -33,6 +40,7 @@
         <CInput
           placeholder="Email"
           :rules="[rules.email]"
+          :height="$q.screen.sm ? '44px' : undefined"
           v-model="data.email"
           class="full-width mt-10"
         />
@@ -56,7 +64,7 @@
           :loading="loading"
           label="Оставить заявку"
           type="submit"
-          height="50px"
+          :height="$q.screen.sm ? '44px' : '50px'"
           class="rounded-100 mt-12"
           :disabled="!confirmation"
           width="100%"
