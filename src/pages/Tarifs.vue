@@ -1,13 +1,24 @@
 <template>
-  <div class="py-50 bg-black1">
-    <div class="c-container">
-      <div class="bg-white1 rounded-40 pa-20 text-black4 column full-width">
+  <div class="py-lg-50 py-md-40 py-sm-30 bg-black1">
+    <div :class="{ 'c-container': $q.screen.gt.sm }">
+      <div
+        class="bg-white1 rounded-40 pa-lg-20 px-md-10 px-sm-8 py-sm-15 py-md-20 text-black4 column full-width"
+      >
         <div class="mega-text bold mb-6">Тарифы</div>
-        <div class="row full-width justify-between">
-          <div class="subtitle-text2">Выберите число торговых точек</div>
+        <div
+          class="row full-width justify-between items-center gap-sm-8 gap-md-0"
+        >
+          <div
+            :class="{ 'full-width': $q.screen.lt.md }"
+            class="subtitle-text2"
+          >
+            Выберите число торговых точек
+          </div>
           <div class="row items-center gap-5">
             <template v-if="pointsCount <= 20">
-              <div class="subtitle-text2">Итоговая стоимость:</div>
+              <div class="subtitle-text2">
+                {{ $q.screen.lt.md ? 'Итого' : 'Итоговая стоимость' }}:
+              </div>
               <div class="mega-text3 bold">
                 {{ beautifyNumber(totalPrice, true) }} ₽
               </div>
@@ -26,16 +37,20 @@
           thumb-size="42px"
           class="mt-12 mb-12"
           v-model="pointsCount"
+          track-color="white"
           :min="1"
           :max="21"
         />
-        <div class="row items-center no-wrap gap-8">
+        <div
+          :class="{ 'no-wrap': $q.screen.gt.sm }"
+          class="row items-center gap-md-8 gap-sm-6"
+        >
           <div class="mega-text bold text-uppercase">
             {{ pointsCount > 20 ? '20+' : pointsCount }} торговых точек
           </div>
           <q-chip
             class="rounded-100 bg-primary row items-center text-white"
-            style="height: 48px"
+            :style="$q.screen.lt.md ? 'height: 44px' : 'height: 48px'"
           >
             <div
               style="height: 27px; width: 27px"
@@ -59,15 +74,27 @@
             </div>
           </q-chip>
         </div>
-        <div class="row full-width justify-between items-center mt-20">
+        <div
+          class="row full-width justify-between items-center mt-lg-20 mt-md-16 mt-sm-10"
+        >
+          <FunButton
+            v-if="$q.screen.gt.sm"
+            @click="store.requestModal = true"
+            label="Подобрать решение"
+          />
+          <div
+            :class="$q.screen.lt.md ? 'row' : 'column  items-end'"
+            class="gap-1"
+          >
+            <div class="body text-black2">Сроки запуска:</div>
+            <div class="body text-black2">от 2 недель</div>
+          </div>
+        </div>
+        <div v-if="$q.screen.lt.md" class="row full-width justify-center mt-15">
           <FunButton
             @click="store.requestModal = true"
             label="Подобрать решение"
           />
-          <div class="column items-end gap-1">
-            <div class="body text-black2">Сроки запуска:</div>
-            <div class="body text-black2">от 2 недель</div>
-          </div>
         </div>
       </div>
     </div>

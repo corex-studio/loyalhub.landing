@@ -1,13 +1,25 @@
 <template>
-  <div class="parent relative-position pt-15">
+  <div
+    :style="
+      $q.screen.lt.lg
+        ? 'background-image: url(src/assets/mainBGmd.png); background-position-y: 200px'
+        : 'background-image: url(src/assets/mainBG.png)'
+    "
+    class="parent relative-position pt-15"
+  >
     <Header />
     <div class="c-container column items-center">
-      <div style="text-align: center" class="huge-text bold mt-48">
+      <div
+        style="text-align: center"
+        class="huge-text bold mt-lg-48 mt-md-30 mt-sm-17"
+      >
         Loyalhub: бесплатный запуск брендированных решений
       </div>
       <div
         style="text-align: center; max-width: 900px"
-        class="mt-10 header-text bold"
+        :style="$q.screen.lt.lg ? 'max-width: 500px' : ''"
+        class="mt-md-10 mt-sm-8 header-text"
+        :class="{ bold: $q.screen.gt.md }"
       >
         Омниканальная платформа для совершенствования опыта между гостем и
         рестораном
@@ -15,7 +27,7 @@
       <FunButton
         @click="store.requestModal = true"
         label="Подобрать решение"
-        class="mt-20"
+        class="mt-md-20 mt-sm-15"
       />
     </div>
   </div>
@@ -29,7 +41,6 @@ import FunButton from 'src/components/templates/buttons/FunButton.vue';
 <style lsng="scss" scoped>
 .parent {
   height: 100vh;
-  background: url('src/assets/mainBG.png');
   background-position: bottom;
   background-clip: content;
   background-size: cover;

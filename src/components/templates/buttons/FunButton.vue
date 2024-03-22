@@ -2,12 +2,12 @@
   <div
     @mouseover="hover = true"
     @mouseleave="hover = false"
-    class="row cursor-pointer relative-position"
+    class="row cursor-pointer relative-position no-wrap"
     style="width: fit-content"
   >
     <q-btn
       :color="hover ? 'white' : color"
-      :style="`height: ${height}`"
+      :style="`height: ${_height}`"
       :textColor="hover ? 'black' : 'white'"
       class="subtitle-text2 rounded-100 button-block"
       :class="[{ 'button-block-hovered': hover }]"
@@ -18,7 +18,7 @@
       :class="{ 'circle-block-hovered': hover }"
     >
       <svg
-        width="29"
+        :width="$q.screen.lt.lg ? 24 : 29"
         height="25"
         viewBox="0 0 29 25"
         fill="none"
@@ -35,9 +35,10 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { useQuasar } from 'quasar';
+import { computed, ref } from 'vue';
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     label?: string;
     color?: string;
@@ -45,11 +46,22 @@ withDefaults(
   }>(),
   {
     color: 'primary',
-    height: '66px',
   },
 );
 
 const hover = ref(false);
+
+const q = useQuasar();
+
+const _height = computed(() => {
+  return props.height
+    ? props.height
+    : q.screen.gt.md
+      ? '66px'
+      : q.screen.md
+        ? '58px'
+        : '48px';
+});
 </script>
 
 <style lang="scss">
@@ -59,15 +71,37 @@ const hover = ref(false);
   height: 100%;
   background-color: $primary;
   border-radius: 100px;
-  // position: absolute;
   height: inherit;
   z-index: 1;
-  // top: 0;
-  // left: 100%;
+}
+
+body.screen--md {
+  .circle-block {
+    width: 58px;
+  }
+  .button-block-hovered {
+    padding-right: 80px;
+  }
+
+  .circle-block-hovered {
+    margin-left: -56px;
+  }
+}
+
+body.screen--sm {
+  .circle-block {
+    width: 48px;
+  }
+  .button-block-hovered {
+    padding-right: 70px;
+  }
+
+  .circle-block-hovered {
+    margin-left: -46px;
+  }
 }
 
 .circle-block-hovered {
-  // left: calc(100% - 66px);
   margin-left: -66px;
   background-color: white;
   z-index: 1;
@@ -78,12 +112,14 @@ const hover = ref(false);
   padding: 0 24px;
   position: relative;
   transition: all 0.2s ease-in;
+  white-space: nowrap;
 }
 
 .button-block-hovered {
   padding-right: 90px;
   transition: all 0.5s !important;
 }
+
 .q-btn:before {
   box-shadow: unset;
 }

@@ -1,6 +1,6 @@
 <template>
-  <div class="c-container py-50">
-    <div class="row full-width">
+  <div class="c-container py-lg-50 py-md-40 py-sm-30">
+    <div :class="$q.screen.lt.lg ? 'column gap-10' : 'row'" class="full-width">
       <div class="col-4 mega-text bold">Продукты</div>
       <div class="column col gap-12">
         <div class="col subtitle-text2">
@@ -14,15 +14,15 @@
         </div>
       </div>
     </div>
-    <div class="row full-width mt-25">
+    <div class="row full-width mt-lg-25 mt-md-20 mt-sm-15">
       <GridContainer
-        :items="cards"
+        :items="$q.screen.lt.lg ? cards.filter((el) => !el.blank) : cards"
         :lg="3"
         :xl="3"
-        :md="4"
-        :sm="3"
-        :xs="2"
-        :gap="$q.screen.gt.md ? '20px' : $q.screen.md ? '16px' : '8px'"
+        :md="2"
+        :sm="1"
+        :xs="1"
+        :gap="$q.screen.lt.md ? '20px' : '12px'"
       >
         <template v-slot:item="{ item }">
           <div
@@ -35,9 +35,9 @@
                 : `background-image:url('src/assets/${item.image}')`
             "
             :class="item.hover ? 'card-block-hovered' : 'card-block-unhovered'"
-            class="card-block pa-15"
+            class="card-block pa-lg-15 pa-sm-10"
           >
-            <div class="row justify-between">
+            <div class="row justify-between items-center">
               <div
                 :class="item.hover ? 'text-black2' : 'text-secondary'"
                 class="subtitle-text3"
@@ -68,7 +68,7 @@
                 </svg>
               </div>
             </div>
-            <div class="column full-width gap-6 mt-15">
+            <div class="column full-width gap-6 mt-md-15 mt-sm-10">
               <div
                 :class="item.hover ? 'text-black4' : 'text-white'"
                 class="header-text bold"
@@ -186,6 +186,12 @@ const cards = ref<
 .card-block {
   height: 420px;
   border-radius: 40px;
+}
+
+body.screen--sm {
+  .card-block {
+    height: 400px;
+  }
 }
 
 .card-block-unhovered {

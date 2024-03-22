@@ -13,6 +13,14 @@
   border-radius: 40px;
 }
 
+//TODO:прикупить повторно от гениальности движения
+
+body.screen--sm {
+  .rounded-40 {
+    border-radius: 30px;
+  }
+}
+
 .rounded-100 {
   border-radius: 100px !important;
 }
@@ -51,7 +59,7 @@
   }
 }
 
-.q-checkbox--dense .q-checkbox__bg {
+.q-checkbox__inner--falsy .q-checkbox__bg {
   border-radius: 4px;
   border: 2px #919aa1 solid;
 }
@@ -62,5 +70,15 @@
 
 .q-field__bottom {
   padding-left: 0;
-  font-size: 14px;
+  padding-top: 4px;
+  font-size: 13px;
+}
+
+.q-field--outlined .q-field__control {
+  border-radius: 20px;
+}
+
+.q-field--outlined .q-field__control {
+  padding-top: 4px;
+  padding-left: 20px;
 }

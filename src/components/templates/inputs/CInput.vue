@@ -268,7 +268,7 @@ watchEffect(() => {
 
 <style lang="scss" scoped>
 .q-input :deep(.q-field__control) {
-  border-radius: 20px;
+  border-radius: 20px !important;
   padding: 0 20px;
 }
 

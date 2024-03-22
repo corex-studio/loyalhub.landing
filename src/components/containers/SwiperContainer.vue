@@ -1,8 +1,10 @@
 <template>
   <div class="relative-position">
-    <div class="row full-width justify-between items-end mb-25">
+    <div
+      class="row full-width justify-between items-end mb-lg-25 mb-md-20 mb-sm-15"
+    >
       <slot name="title"></slot>
-      <div class="row gap-12 items-center no-wrap">
+      <div v-if="$q.screen.gt.md" class="row gap-12 items-center no-wrap">
         <div
           @click="prevPage"
           class="rounded-100 nav-button justify-center items-center row cursor-pointer"

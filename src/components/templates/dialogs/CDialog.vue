@@ -25,7 +25,7 @@
       class="relative-position no-overflow no-shadow"
     >
       <div
-        :class="[!noPadding ? 'pa-15' : dialogClass, withOverflow ? '' : '']"
+        :class="[!noPadding ? 'pa-20' : dialogClass, withOverflow ? '' : '']"
         style="
           overflow: auto;
           width: 100%;

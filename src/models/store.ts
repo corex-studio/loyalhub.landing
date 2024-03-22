@@ -5,6 +5,7 @@ export class Store {
     empty: 'https://mtraktor.ru/images/no-image.png',
   };
   requestModal = false;
+  rightDrawer = false;
 }
 
 export const beautifyNumber = (x: number, toFixed = false) => {
