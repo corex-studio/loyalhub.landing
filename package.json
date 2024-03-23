@@ -2,7 +2,7 @@
   "name": "loyalhub",
   "version": "0.0.1",
   "description": "Бесплатный запуск брендированных решений",
-  "productName": "loyalhub",
+  "productName": "Loyalhub",
   "author": "msim <mskulkin35@gmail.com>",
   "type": "module",
   "private": true,
