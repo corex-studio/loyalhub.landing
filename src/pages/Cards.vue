@@ -32,7 +32,7 @@
             :style="
               item.hover
                 ? 'background-image:unset; '
-                : `background-image:url('src/assets/${item.image}')`
+                : `background-image:url('assets/${item.image}')`
             "
             :class="item.hover ? 'card-block-hovered' : 'card-block-unhovered'"
             class="card-block pa-lg-15 pa-sm-10"
@@ -212,7 +212,7 @@ body.screen--sm {
 }
 
 .blank-block {
-  background: url('src/assets/pluses.svg');
+  background: url('/assets/pluses.svg');
   background-size: cover;
   background-repeat: no-repeat;
 }

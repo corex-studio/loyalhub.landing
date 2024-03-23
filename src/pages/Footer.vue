@@ -11,14 +11,14 @@
             width="65px"
             style="min-width: 65px"
             height="46px"
-            src="src/assets/loyalhubHeart.svg"
+            src="assets/loyalhubHeart.svg"
           />
           <q-img
             v-else
             height="58px"
             width="165px"
             style="min-width: 165px"
-            src="src/assets/loyalhubLogo.svg"
+            src="assets/loyalhubLogo.svg"
           />
 
           <div class="column col-sm-12 col-md-shrink gap-2">

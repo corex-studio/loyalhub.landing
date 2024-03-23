@@ -4,7 +4,7 @@
     class="bg-black3 rounded-40 pt-lg-50 pt-md-40 pt-sm-25 pb-md-0 pb-sm-25 pl-md-10 pl-sm-8 relative-position"
   >
     <img
-      src="src/assets/plusesBenefits.svg"
+      src="assets/plusesBenefits.svg"
       style="position: absolute; bottom: 0"
       :style="`left: ${$q.screen.lt.lg ? '0%' : '17%'} `"
     />

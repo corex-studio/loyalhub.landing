@@ -1,8 +1,8 @@
 {
-  "name": "loyalhub.landing",
+  "name": "loyalhub",
   "version": "0.0.1",
-  "description": "A Quasar Project",
-  "productName": "loyalhub.landing",
+  "description": "Бесплатный запуск брендированных решений",
+  "productName": "loyalhub",
   "author": "msim <mskulkin35@gmail.com>",
   "type": "module",
   "private": true,

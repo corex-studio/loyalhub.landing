@@ -6,8 +6,8 @@
     <div
       :style="
         $q.screen.lt.md
-          ? 'background-image: url(src/assets/requestBgsm.png);'
-          : 'background-image: url(src/assets/requestBg.png);'
+          ? 'background-image: url(assets/requestBgsm.png);'
+          : 'background-image: url(assets/requestBg.png);'
       "
       class="content-block py-lg-25 py-md-20 py-sm-15 column items-center"
     >

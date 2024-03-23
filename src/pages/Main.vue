@@ -2,8 +2,8 @@
   <div
     :style="
       $q.screen.lt.lg
-        ? 'background-image: url(src/assets/mainBGmd.png); background-position-y: 200px'
-        : 'background-image: url(src/assets/mainBG.png)'
+        ? 'background-image: url(assets/mainBGmd.png); background-position-y: 200px'
+        : 'background-image: url(assets/mainBG.png)'
     "
     style="overflow-x: hidden"
     class="parent relative-position pt-15"

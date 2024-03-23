@@ -6,9 +6,9 @@
       <img
         v-if="$q.screen.gt.sm"
         :height="$q.screen.lt.lg ? 62 : 72"
-        src="~assets/loyalhubLogo.svg"
+        src="assets/loyalhubLogo.svg"
       />
-      <img v-else height="29" src="~assets/loyalhubHeart.svg" />
+      <img v-else height="29" src="assets/loyalhubHeart.svg" />
 
       <div v-if="$q.screen.gt.md" class="row items-center no-wrap gap-24">
         <CButton

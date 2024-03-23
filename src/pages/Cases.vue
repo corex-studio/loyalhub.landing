@@ -34,7 +34,7 @@
               "
               fit="cover"
               class="rounded-40"
-              :src="`src/assets/${item.image}`"
+              :src="`assets/${item.image}`"
             />
             <div
               class="column full-width gap-md-6 gap-sm-4 pa-lg-15 pa-md-10 pa-sm-6"
