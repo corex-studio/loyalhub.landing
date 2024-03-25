@@ -1,6 +1,6 @@
 # loyalhub.landing (loyalhub.landing)
 
-A Quasar Project
+Бесплатный запуск брендированных решений
 
 ## Install the dependencies
 
