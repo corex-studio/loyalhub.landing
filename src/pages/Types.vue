@@ -1,19 +1,23 @@
 <template>
   <div>
-    <div style="overflow: hidden" class="bg-white1 px-20 pt-20 pb-43">
-      <div class="text-black2 c-container bold mega-text">
+    <div
+      style="overflow: hidden"
+      class="bg-white1 px-lg-20 px-md-10 px-sm-8 pt-md-20 py-sm-15 pb-lg-43 pb-md-20"
+      :class="{ '': $q.screen.lt.lg }"
+    >
+      <div
+        :class="{ 'c-container': $q.screen.gt.md }"
+        class="text-black2 bold mega-text"
+      >
         Мы создали продукт для крупных сетей и сделали его
         <span class="text-primary bold"> доступным для всех</span>
       </div>
-      <div class="column gap-12 mt-25 full-width">
-        <div
-          :class="{ 'slide-block-top no-wrap': !$q.screen.xs }"
-          class="row full-width gap-6 text-black2"
-        >
+      <div class="column gap-12 mt-lg-25 mt-md-11 mt-sm-10 full-width">
+        <div class="row full-width gap-6 text-black2 slide-block-top no-wrap">
           <div
             v-for="(el, index) in firstRow"
             :key="index"
-            class="px-20 slider-item subtitle-text type-block py-7"
+            class="px-lg-20 px-md-12 px-sm-9 slider-item subtitle-text type-block py-lg-7 py-sm-5"
           >
             {{ el }}
           </div>

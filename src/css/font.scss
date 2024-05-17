@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'TTTravels-Regular';
-  src: local('Travels'), url(src/fonts/Travels/TTTravels-Regular.ttf);
+  font-family: 'TTTravels-Medium';
+  src: local('Travels'), url(src/fonts/Travels/TTTravels-Medium.ttf);
 }
 
 @font-face {
@@ -13,7 +13,7 @@
 }
 
 * {
-  font-family: 'TTTravels-Regular', sans-serif !important;
+  font-family: 'TTTravels-Medium', sans-serif !important;
 }
 
 .huge-text {
@@ -68,4 +68,110 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: 500;
+}
+
+.secondary-text {
+  font-size: 14px;
+  line-height: 19.6px;
+  font-weight: 500;
+}
+
+body.screen--md {
+  .huge-text {
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 54px;
+  }
+
+  .header-text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .subtitle-text2 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .mega-text {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .subtitle-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  // .subtitle-text2 {
+  //   font-weight: 500;
+  //   font-size: 16px;
+  //   line-height: 22px;
+  // }
+
+  .mega-text2 {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 33px;
+  }
+
+  .mega-text3 {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+
+body.screen--sm,
+body.screen--xs {
+  .huge-text {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .header-text {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 23.7px;
+  }
+
+  .subtitle-text2 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22.4px;
+  }
+
+  .mega-text {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  .subtitle-text {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  .body {
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 500;
+  }
+  .mega-text2 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  .mega-text3 {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+  }
 }

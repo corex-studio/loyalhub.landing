@@ -1,45 +1,92 @@
 <template>
-  <div class="bg-black3 pt-50 relative-position">
+  <div
+    style="overflow: hidden"
+    class="bg-black3 rounded-40 pt-lg-50 pt-md-40 pt-sm-25 pb-md-0 pb-sm-25 pl-md-10 pl-sm-8 relative-position"
+  >
     <img
-      src="src/assets/plusesBenefits.svg"
-      style="position: absolute; bottom: 0; left: 17%"
+      src="assets/plusesBenefits.svg"
+      style="position: absolute; bottom: 0"
+      :style="`left: ${$q.screen.lt.lg ? '0%' : '17%'} `"
     />
-    <div style="height: 625px" class="c-container">
+    <div
+      :style="$q.screen.lt.lg ? '' : 'height: 625px'"
+      :class="{ 'c-container': $q.screen.gt.md }"
+    >
       <div
         style="overflow: hidden; height: inherit"
-        class="row full-width no-wrap"
+        class="full-width no-wrap relative-position"
+        :class="$q.screen.gt.md ? 'row' : 'column gap-md-23 gap-sm-15'"
       >
-        <div class="col column gap-25 pr-20">
+        <div class="col column gap-lg-25 gap-md-15 pr-20 pl-md-10">
           <div class="mega-text bold">
             Что вы получите, используя решения от Loyalhub?
           </div>
-          <FunButton label="Подобрать решение" />
+          <FunButton
+            v-if="!$q.screen.lt.md"
+            @click="store.requestModal = true"
+            label="Подобрать решение"
+          />
         </div>
-        <div style="overflow-y: auto" class="col-6 column gap-6 no-wrap pb-20">
+
+        <div
+          ref="scrollBlock"
+          style="overflow: auto"
+          class="gap-6 no-wrap pb-md-20"
+          :class="$q.screen.lt.lg ? 'row full-width' : 'column col-6'"
+        >
           <div
             v-for="(el, index) in blocks"
             :key="index"
-            class="rounded-40 bg-white text-black py-10 px-15 column no-wrap full-height gap-2"
+            :style="$q.screen.lt.lg ? 'min-width: 80% !important' : ''"
+            class="rounded-40 bg-white text-black py-10 px-lg-15 px-sm-10 column no-wrap gap-2"
           >
             <div class="row full-width gap-6 no-wrap">
               <div class="mega-text2 bold">{{ el.number }}</div>
-              <div class="header-text bold mt-4">{{ el.title }}</div>
+              <div class="header-text bold mt-lg-4 mt-sm-2">
+                {{ el.title }}
+              </div>
             </div>
-            <div class="body" v-html="el.text"></div>
+            <div
+              class="body"
+              v-html="$q.screen.lt.md ? el.xsText || el.text : el.text"
+            ></div>
           </div>
         </div>
+        <div v-if="$q.screen.lt.md" class="row justify-center">
+          <FunButton
+            @click="store.requestModal = true"
+            label="Подобрать решение"
+          />
+        </div>
+        <transition v-if="$q.screen.gt.md" name="fade">
+          <div v-if="showArrows" id="arrowAnim">
+            <div class="arrowSliding">
+              <div class="arrow"></div>
+            </div>
+            <div class="arrowSliding delay1">
+              <div class="arrow"></div>
+            </div>
+            <div class="arrowSliding delay2">
+              <div class="arrow"></div>
+            </div>
+          </div>
+        </transition>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import FunButton from 'src/components/templates/buttons/FunButton.vue';
+import { store } from 'src/models/store';
+import { onMounted, ref } from 'vue';
 
 const blocks = [
   {
     number: '01',
     title: 'Бесплатный запуск',
     text: 'Благодаря нашему удобному приложению, вы сможете:<ul><li>изучать меню, оформлять доставку или самовывоз</li><li>получать уведомления</li><li>пользоваться бонусной системой</li><li>оставлять отзывы о работе заведения.</li></ul>',
+    xsText:
+      'Анализируйте продажи, стройте отчеты, изучайте эффективность PUSH-мероприятий, взаимодействуйте с гостями и координируйте бизнес-процессы. Все данные, собранные благодаря инструментам Loyalhub, будут агрегироваться в одном месте. Изучайте их, чтобы открыть новые точки роста для вашего бизнеса.',
   },
   {
     number: '02',
@@ -92,4 +139,101 @@ const blocks = [
     text: 'Обменивайтесь гостями между точками от одного собственника: общие бонусы, новостные рассылки и предложения – все это замотивирует гостей совершать покупки внутри вашей сети заведений',
   },
 ];
+
+const scrollBlock = ref<HTMLDivElement | null>(null);
+
+const showArrows = ref(true);
+
+onMounted(() => {
+  scrollBlock.value?.addEventListener('scroll', (v: any) => {
+    if (v.target.scrollTop > 200) {
+      showArrows.value = false;
+    } else {
+      showArrows.value = true;
+    }
+  });
+});
 </script>
+
+<style lang="scss" scoped>
+#arrowAnim {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 1%;
+  width: 100px;
+  height: 100px;
+}
+
+.arrow {
+  width: 25px;
+  height: 25px;
+  border: 4px solid;
+  border-color: black transparent transparent black;
+  transform: rotate(-135deg);
+}
+
+.arrowSliding {
+  position: absolute;
+  -webkit-animation: slide 8s linear infinite;
+  animation: slide 2s linear infinite;
+}
+
+.delay1 {
+  -webkit-animation-delay: 0.25s;
+  animation-delay: 0.25s;
+}
+.delay2 {
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+.delay3 {
+  -webkit-animation-delay: 0.75s;
+  animation-delay: 0.75s;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-50px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-enter-active {
+  transition: all 0.25s ease;
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-leave-active {
+  transition: all 0.25s ease;
+}
+</style>

@@ -14,6 +14,8 @@
 $black1: #16191b;
 $black2: #494950;
 $black3: #34393c;
+$black4: #2f3336;
+
 $primary: #6138d3;
 
 $secondary: #26a69a;
@@ -28,3 +30,8 @@ $info: #31ccec;
 $disableColor: #bcbcbc;
 
 $warning: #f2c037;
+
+$breakpoint-xs: 0px !default;
+$breakpoint-sm: 767px !default;
+$breakpoint-md: 1007px !default;
+$breakpoint-lg: 1419px !default;
