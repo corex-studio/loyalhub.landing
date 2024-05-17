@@ -91,7 +91,7 @@ for (const _ in Array.from({ length: 5 }, (x, i) => i)) {
 // }
 
 .slide-block-top {
-  animation: 35s slide-left linear infinite;
+  animation: 45s slide-left linear infinite;
   width: fit-content !important;
   // animation-duration: alternate;
 }
