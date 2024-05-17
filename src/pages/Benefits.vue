@@ -80,6 +80,8 @@ import FunButton from 'src/components/templates/buttons/FunButton.vue';
 import { store } from 'src/models/store';
 import { onMounted, ref } from 'vue';
 
+// kek
+
 const blocks = [
   {
     number: '01',
