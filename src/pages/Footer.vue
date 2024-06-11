@@ -1,7 +1,7 @@
 <template>
   <div style="border-top: 1px white solid">
     <div class="c-container py-lg-50 py-md-40 py-sm-30 body">
-      <div class="row full-width justify-between items-center gap-15">
+      <div class="row full-width justify-between items-center gap-10">
         <div
           :class="{ 'no-wrap': $q.screen.gt.md }"
           class="row col-lg-shrink col-sm-12 items-center gap-10"
@@ -29,8 +29,9 @@
             </div>
           </div>
         </div>
+
         <div
-          class="row gap-md-15 gap-sm-10 col-sm-12 col-md-shrink items-center"
+          class="row gap-md-12 gap-sm-10 col-sm-12 col-md-shrink items-center"
         >
           <div class="column col-sm-12 col-md-shrink gap-2">
             <div class="body">Калининград</div>
@@ -60,6 +61,16 @@
             >
               @loyalhub_news
             </div>
+          </div>
+          <div
+            @click="
+              $router.push({
+                name: 'docsPage',
+              })
+            "
+            class="body hover-block cursor-pointer"
+          >
+            Документы
           </div>
         </div>
       </div>
