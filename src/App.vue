@@ -12,10 +12,16 @@ import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 
 const metrika = useYandexMetrika();
 const route = useRoute();
+let interval: NodeJS.Timeout | null = null;
 
 
 onMounted(() => {
-  metrika.hit(route.fullPath);
-  metrika.reachGoal(METRIKA_GOAL_EVENT.LOAD);
+  interval = setInterval(() => {
+    if (window.Ya) {
+      if (interval) clearInterval(interval);
+      metrika.hit(route.fullPath);
+      metrika.reachGoal(METRIKA_GOAL_EVENT.LOAD);
+    }
+  }, 100);
 });
 </script>
