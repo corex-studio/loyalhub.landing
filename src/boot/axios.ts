@@ -17,7 +17,7 @@ declare module '@vue/runtime-core' {
 const api = axios.create({
   baseURL: process.env.DEV
     ? 'http://127.0.0.1:9051/api/v1'
-    : 'https://corex.studio/api/v1',
+    : '/api/v1'
 });
 
 export default boot(({ app }) => {

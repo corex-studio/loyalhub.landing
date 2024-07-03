@@ -5,21 +5,21 @@ export const sendRequest = async (
   phone: string | null,
   name: string | null,
   description?: string | null,
-  email?: string | null,
+  email?: string | null
 ) => {
   try {
-    await api.post('/users/request/', {
-      phone,
-      description,
-      email,
-      name,
+    await api.post('/leads/', {
+      phone: phone || null,
+      description: description || null,
+      email: email || null,
+      name: name || null
     });
     Notify.create('Заявка успешно отправлена');
     return true;
   } catch {
     Notify.create({
       message: 'Не удалось отправить запрос. Попробуйте позже',
-      color: 'red',
+      color: 'red'
     });
     return false;
   }
