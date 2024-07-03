@@ -68,7 +68,7 @@
           'line-height': labelLineHeight ? labelLineHeight : 'inherit',
         }"
         v-if="label"
-        >{{ label }}</span
+      >{{ label }}</span
       >
       <slot></slot>
       <q-icon
@@ -85,24 +85,25 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
+import { METRIKA_GOAL_EVENT, useMetrikaClick } from 'boot/metrika';
 
 const emit = defineEmits(['click']);
 
 const props = defineProps({
   ripple: {
     default: false,
-    type: Boolean,
+    type: Boolean
   },
   flat: Boolean,
   round: Boolean,
   unelevated: {
     default: true,
-    type: Boolean,
+    type: Boolean
   },
   outline: Boolean,
   color: {
     default: 'primary',
-    type: String,
+    type: String
   },
   icon: String,
   iconRight: String,
@@ -111,7 +112,7 @@ const props = defineProps({
   loading: Boolean,
   iconLoading: Boolean,
   hoverColor: {
-    type: String,
+    type: String
   },
   iconColor: String,
   hoverTextColor: String,
@@ -119,12 +120,12 @@ const props = defineProps({
   height: String,
   width: {
     default: 'unset',
-    type: String,
+    type: String
   },
   textSize: String,
   iconSize: {
     default: '16px',
-    type: String,
+    type: String
   },
   label: [Number, String],
   textButton: Boolean,
@@ -141,16 +142,19 @@ const props = defineProps({
   ellipsis: Number,
   iconGap: [Number, String],
   labelLineHeight: String,
+  goalEvent: String // METRIKA_GOAL_EVENT
 });
 
 const _hover = ref(false);
+const { metrikaClick } = useMetrikaClick();
+
 
 const iconGap_ = computed(() => {
   if (props.iconNoGutters) return '0';
   if (!props.iconGap) return '3';
   if (Number.isNaN(Number(props.iconGap)))
     console.warn(
-      'Icon gap prop expected number or numerical string, got string',
+      'Icon gap prop expected number or numerical string, got string'
     );
   return props.iconGap;
 });
@@ -222,6 +226,10 @@ const _disabled = computed(() => {
 
 const clickHandler = (e: Event) => {
   if (props.loading && props.iconLoading) return;
+
+  metrikaClick({
+    goalEvent: props.goalEvent as METRIKA_GOAL_EVENT
+  });
   emit('click', e);
 };
 </script>
@@ -252,6 +260,7 @@ const clickHandler = (e: Event) => {
 .c-btn .right-icon {
   margin-left: 6px !important;
 }
+
 .borderedButton:hover {
   color: $primary !important;
 }
@@ -309,6 +318,7 @@ const clickHandler = (e: Event) => {
   div {
     @extend .ellipsis;
   }
+
   span {
     @extend .ellipsis;
   }

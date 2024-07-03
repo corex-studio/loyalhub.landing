@@ -41,7 +41,7 @@ import Header from './Header.vue';
 import FunButton from 'src/components/templates/buttons/FunButton.vue';
 </script>
 
-<style lsng="scss" scoped>
+<style lang="scss" scoped>
 .parent {
   height: 100vh;
   background-position: bottom;

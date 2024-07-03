@@ -14,7 +14,6 @@ export const sendRequest = async (
       email: email || null,
       name: name || null
     });
-    Notify.create('Заявка успешно отправлена');
     return true;
   } catch {
     Notify.create({

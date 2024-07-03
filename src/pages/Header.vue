@@ -34,6 +34,7 @@
         v-if="$q.screen.gt.md"
         @click="store.requestModal = true"
         label="Оставить заявку"
+        :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
         color="black5"
         width="210px"
         height="44px"
@@ -65,6 +66,8 @@ import CButton from 'src/components/templates/buttons/CButton.vue';
 import { store } from 'src/models/store';
 
 import { scroll } from 'quasar';
+import { METRIKA_GOAL_EVENT } from 'boot/metrika';
+
 const { setVerticalScrollPosition, getScrollTarget } = scroll;
 
 const scrollHandler = (spot: string) => {

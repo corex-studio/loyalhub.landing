@@ -38,10 +38,12 @@
       >
         <div class="subtitle-text2">
           {{ el.title }}
-        </div></CButton
+        </div>
+      </CButton
       >
     </div>
     <CButton
+      :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
       @click="(store.rightDrawer = false), (store.requestModal = true)"
       class="rounded-100"
       color="black6"
@@ -63,8 +65,10 @@
             :style="'transform:rotate(-30deg)'"
             style="transition: all 0.5s; transform-origin: center"
           />
-        </svg></div
-    ></CButton>
+        </svg>
+      </div
+      >
+    </CButton>
   </q-drawer>
 </template>
 <script lang="ts" setup>
@@ -72,6 +76,8 @@ import { store } from 'src/models/store';
 import CButton from '../templates/buttons/CButton.vue';
 
 import { scroll } from 'quasar';
+import { METRIKA_GOAL_EVENT } from 'boot/metrika';
+
 const { setVerticalScrollPosition, getScrollTarget } = scroll;
 
 const tabs = [
@@ -79,20 +85,20 @@ const tabs = [
     title: 'Наши продукты',
     click: () => {
       scrollHandler('cards');
-    },
+    }
   },
   {
     title: 'Преимущества',
     click: () => {
       scrollHandler('benefits');
-    },
+    }
   },
   {
     title: 'Контакты',
     click: () => {
       scrollHandler('footer');
-    },
-  },
+    }
+  }
 ];
 
 const scrollHandler = (spot: string) => {

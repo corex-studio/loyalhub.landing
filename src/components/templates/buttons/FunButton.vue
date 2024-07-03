@@ -1,9 +1,9 @@
 <template>
-  <div
-    @mouseover="hover = true"
-    @mouseleave="hover = false"
-    class="row cursor-pointer relative-position no-wrap"
-    style="width: fit-content"
+  <div @click="handleClick"
+       @mouseover="hover = true"
+       @mouseleave="hover = false"
+       class="row cursor-pointer relative-position no-wrap"
+       style="width: fit-content"
   >
     <q-btn
       :color="hover ? 'white' : color"
@@ -11,7 +11,7 @@
       :textColor="hover ? 'black' : 'white'"
       class="subtitle-text2 rounded-100 button-block"
       :class="[{ 'button-block-hovered': hover }]"
-      >{{ label }}
+    >{{ label }}
     </q-btn>
     <div
       class="circle-block row items-center justify-center"
@@ -37,6 +37,7 @@
 <script lang="ts" setup>
 import { useQuasar } from 'quasar';
 import { computed, ref } from 'vue';
+import { METRIKA_GOAL_EVENT, useMetrikaClick } from 'boot/metrika';
 
 const props = withDefaults(
   defineProps<{
@@ -45,11 +46,13 @@ const props = withDefaults(
     height?: string;
   }>(),
   {
-    color: 'primary',
-  },
+    color: 'primary'
+  }
 );
 
+const emit = defineEmits(['click']);
 const hover = ref(false);
+const { metrikaClick } = useMetrikaClick();
 
 const q = useQuasar();
 
@@ -62,6 +65,13 @@ const _height = computed(() => {
         ? '58px'
         : '48px';
 });
+
+const handleClick = (e: Event) => {
+  metrikaClick({
+    goalEvent: METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED
+  });
+  emit('click', e);
+};
 </script>
 
 <style lang="scss">
@@ -79,6 +89,7 @@ body.screen--md {
   .circle-block {
     width: 58px;
   }
+
   .button-block-hovered {
     padding-right: 80px;
   }
@@ -92,6 +103,7 @@ body.screen--sm {
   .circle-block {
     width: 48px;
   }
+
   .button-block-hovered {
     padding-right: 70px;
   }

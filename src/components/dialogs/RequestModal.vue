@@ -1,12 +1,12 @@
 <template>
   <CDialog
-    :model-value="modelValue"
+    :model-value="model || false"
     @update:model-value="$emit('update:modelValue', $event)"
     width="463px"
     :position="$q.screen.sm ? 'bottom' : undefined"
     :maximized="$q.screen.sm"
   >
-    <div class="column full-width text-black4 items-center">
+    <div v-if="!completed" class="column full-width text-black4 items-center">
       <div class="mega-text3 bold text-center">Оставьте заявку</div>
       <div
         class="text-center body mt-6"
@@ -71,51 +71,69 @@
         />
       </q-form>
     </div>
+
+    <div v-else class="column full-width text-black4 items-center">
+      <div class="mega-text3 bold text-center">Спасибо за вашу заявку!</div>
+      <div
+        class="text-center body mt-10"
+        :style="$q.screen.sm ? '' : 'width: 85%'"
+      >
+        Наши менеджеры свяжутся с вами в ближайшее время для уточнения деталей.
+      </div>
+      <q-separator class="bg-secondary my-10" style="width: 70%; opacity: 0.3"></q-separator>
+      <div
+        class="text-center body"
+        :style="$q.screen.sm ? '' : 'width: 80%'"
+      >
+        Следите за нашими новостями в
+      </div>
+      <div @click="goToTelegram" class="subtitle-text2 mt-3 text-primary cursor-pointer"
+           style="text-decoration: underline">
+        Telegram
+      </div>
+    </div>
   </CDialog>
 </template>
 <script lang="ts" setup>
 import CDialog from 'src/components/templates/dialogs/CDialog.vue';
 import CInput from '../templates/inputs/CInput.vue';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import CButton from '../templates/buttons/CButton.vue';
 import rules from 'src/corexModels/rules';
 import { sendRequest } from 'src/models/sendRequest';
+import { METRIKA_GOAL_EVENT, useMetrikaClick } from 'boot/metrika';
 
-defineProps<{
-  modelValue: boolean;
-}>();
+const model = defineModel<boolean>();
 
-const emit = defineEmits<{
-  (evt: 'update:modelValue', value: boolean): void;
-}>();
-
+const { metrikaClick } = useMetrikaClick();
 const loading = ref(false);
+const completed = ref(false);
 
 const validationError = ref(false);
-
 const confirmation = ref(false);
+
+const getEmptyData = () => {
+  return {
+    phone: null,
+    name: null,
+    description: null,
+    email: null
+  };
+};
+
 
 const data = ref<{
   phone: string | null;
   name: string | null;
   description: string | null;
   email: string | null;
-}>({
-  phone: null,
-  name: null,
-  description: null,
-  email: null,
-});
+}>(getEmptyData());
 
-// const validationState = computed(() => {
-//   return validationError.value
-//     ? data.value.name
-//       ? data.value.phone && data.value.phone.length >= 11
-//         ? false
-//         : 2
-//       : 1
-//     : false;
-// });
+
+const goToTelegram = () => {
+  metrikaClick({ goalEvent: METRIKA_GOAL_EVENT.TELEGRAM_AFTER_SUBMIT_REQUEST });
+  window.open('https://t.me/loyalhub_news', '_self');
+};
 
 const send = async () => {
   loading.value = true;
@@ -123,11 +141,21 @@ const send = async () => {
     data.value.phone,
     data.value.name,
     data.value.description,
-    data.value.email,
+    data.value.email
   );
   if (success) {
-    emit('update:modelValue', false);
+    metrikaClick({ goalEvent: METRIKA_GOAL_EVENT.SUBMIT_REQUEST });
+    completed.value = true;
   }
   loading.value = false;
 };
+
+watch(model, (v) => {
+  if (v) {
+    completed.value = false;
+    loading.value = false;
+    confirmation.value = false;
+    data.value = getEmptyData();
+  }
+});
 </script>
