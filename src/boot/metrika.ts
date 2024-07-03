@@ -17,8 +17,7 @@ export default boot(({ app, router }) => {
     router: router,
     env: process.env.NODE_ENV,
     scriptSrc: 'https://mc.yandex.ru/metrika/tag.js',
-    debug: process.env.NODE_ENV === 'development',
-    // debug: false,
+    debug: false,
     options: {
       webvisor: true,
       clickmap: true,
