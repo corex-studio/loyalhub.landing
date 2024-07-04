@@ -33,7 +33,7 @@
         </div>
 
         <q-slider
-          @change="metrikaClick({
+          @change="metrikaTick({
             goalEvent: METRIKA_GOAL_EVENT.TARIFF_COMPUTED
           })"
           track-size="15px"
@@ -107,10 +107,10 @@
 import FunButton from 'src/components/templates/buttons/FunButton.vue';
 import { computed, ref } from 'vue';
 import { beautifyNumber, store } from 'src/models/store';
-import { METRIKA_GOAL_EVENT, useMetrikaClick } from 'boot/metrika';
+import { METRIKA_GOAL_EVENT, useMetrikaTick } from 'boot/metrika';
 
 const pointsCount = ref(1);
-const { metrikaClick } = useMetrikaClick();
+const { metrikaTick } = useMetrikaTick();
 
 const totalPrice = computed(() => {
   return pointsCount.value * currentPrice.value;

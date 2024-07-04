@@ -101,11 +101,11 @@ import { ref, watch } from 'vue';
 import CButton from '../templates/buttons/CButton.vue';
 import rules from 'src/corexModels/rules';
 import { sendRequest } from 'src/models/sendRequest';
-import { METRIKA_GOAL_EVENT, useMetrikaClick } from 'boot/metrika';
+import { METRIKA_GOAL_EVENT, useMetrikaTick } from 'boot/metrika';
 
 const model = defineModel<boolean>();
 
-const { metrikaClick } = useMetrikaClick();
+const { metrikaTick } = useMetrikaTick();
 const loading = ref(false);
 const completed = ref(false);
 
@@ -131,7 +131,7 @@ const data = ref<{
 
 
 const goToTelegram = () => {
-  metrikaClick({ goalEvent: METRIKA_GOAL_EVENT.TELEGRAM_AFTER_SUBMIT_REQUEST });
+  metrikaTick({ goalEvent: METRIKA_GOAL_EVENT.TELEGRAM_AFTER_SUBMIT_REQUEST });
   window.open('https://t.me/loyalhub_news', '_self');
 };
 
@@ -144,7 +144,7 @@ const send = async () => {
     data.value.email
   );
   if (success) {
-    metrikaClick({ goalEvent: METRIKA_GOAL_EVENT.SUBMIT_REQUEST });
+    metrikaTick({ goalEvent: METRIKA_GOAL_EVENT.SUBMIT_REQUEST });
     completed.value = true;
   }
   loading.value = false;

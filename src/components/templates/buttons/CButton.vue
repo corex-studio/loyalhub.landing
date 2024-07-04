@@ -85,7 +85,7 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { METRIKA_GOAL_EVENT, useMetrikaClick } from 'boot/metrika';
+import { METRIKA_GOAL_EVENT, useMetrikaTick } from 'boot/metrika';
 
 const emit = defineEmits(['click']);
 
@@ -146,7 +146,7 @@ const props = defineProps({
 });
 
 const _hover = ref(false);
-const { metrikaClick } = useMetrikaClick();
+const { metrikaTick } = useMetrikaTick();
 
 
 const iconGap_ = computed(() => {
@@ -227,7 +227,7 @@ const _disabled = computed(() => {
 const clickHandler = (e: Event) => {
   if (props.loading && props.iconLoading) return;
 
-  metrikaClick({
+  metrikaTick({
     goalEvent: props.goalEvent as METRIKA_GOAL_EVENT
   });
   emit('click', e);

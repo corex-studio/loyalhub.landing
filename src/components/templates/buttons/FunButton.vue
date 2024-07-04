@@ -37,7 +37,7 @@
 <script lang="ts" setup>
 import { useQuasar } from 'quasar';
 import { computed, ref } from 'vue';
-import { METRIKA_GOAL_EVENT, useMetrikaClick } from 'boot/metrika';
+import { METRIKA_GOAL_EVENT, useMetrikaTick } from 'boot/metrika';
 
 const props = withDefaults(
   defineProps<{
@@ -52,7 +52,7 @@ const props = withDefaults(
 
 const emit = defineEmits(['click']);
 const hover = ref(false);
-const { metrikaClick } = useMetrikaClick();
+const { metrikaTick } = useMetrikaTick();
 
 const q = useQuasar();
 
@@ -67,7 +67,7 @@ const _height = computed(() => {
 });
 
 const handleClick = (e: Event) => {
-  metrikaClick({
+  metrikaTick({
     goalEvent: METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED
   });
   emit('click', e);

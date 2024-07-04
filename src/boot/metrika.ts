@@ -1,6 +1,5 @@
 import { initYandexMetrika, useYandexMetrika } from 'yandex-metrika-vue3';
 import { boot } from 'quasar/wrappers';
-import { useRoute } from 'vue-router';
 
 export enum METRIKA_GOAL_EVENT {
   LOAD = 'load',
@@ -33,15 +32,13 @@ export type MetrikaClickParams = {
   goalEvent?: METRIKA_GOAL_EVENT
 }
 
-export const useMetrikaClick = () => {
+export const useMetrikaTick = () => {
   const metrika = useYandexMetrika();
-  const route = useRoute();
 
-  const metrikaClick = (params?: MetrikaClickParams) => {
-    metrika.hit(route.fullPath);
+  const metrikaTick = (params?: MetrikaClickParams) => {
     if (params?.goalEvent)
       metrika.reachGoal(params?.goalEvent);
   };
 
-  return { metrikaClick };
+  return { metrikaTick, metrika };
 };
