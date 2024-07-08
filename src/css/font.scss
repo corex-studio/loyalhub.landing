@@ -1,20 +1,33 @@
 @font-face {
-  font-family: 'TTTravels-Medium';
-  src: local('Travels'), url(src/fonts/Travels/TTTravels-Medium.ttf);
+  font-family: 'Involve-Regular';
+  src: local('Involve'), url(src/fonts/Involve/Involve-Regular.ttf);
 }
 
 @font-face {
-  font-family: 'TTTravels-DemiBold';
-  src: local('Travels-Bold'), url(src/fonts/Travels/TTTravels-DemiBold.ttf);
-}
-
-.bold {
-  font-family: 'TTTravels-DemiBold', sans-serif !important;
+  font-family: 'Involve-SemiBold';
+  src: local('Involve-SemiBold'), url(src/fonts/Involve/Involve-SemiBold.ttf);
 }
 
 * {
-  font-family: 'TTTravels-Medium', sans-serif !important;
+  font-family: 'Involve-Regular', sans-serif !important;
 }
+
+.bold {
+  font-family: 'Involve-SemiBold', sans-serif !important;
+}
+
+.bold {
+  font-weight: 500 !important;
+
+  .q-field__label {
+    @extend .bold;
+  }
+
+  &.q-btn div {
+    @extend .bold;
+  }
+}
+
 
 .huge-text {
   font-weight: 500;
@@ -163,6 +176,7 @@ body.screen--xs {
     line-height: 21px;
     font-weight: 500;
   }
+
   .mega-text2 {
     font-weight: 500;
     font-size: 24px;
