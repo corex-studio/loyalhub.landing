@@ -31,7 +31,7 @@
         </div>
 
         <div
-          class="row gap-md-12 gap-sm-10 col-sm-12 col-md-shrink items-center"
+          class="row gap-md-12 gap-sm-10 col-sm-12 col-md-shrink "
         >
           <div class="column col-sm-12 col-md-shrink gap-2">
             <div class="body">Калининград</div>
@@ -64,14 +64,25 @@
           </div>
           <div
             @click="
-              $router.push({
-                name: 'docsPage',
-              })
-            "
+                        $router.push({
+                          name: 'docsPage',
+                        })
+                      "
             class="body hover-block cursor-pointer"
           >
+
             Документы
           </div>
+          <!--          <q-btn-->
+          <!--            @click="-->
+          <!--              $router.push({-->
+          <!--                name: 'docsPage',-->
+          <!--              })-->
+          <!--            "-->
+          <!--            class="body"-->
+          <!--            style="height: 40px"-->
+          <!--            outline-->
+          <!--            label="Документы" />-->
         </div>
       </div>
     </div>
