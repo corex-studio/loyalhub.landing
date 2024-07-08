@@ -136,7 +136,7 @@ const cards = ref<
   },
   {
     number: '05',
-    title: 'Сервис уведомелний',
+    title: 'Сервис уведомлений',
     text: 'Собственный сервис для отправки СМС-сообщений ',
     image: 'card5.png',
     hover: false,
