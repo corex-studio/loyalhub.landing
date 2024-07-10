@@ -1,19 +1,19 @@
 @font-face {
-  font-family: 'Involve-Regular';
-  src: local('Involve'), url(src/fonts/Involve/Involve-Regular.ttf);
+  font-family: 'Cyrge-Regular';
+  src: local('Cyrge'), url(../fonts/Cyrge/Cygre-Regular.ttf);
 }
 
 @font-face {
-  font-family: 'Involve-SemiBold';
-  src: local('Involve-SemiBold'), url(src/fonts/Involve/Involve-SemiBold.ttf);
+  font-family: 'Cyrge-SemiBold';
+  src: local('Cyrge-SemiBold'), url(src/fonts/Cyrge/Cygre-SemiBold.ttf);
 }
 
 * {
-  font-family: 'Involve-Regular', sans-serif !important;
+  font-family: 'Cyrge-Regular', sans-serif !important;
 }
 
 .bold {
-  font-family: 'Involve-SemiBold', sans-serif !important;
+  font-family: 'Cyrge-SemiBold', sans-serif !important;
 }
 
 .bold {
