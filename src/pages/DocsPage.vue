@@ -24,10 +24,7 @@
 
         </div>
         <div style="z-index: 10" class="mt-20 subtitle-text2 relative-position">
-          Программное обеспечение включает в себя ряд продуктов, позволяющих быстро запускать мобильные приложения
-          лояльности и сайты, удобно работать с заказами, получать оцифрованные данные о гостях, использовать
-          инструменты для увеличения среднего чека и лояльности гостей, настраивать push-уведомления и получать
-          аналитику по их действиям.
+          Программное обеспечение "Loyalhub" позволяет быстро запускать мобильные приложения лояльности и сайты, удобно работать с заказами, получать оцифрованные данные о гостях, использовать инструменты для увеличения среднего чека и лояльности гостей, настраивать push-уведомления и получать аналитику по их действиям.
         </div>
       </div>
     </div>
@@ -61,12 +58,12 @@
         <div class="col column no-wrap gap-15">
           <div class="mega-text3">Ссылки для скачивания файлов:</div>
           <div class="bordered-block subtitle-text2 column gap-10">
-            <a
-              href="https://s3.timeweb.com/1f39f2f5-loyalhub/core/functional_characteristics.pdf"
-              target="_blank"
-            ><span class="primary-text pr-5">•</span> Функциональные
-              характеристики ПО</a
-            >
+<!--            <a-->
+<!--              href="https://s3.timeweb.com/1f39f2f5-loyalhub/core/functional_characteristics.pdf"-->
+<!--              target="_blank"-->
+<!--            ><span class="primary-text pr-5">•</span> Функциональные-->
+<!--              характеристики ПО</a-->
+<!--            >-->
             <a
               href="https://s3.timeweb.com/1f39f2f5-loyalhub/core/description_of_processes.pdf"
               target="_blank"
@@ -88,7 +85,7 @@
           </div>
         </div>
         <div class="col column gap-15">
-          <div class="mega-text3">Стоимость:</div>
+          <div class="mega-text3">Стоимость ПО:</div>
           <div
             class="bordered-block subtitle-text2 column no-wrap gap-10"
             style="background-color: #6138d3"
