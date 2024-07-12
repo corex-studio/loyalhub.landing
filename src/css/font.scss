@@ -1,19 +1,19 @@
 @font-face {
-  font-family: 'Cyrge-Regular';
-  src: local('Cyrge'), url(../fonts/Cyrge/Cygre-Regular.ttf);
+  font-family: 'Geologica-Light';
+  src: local('Geologica-Light'), url(src/fonts/Geologica/Geologica-Light.ttf);
 }
 
 @font-face {
-  font-family: 'Cyrge-SemiBold';
-  src: local('Cyrge-SemiBold'), url(src/fonts/Cyrge/Cygre-SemiBold.ttf);
+  font-family: 'Geologica-Regular';
+  src: local('Geologica-Regular'), url(src/fonts/Geologica/Geologica-Regular.ttf);
 }
 
 * {
-  font-family: 'Cyrge-Regular', sans-serif !important;
+  font-family: 'Geologica-Light', sans-serif !important;
 }
 
 .bold {
-  font-family: 'Cyrge-SemiBold', sans-serif !important;
+  font-family: 'Geologica-Regular', sans-serif !important;
 }
 
 .bold {
