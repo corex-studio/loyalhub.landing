@@ -5,14 +5,15 @@
       class="c-container row items-center relative-position"
     >
       <q-img
-        width="1400px"
-        style="
+        :style="`
           position: absolute;
-          top: -10%;
-          right: -39%;
+          top: ${$q.screen.lt.lg ? '' : '-10%'};
+          bottom: ${$q.screen.lt.lg ? '5%' : ''};
+          right: ${$q.screen.lt.lg ? '-300px' : '-39%'};
           z-index: 0;
-          opacity: 0.55;
-        "
+          opacity: ${$q.screen.lt.md ? '0.35' : '0.55'};
+          width: ${$q.screen.lt.lg ? $q.screen.lt.md ?  '800px' : '1000px': '1400px'}
+        `"
         src="assets/mainBGmd.png"
       />
       <div>
@@ -30,19 +31,19 @@
     </div>
     <div class="c-container">
       <div class="mega-text mt-15">Функциональные характеристики ПО:</div>
-      <div class="mt-15 mega-text3">Цели и назначения:</div>
-      <div class="mt-10 subtitle-text">
+      <div class="mt-lg-15 mt-sm-10 mega-text3">Цели и назначения:</div>
+      <div class="mt-lg-10 mt-sm-8 subtitle-text">
         «Loyalhub» – это программное обеспечение для совершенствования опыта между гостем и рестораном.
       </div>
-      <div class="mt-10 subtitle-text">
+      <div class="mt-lg-10 mt-sm-8 subtitle-text">
         ПО «Loyalhub» создано для представителей сегмента HoReCa. Она позволяет работать с различными каналами
         взаимодействия с гостями. Целью взаимодействия является увеличение лояльности гостей, сбор информации и
         управление полученными в результате работы данными, обеспечение обратной связи и автоматизация части
         бизнес-процессов с помощью цифровых решений.
 
       </div>
-      <div class="mega-text3 mt-20">Ключевые функции:</div>
-      <ul class="pl-20 subtitle-text column gap-5 mt-8">
+      <div class="mega-text3 mt-lg-20 mt-sm-16">Ключевые функции:</div>
+      <ul class="pl-lg-20 pl-sm-10 subtitle-text column gap-lg-5 gap-sm-4 mt-lg-8 mt-sm-6">
         <li>Создание и запуск брендированных мобильных приложений</li>
         <li>Создание и запуск сайтов</li>
         <li>Использование платежного сервиса</li>
@@ -54,10 +55,10 @@
         <li>Использование Telegram-бота</li>
         <li>Сбор отзывов</li>
       </ul>
-      <div class="row full-width gap-25 mt-30">
-        <div class="col column no-wrap gap-15">
+      <div class="row full-width gap-lg-25 gap-sm-15 mt-lg-30 mt-sm-20">
+        <div  class="col-md col-sm-12 column no-wrap gap-lg-15 gap-sm-10">
           <div class="mega-text3">Ссылки для скачивания файлов:</div>
-          <div class="bordered-block subtitle-text2 column gap-10">
+          <div class="bordered-block pa-lg-15 pa-sm-6 subtitle-text2 column gap-lg-10 gap-sm-6">
 <!--            <a-->
 <!--              href="https://s3.timeweb.com/1f39f2f5-loyalhub/core/functional_characteristics.pdf"-->
 <!--              target="_blank"-->
@@ -84,27 +85,27 @@
             >
           </div>
         </div>
-        <div class="col column gap-15">
+        <div class="col-md col-sm-12 column gap-lg-15 gap-sm-10">
           <div class="mega-text3">Стоимость ПО:</div>
           <div
-            class="bordered-block subtitle-text2 column no-wrap gap-10"
+            class="bordered-block pa-lg-15 pa-sm-6 subtitle-text2 column no-wrap gap-lg-10 gap-sm-6"
             style="background-color: #6138d3"
           >
             <div>6 000 рублей/точка (до 2 торговых точек)</div>
             <div>5 000 рублей/точка (2-4 торговых точки)</div>
             <div>4 000 рублей/точка (5-20 торговых точек)</div>
             <div>3 000 рублей/точка (более 20 торговых точек)</div>
-            <div class="mt-5">
+            <div class="mt-lg-5 mt-sm-3">
               Для точного подбора стоимости, оставьте заявку:
             </div>
-            <div class="column pl-10 gap-8">
+            <div class="column pl-lg-10 pl-sm-5 gap-lg-8 gap-sm-6">
               <div class="row gap-5 items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 28.314 28.323"
                   style="enable-background: new 0 0 28.314 28.323"
                   xml:space="preserve"
-                  width="24"
+                  :width="$q.screen.lt.md ? '18' : '24'"
                   fill="white"
                 >
                   <path
@@ -119,7 +120,8 @@
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 32 32"
                   fill="white"
-                  width="24"
+                  :width="$q.screen.lt.md ? '18' : '24'"
+
                 >
                   <path
                     d="M28 28H4a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h24a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4zM4 6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"
@@ -137,7 +139,7 @@
           </div>
         </div>
       </div>
-      <div class="mt-30 column">
+      <div class="mt-lg-30 mt-sm-20 column">
         <div class="mega-text3">Служба технической поддержки:</div>
         <div class="subtitle-text2 mt-10">
           Телефон:<a href="tel:+79003519050"> +7 (900) 351-90-50</a>
@@ -149,12 +151,12 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+</script>
 
 <style lang="scss" scoped>
 .bordered-block {
   border-radius: 20px;
-  padding: 30px;
   border: 1px #6138d3 solid;
 }
 
