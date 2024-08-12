@@ -34,8 +34,9 @@
                 ? 'background-image:unset; '
                 : `background-image:url('assets/${item.image}')`
             "
-            :class="item.hover ? 'card-block-hovered' : 'card-block-unhovered'"
-            class="card-block pa-lg-15 pa-sm-10"
+            :class="[item.hover ? 'card-block-hovered' : item.number  == '04' ? 'big-block' : 'card-block-unhovered']"
+
+            class="card-block pa-lg-15 pa-sm-10 "
           >
             <div class="row justify-between items-center">
               <div
@@ -136,7 +137,7 @@ const cards = ref<
   },
   {
     number: '05',
-    title: 'Сервис уведомелний',
+    title: 'Сервис уведомлений',
     text: 'Собственный сервис для отправки СМС-сообщений ',
     image: 'card5.png',
     hover: false,
@@ -215,5 +216,14 @@ body.screen--sm {
   background: url('/assets/pluses.svg');
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.big-block {
+  background-size: 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: bottom -40px right  !important;
+  background-color: $black3 !important;
+  transition: all 0.5s ease-in;
+  transition: background 0.5s ease;
 }
 </style>
