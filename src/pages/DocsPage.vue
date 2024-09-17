@@ -66,19 +66,19 @@
 <!--              характеристики ПО</a-->
 <!--            >-->
             <a
-              href="https://s3.timeweb.com/1f39f2f5-loyalhub/core/description_of_processes.pdf"
+              href="/files/description_of_processes.pdf"
               target="_blank"
             ><span class="primary-text pr-5">•</span> Описание процессов
               жизненного цикла</a
             >
             <a
-              href="https://s3.timeweb.com/1f39f2f5-loyalhub/core/user_guide.pdf"
+              href="/files/user_guide.pdf"
               target="_blank"
             ><span class="primary-text pr-5">•</span> Руководство
               пользователя</a
             >
             <a
-              href="https://s3.timeweb.com/1f39f2f5-loyalhub/core/setup_instruction.pdf"
+              href="/files/setup_instruction.pdf"
               target="_blank"
             ><span class="primary-text pr-5">•</span> Инструкция по
               установке</a
