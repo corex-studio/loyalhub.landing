@@ -12,7 +12,7 @@
     :loading="iconLoading ? false : loading"
     :disabled="_disabled"
     class="c-btn body"
-    style="border-radius: 10px"
+    style="border-radius: 12px"
     :class="{
       borderedButton: outline,
       block: textButton && !to,
@@ -68,7 +68,7 @@
           'line-height': labelLineHeight ? labelLineHeight : 'inherit',
         }"
         v-if="label"
-      >{{ label }}</span
+        >{{ label }}</span
       >
       <slot></slot>
       <q-icon
@@ -92,18 +92,18 @@ const emit = defineEmits(['click']);
 const props = defineProps({
   ripple: {
     default: false,
-    type: Boolean
+    type: Boolean,
   },
   flat: Boolean,
   round: Boolean,
   unelevated: {
     default: true,
-    type: Boolean
+    type: Boolean,
   },
   outline: Boolean,
   color: {
     default: 'primary',
-    type: String
+    type: String,
   },
   icon: String,
   iconRight: String,
@@ -112,7 +112,7 @@ const props = defineProps({
   loading: Boolean,
   iconLoading: Boolean,
   hoverColor: {
-    type: String
+    type: String,
   },
   iconColor: String,
   hoverTextColor: String,
@@ -120,12 +120,12 @@ const props = defineProps({
   height: String,
   width: {
     default: 'unset',
-    type: String
+    type: String,
   },
   textSize: String,
   iconSize: {
     default: '16px',
-    type: String
+    type: String,
   },
   label: [Number, String],
   textButton: Boolean,
@@ -142,19 +142,18 @@ const props = defineProps({
   ellipsis: Number,
   iconGap: [Number, String],
   labelLineHeight: String,
-  goalEvent: String // METRIKA_GOAL_EVENT
+  goalEvent: String, // METRIKA_GOAL_EVENT
 });
 
 const _hover = ref(false);
 const { metrikaTick } = useMetrikaTick();
-
 
 const iconGap_ = computed(() => {
   if (props.iconNoGutters) return '0';
   if (!props.iconGap) return '3';
   if (Number.isNaN(Number(props.iconGap)))
     console.warn(
-      'Icon gap prop expected number or numerical string, got string'
+      'Icon gap prop expected number or numerical string, got string',
     );
   return props.iconGap;
 });
@@ -228,7 +227,7 @@ const clickHandler = (e: Event) => {
   if (props.loading && props.iconLoading) return;
 
   metrikaTick({
-    goalEvent: props.goalEvent as METRIKA_GOAL_EVENT
+    goalEvent: props.goalEvent as METRIKA_GOAL_EVENT,
   });
   emit('click', e);
 };
@@ -245,7 +244,6 @@ const clickHandler = (e: Event) => {
   border-radius: 4px;
   transition: 0.3s ease-in-out;
   white-space: pre;
-  font-weight: 400;
   position: relative;
 }
 
@@ -331,7 +329,7 @@ const clickHandler = (e: Event) => {
 .text-button:after {
   content: '';
   position: absolute;
-  background-color: white;
+  background-color: $accent2;
   height: 2px;
   width: 0%;
   left: 0;

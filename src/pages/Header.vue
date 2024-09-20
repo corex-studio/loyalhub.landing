@@ -1,70 +1,82 @@
 <template>
   <div class="c-container">
     <div
-      class="px-10 header-block bg-black4 row no-wrap gap-10 items-center full-width justify-between"
+      class="header-block row no-wrap gap-5 items-center full-width justify-between"
     >
-      <img
-        v-if="$q.screen.gt.sm"
-        :height="$q.screen.lt.lg ? 62 : 72"
-        src="assets/loyalhubLogo.svg"
-      />
-      <img v-else height="29" src="assets/loyalhubHeart.svg" />
-
-      <div v-if="$q.screen.gt.md" class="row items-center no-wrap gap-24">
+      <img height="56" src="assets/loyalhubLogo.png" />
+      <div v-if="$q.screen.gt.md" class="row items-center no-wrap gap-16">
         <CButton
           @click="scrollHandler('cards')"
           label="Наши продукты"
-          hover-text-color="white"
           text-button
+          text-color="black"
         />
         <CButton
           @click="scrollHandler('benefits')"
           label="Преимущества"
-          hover-text-color="white"
+          text-color="black"
           text-button
         />
+        <CButton label="Блог" text-color="black" text-button />
+        <CButton label="Кейсы" text-color="black" text-button />
         <CButton
           @click="scrollHandler('footer')"
           label="Контакты"
-          hover-text-color="white"
+          text-color="black"
           text-button
         />
       </div>
-      <CButton
-        v-if="$q.screen.gt.md"
-        @click="store.requestModal = true"
-        label="Оставить заявку"
-        :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
-        color="black5"
-        width="210px"
-        height="44px"
-        class="rounded-100"
-      />
-      <svg
-        v-else
-        @click="store.rightDrawer = !store.rightDrawer"
-        :width="$q.screen.lt.md ? 21 : 28"
-        height="22"
-        viewBox="0 0 28 22"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="cursor-pointer"
-      >
-        <path
-          d="M2.00012 2H26.0001M2.00012 11H26.0001M2.00012 20H26.0001"
-          stroke="white"
-          stroke-width="3.1875"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+      <div class="row items-center gap-10">
+        <div>+7 900 351 90 50</div>
+        <div class="tg-block row items-center justify-center">
+          <svg
+            width="24"
+            height="20"
+            viewBox="0 0 24 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22.0517 1.12998L0.788779 9.37183C-0.0668777 9.75564 -0.356284 10.5243 0.581966 10.9414L6.03681 12.6839L19.2259 4.49059C19.9461 3.97623 20.6833 4.11339 20.0489 4.67922L8.72125 14.9887L8.36542 19.3516C8.695 20.0253 9.29847 20.0284 9.6834 19.6936L12.8174 16.7128L18.1848 20.7528C19.4314 21.4947 20.1098 21.016 20.378 19.6563L23.8985 2.89984C24.2641 1.22617 23.6407 0.488734 22.0517 1.12998Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+        <CButton
+          v-if="$q.screen.gt.md"
+          @click="store.requestModal = true"
+          label="Начать бесплатно"
+          :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
+          width="210px"
+          class="secondary"
+          height="44px"
         />
-      </svg>
+      </div>
+
+      <!--      <svg-->
+      <!--        v-else-->
+      <!--        @click="store.rightDrawer = !store.rightDrawer"-->
+      <!--        :width="$q.screen.lt.md ? 21 : 28"-->
+      <!--        height="22"-->
+      <!--        viewBox="0 0 28 22"-->
+      <!--        fill="none"-->
+      <!--        xmlns="http://www.w3.org/2000/svg"-->
+      <!--        class="cursor-pointer"-->
+      <!--      >-->
+      <!--        <path-->
+      <!--          d="M2.00012 2H26.0001M2.00012 11H26.0001M2.00012 20H26.0001"-->
+      <!--          stroke="white"-->
+      <!--          stroke-width="3.1875"-->
+      <!--          stroke-linecap="round"-->
+      <!--          stroke-linejoin="round"-->
+      <!--        />-->
+      <!--      </svg>-->
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import CButton from 'src/components/templates/buttons/CButton.vue';
 import { store } from 'src/models/store';
-
 import { scroll } from 'quasar';
 import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 
@@ -86,9 +98,8 @@ const scrollHandler = (spot: string) => {
 
 <style lang="scss" scoped>
 .header-block {
-  height: 72px;
+  height: 56px;
   z-index: 1;
-  border-radius: 100px;
 }
 
 body.screen--md {
@@ -101,5 +112,12 @@ body.screen--sm {
   .header-block {
     height: 44px;
   }
+}
+
+.tg-block {
+  height: 45px;
+  min-width: 45px;
+  border-radius: 12px;
+  background: $primary;
 }
 </style>

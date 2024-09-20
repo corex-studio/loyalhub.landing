@@ -4,21 +4,13 @@
 @import 'font';
 
 .c-container {
-  max-width: 1212px;
+  max-width: 1360px;
   width: 100%;
   margin: 0 auto;
 }
 
-.rounded-40 {
-  border-radius: 40px;
-}
-
-//TODO:прикупить повторно от гениальности движения
-
-body.screen--sm {
-  .rounded-40 {
-    border-radius: 30px;
-  }
+.rounded-30 {
+  border-radius: 30px;
 }
 
 .rounded-100 {

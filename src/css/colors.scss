@@ -1,24 +1,14 @@
 $colors: (
-  'black1': #16191b,
-  'black2': #494950,
-  'black3': #34393c,
-  'black4': #2f3336,
-  'black5': #3b3f42,
-  'black6': #3c4043,
-  'black7': #2f3336,
-  'white1': #f2f2f2,
-  'secondary': #c2c4c4,
-  'secondary2': #7b868e,
-  'primary': #6138d3,
-  'accent': #ffddc9,
+  'primary': #3E424D,
+  'accent1': #FED42A,
+  'accent2': #FF2035,
+  'secondary1': #F4F4F4,
+  'secondary2': #F5F6F9,
   'transparent': #00000000,
   'white-opacity': rgba(255, 255, 255, 0.6),
-  'gray': #c4c4c4,
   'white': #fff,
-  'deviated': #ff2b3f,
   'success': #1ac30b,
   'danger': #ff3b10,
-  'pink': #fca9b1,
 );
 
 @each $index, $color in $colors {
@@ -28,6 +18,7 @@ $colors: (
 
   .text-#{$index} {
     color: $color !important;
+
     &.q-select .q-field__native span {
       color: $color !important;
     }
