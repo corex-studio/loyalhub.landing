@@ -159,13 +159,10 @@ const iconGap_ = computed(() => {
 });
 
 const _color = computed(() => {
-  // return _hover.value && props.hoverColor ? props.hoverColor : props.textButton ? 'tranparent' : props.color
   if (_hover.value && props.hoverColor) {
     return props.hoverColor;
   } else if (props.textButton) {
     return 'transparent';
-  } else if (_hover.value && !props.hoverColor) {
-    return 'primary';
   } else return props.color;
 });
 
@@ -174,11 +171,7 @@ const _textColor = computed(() => {
     return props.hoverTextColor;
   } else if (_hover.value && props.color === 'secondary1') {
     return 'primary';
-  } else if (_hover.value && props.textButton) {
-    return 'primary';
-  } else {
-    return props.textColor;
-  }
+  } else return props.textColor;
 });
 
 const _height = computed(() => {

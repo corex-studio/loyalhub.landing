@@ -22,7 +22,6 @@
         color="accent3"
         :label="count"
       />
-
       <q-btn
         @mouseover="_hover = true"
         @mouseleave="_hover = false"
@@ -71,7 +70,7 @@ const props = defineProps({
   },
   outline: Boolean,
   color: {
-    default: 'secondary2',
+    default: 'primary',
     type: String,
   },
   icon: String,
@@ -85,7 +84,7 @@ const props = defineProps({
     type: String,
   },
   hoverIconColor: {
-    default: 'accent',
+    default: 'white',
     type: String,
   },
   size: {
@@ -174,7 +173,7 @@ const _iconSize = computed(() => {
   max-height: unset;
   width: auto;
   height: auto;
-  border-radius: 8px;
+  border-radius: 12px !important;
   transition: 0.3s ease-in-out;
   text-transform: unset !important;
   min-height: unset;
@@ -194,6 +193,7 @@ const _iconSize = computed(() => {
 .q-btn .q-icon {
   margin-right: 0 !important;
 }
+
 .borderedButton:hover {
   color: $accent !important;
 }

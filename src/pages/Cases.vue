@@ -58,8 +58,8 @@
               </div>
             </div>
           </div>
-        </template></SwiperContainer
-      >
+        </template>
+      </SwiperContainer>
     </div>
   </div>
 </template>
@@ -123,6 +123,6 @@ const blocks = [
 <style lang="scss" scoped>
 .type-block {
   border-radius: 100px;
-  border: 2px $black4 solid;
+  border: 2px $black1 solid;
 }
 </style>

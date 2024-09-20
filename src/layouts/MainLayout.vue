@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf" class="relative-position">
+  <q-layout class="relative-position" view="lHh Lpr lFf">
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -7,7 +7,7 @@
   <RequestModal v-model="store.requestModal" />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useQuasar } from 'quasar';
 import RequestModal from 'src/components/dialogs/RequestModal.vue';
 import { store } from 'src/models/store';

@@ -66,17 +66,26 @@
 .subtitle {
   font-size: 22px;
   line-height: 30px;
+  font-weight: 500;
+
 }
 
 .body {
   font-size: 18px;
-  line-height: 28px;
+  line-height: 24px;
   font-weight: 500;
 }
 
 .secondary {
   font-size: 16px;
   line-height: 22px;
+  font-weight: 500;
+}
+
+.caption {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
 }
 
 body.screen--md {

@@ -28,20 +28,8 @@
       </div>
       <div class="row items-center gap-10">
         <div>+7 900 351 90 50</div>
-        <div class="tg-block row items-center justify-center">
-          <svg
-            width="24"
-            height="20"
-            viewBox="0 0 24 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M22.0517 1.12998L0.788779 9.37183C-0.0668777 9.75564 -0.356284 10.5243 0.581966 10.9414L6.03681 12.6839L19.2259 4.49059C19.9461 3.97623 20.6833 4.11339 20.0489 4.67922L8.72125 14.9887L8.36542 19.3516C8.695 20.0253 9.29847 20.0284 9.6834 19.6936L12.8174 16.7128L18.1848 20.7528C19.4314 21.4947 20.1098 21.016 20.378 19.6563L23.8985 2.89984C24.2641 1.22617 23.6407 0.488734 22.0517 1.12998Z"
-              fill="white"
-            />
-          </svg>
-        </div>
+        <CIconButton icon="fa-solid fa-paper-plane" size="45px" />
+
         <CButton
           v-if="$q.screen.gt.md"
           @click="store.requestModal = true"
@@ -79,6 +67,7 @@ import CButton from 'src/components/templates/buttons/CButton.vue';
 import { store } from 'src/models/store';
 import { scroll } from 'quasar';
 import { METRIKA_GOAL_EVENT } from 'boot/metrika';
+import CIconButton from 'components/templates/buttons/CIconButton.vue';
 
 const { setVerticalScrollPosition, getScrollTarget } = scroll;
 

@@ -109,6 +109,6 @@ for (const _ in Array.from({ length: 5 }, (x, i) => i)) {
 .type-block {
   white-space: nowrap;
   border-radius: 100px;
-  border: 2px $black2 solid;
+  border: 2px $black1 solid;
 }
 </style>
