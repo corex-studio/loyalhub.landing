@@ -68,11 +68,7 @@
       navigation
       @swiper="onSwiper"
     >
-      <swiper-slide
-        v-for="(item, index) in items"
-        :key="index"
-        :class="useBullets ? 'mb-20' : ''"
-      >
+      <swiper-slide v-for="(item, index) in items" :key="index">
         <slot name="item" v-bind:item="item"></slot>
       </swiper-slide>
     </swiper>
@@ -154,11 +150,23 @@ const prevPage = () => {
 }
 
 .swiper :deep(.swiper-pagination-bullet-active) {
-  background-color: $primary;
+  background-color: white;
+}
+
+.swiper :deep(.swiper-pagination-bullet) {
+  border-radius: 50px;
+  width: 8%;
+  height: 6px;
 }
 
 .swiper :deep(.swiper-pagination-bullet):not(.swiper-pagination-bullet-active) {
-  background-color: white;
+  background-color: rgba(254, 254, 254, 0.24);
   opacity: 1;
+}
+
+.swiper :deep(.swiper-pagination) {
+  position: absolute;
+  top: 5px;
+  height: fit-content;
 }
 </style>
