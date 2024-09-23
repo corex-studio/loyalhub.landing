@@ -1,18 +1,5 @@
 <template>
   <q-btn
-    @mouseover="_hover = true"
-    @mouseleave="_hover = false"
-    :ripple="ripple"
-    :unelevated="unelevated"
-    :outline="outline"
-    :color="_color"
-    :text-color="_textColor"
-    @click="clickHandler"
-    :to="to"
-    :loading="iconLoading ? false : loading"
-    :disabled="_disabled"
-    class="c-btn body"
-    style="border-radius: 12px"
     :class="{
       borderedButton: outline,
       block: textButton && !to,
@@ -20,13 +7,25 @@
       'underline-fixed': underlined,
       'text-button': textButton,
     }"
+    :color="_color"
+    :disabled="_disabled"
+    :loading="iconLoading ? false : loading"
+    :outline="outline"
+    :ripple="ripple"
     :style="`width:${_width}; height:${_height};font-size:${textSize}; padding:${
       textButton || noPadding ? '0px;' : '4px 16px;'
     } ${absolute ? 'position: absolute !important;' : ''}; cursor: ${iconLoading && loading ? 'not-allowed' : ''}`"
+    :text-color="_textColor"
+    :to="to"
+    :unelevated="unelevated"
+    class="c-btn body"
+    style="border-radius: 12px"
+    @click="clickHandler"
+    @mouseleave="_hover = false"
+    @mouseover="_hover = true"
   >
     <slot name="append"></slot>
     <div
-      class="button-label"
       :class="`${contentClass ? contentClass : ''} ${
         contentFullWidth ? 'full-width' : ''
       }`"
@@ -39,12 +38,13 @@
               breakSpaces ? 'white-space: break-spaces;' : ''
             }`
       "
+      class="button-label"
     >
       <q-icon
         v-if="icon && !loading"
-        :name="icon"
         :class="`mr-${iconGap_}`"
         :color="iconColor"
+        :name="icon"
         :style="`font-size:${iconSize} !important;`"
         class="transition-1"
         loading="true"
@@ -56,6 +56,7 @@
         size="17px"
       ></q-spinner>
       <span
+        v-if="label"
         :class="
           ellipsis
             ? ellipsis > 1
@@ -63,19 +64,18 @@
               : 'ellipsis'
             : ''
         "
-        style="width: 100%"
         :style="{
           'line-height': labelLineHeight ? labelLineHeight : 'inherit',
         }"
-        v-if="label"
+        style="width: 100%"
         >{{ label }}</span
       >
       <slot></slot>
       <q-icon
         v-if="iconRight"
-        :name="iconRight"
-        :color="iconColor"
         :class="`ml-${iconGap_}`"
+        :color="iconColor"
+        :name="iconRight"
         :style="`font-size:${iconSize} !important;`"
       />
     </div>
@@ -167,10 +167,13 @@ const _color = computed(() => {
 });
 
 const _textColor = computed(() => {
+  if (props.textButton) return 'black';
   if (_hover.value && props.hoverTextColor) {
     return props.hoverTextColor;
   } else if (_hover.value && props.color === 'secondary1') {
     return 'primary';
+  } else if (props.color === 'accent1') {
+    return 'black';
   } else return props.textColor;
 });
 

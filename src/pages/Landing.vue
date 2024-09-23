@@ -3,6 +3,8 @@
     <Main />
     <Companies />
     <WhyLoyalhub />
+    <EcoSystem />
+    <Products />
     <!--    <Types />-->
     <!--    <Cards id="cards" />-->
     <!--    <Benefits id="benefits" />-->
@@ -25,4 +27,6 @@ import Main from './Main.vue';
 // import RightDrawer from 'src/components/drawers/RightDrawer.vue';
 import Companies from 'pages/Companies.vue';
 import WhyLoyalhub from 'pages/WhyLoyalhub.vue';
+import EcoSystem from 'pages/EcoSystem.vue';
+import Products from 'pages/Products.vue';
 </script>

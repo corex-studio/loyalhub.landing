@@ -1,11 +1,11 @@
 <template>
   <div class="c-container parent-block">
-    <div class="column full-width items-center gap-20">
+    <div class="column full-width items-center">
       <div class="mega-header2 bold text-center">
         Почему рестораторы выбирают <br />
         Loyalhub ?
       </div>
-      <div class="row full-width justify-center gap-10">
+      <div class="row full-width justify-center gap-10 mt-20">
         <div
           v-for="(item, index) in reasons"
           :key="index"
@@ -34,17 +34,38 @@
       </div>
       <div
         :class="`bg-${selectedReason.block.color}`"
-        class="content-block px-25 pt-25 full-width"
+        class="content-block px-25 pt-25 full-width relative-position mt-20"
+        style="overflow: hidden"
       >
+        <q-img
+          v-if="selectedReason.block.color === 'accent1'"
+          height="100%"
+          src="assets/whyVectorYellow.svg"
+          style="position: absolute; bottom: 0; right: 0; z-index: 0"
+        />
+        <q-img
+          v-else
+          height="100%"
+          src="assets/whyVector.svg"
+          style="position: absolute; bottom: 0; right: 0; z-index: 0"
+        />
+
         <div class="column gap-10" style="width: 55%">
-          <div class="header1 bold">
+          <div class="header1 bold" style="z-index: 1">
             {{ selectedReason.block.title }}
           </div>
-          <div>
+          <div style="z-index: 1">
             {{ selectedReason.block.text }}
           </div>
         </div>
       </div>
+      <CButton
+        class="mt-15 underlined"
+        icon-right="fa-solid fa-arrow-up-right"
+        icon-size="22px"
+        label="Узнать больше"
+        text-button
+      />
     </div>
   </div>
 </template>
@@ -52,6 +73,7 @@
 <script lang="ts" setup>
 import CIcon from 'src/components/templates/buttons/CIcon.vue';
 import { ref } from 'vue';
+import CButton from 'components/templates/buttons/CButton.vue';
 
 type Reason = {
   title: string;
@@ -120,7 +142,7 @@ const selectedReason = ref<Reason>(reasons[0]);
 
 <style lang="scss" scoped>
 .parent-block {
-  padding: 100px 0;
+  padding: 100px 0 0 0;
 }
 
 .chip-block {
@@ -137,5 +159,11 @@ const selectedReason = ref<Reason>(reasons[0]);
 .content-block {
   height: 380px;
   border-radius: 30px;
+}
+
+.underlined:after {
+  height: 2px;
+  width: 100%;
+  background-color: $accent2;
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="parent relative-position pt-8" style="overflow-x: hidden">
     <Header />
     <div class="c-container column">
-      <div class="row full-width mt-15 gap-10">
+      <div  class="row full-width mt-15 gap-10">
         <div
           ref="leftBlock"
           class="col column gap-10"
@@ -13,7 +13,6 @@
             style="
               height: 60dvh;
               max-height: 600px !important;
-              overflow-y: auto;
             "
           >
             <q-img
