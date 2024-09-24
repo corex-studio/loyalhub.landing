@@ -1,5 +1,5 @@
 <template>
-  <div class="parent-block" style="overflow-x: hidden">
+  <div class="default-parent-block" style="overflow-x: hidden">
     <div class="c-container">
       <div class="text-center header2">
         Более <span class="bold text-accent2"> 150 заведений </span>выбрали
@@ -63,9 +63,5 @@ getCompanies();
 .slide-block-top {
   animation: 50s slide-left linear infinite;
   width: fit-content !important;
-}
-
-.parent-block {
-  padding: 100px 0 0 0;
 }
 </style>

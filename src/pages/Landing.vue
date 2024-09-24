@@ -5,6 +5,9 @@
     <WhyLoyalhub />
     <EcoSystem />
     <Products />
+    <Integration />
+    <CRM />
+    <HowToLaunch />
     <!--    <Types />-->
     <!--    <Cards id="cards" />-->
     <!--    <Benefits id="benefits" />-->
@@ -29,4 +32,7 @@ import Companies from 'pages/Companies.vue';
 import WhyLoyalhub from 'pages/WhyLoyalhub.vue';
 import EcoSystem from 'pages/EcoSystem.vue';
 import Products from 'pages/Products.vue';
+import Integration from 'pages/Integration.vue';
+import CRM from 'pages/CRM.vue';
+import HowToLaunch from 'pages/HowToLaunch.vue';
 </script>

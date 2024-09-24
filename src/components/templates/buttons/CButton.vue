@@ -167,7 +167,10 @@ const _color = computed(() => {
 });
 
 const _textColor = computed(() => {
-  if (props.textButton) return 'black';
+  if (props.textButton) {
+    if (!props.textColor) return 'black';
+    else return props.textColor;
+  }
   if (_hover.value && props.hoverTextColor) {
     return props.hoverTextColor;
   } else if (_hover.value && props.color === 'secondary1') {

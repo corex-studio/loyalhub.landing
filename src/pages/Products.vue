@@ -1,5 +1,5 @@
 <template>
-  <div class="parent-block">
+  <div class="default-parent-block">
     <div class="c-container">
       <div
         style="
@@ -30,7 +30,7 @@
                   :key="index"
                   :class="
                     el.selectedTab === index
-                      ? 'bg-primary text-white '
+                      ? 'bg-primary text-white bold'
                       : 'bg-white'
                   "
                   class="cursor-pointer px-10 py-5 rounded-100"
@@ -50,7 +50,7 @@
               </div>
               <CButton
                 class="mt-24"
-                height="58px"
+                height="52px"
                 label="Подключить сейчас"
                 style="z-index: 1"
                 width="235px"
@@ -172,8 +172,4 @@ const products = ref([
 ]);
 </script>
 
-<style lang="scss" scoped>
-.parent-block {
-  padding: 100px 0 0 0;
-}
-</style>
+<style lang="scss" scoped></style>

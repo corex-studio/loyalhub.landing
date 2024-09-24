@@ -2,7 +2,7 @@
   <div class="parent relative-position pt-8" style="overflow-x: hidden">
     <Header />
     <div class="c-container column">
-      <div  class="row full-width mt-15 gap-10">
+      <div class="row full-width mt-15 gap-10">
         <div
           ref="leftBlock"
           class="col column gap-10"
@@ -10,10 +10,7 @@
         >
           <div
             class="column no-wrap full-width px-25 py-18 bg-secondary1 rounded-30 justify-evenly relative-position"
-            style="
-              height: 60dvh;
-              max-height: 600px !important;
-            "
+            style="height: 60dvh; max-height: 600px !important"
           >
             <q-img
               src="assets/mainVector.svg"

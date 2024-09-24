@@ -1,6 +1,6 @@
 <template>
-  <div class="c-container parent-block">
-    <div class="column full-width items-center">
+  <div class="c-container default-parent-block">
+    <div class="column full-width no-wrap items-center pb-5">
       <div class="mega-header2 bold text-center">
         Почему рестораторы выбирают <br />
         Loyalhub ?
@@ -141,10 +141,6 @@ const selectedReason = ref<Reason>(reasons[0]);
 </script>
 
 <style lang="scss" scoped>
-.parent-block {
-  padding: 100px 0 0 0;
-}
-
 .chip-block {
   border-radius: 100px;
 }
@@ -164,6 +160,8 @@ const selectedReason = ref<Reason>(reasons[0]);
 .underlined:after {
   height: 2px;
   width: 100%;
+  cursor: pointer;
+
   background-color: $accent2;
 }
 </style>
