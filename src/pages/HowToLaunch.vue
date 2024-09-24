@@ -13,11 +13,13 @@
             class="item-block col row no-wrap"
           >
             <div class="left-part col-7"></div>
-            <div class="col column relative-position pt-20">
-              <div class="overflow-part">
-                <div class="full-height rounded-24">1</div>
+            <div class="col column relative-position">
+              <div class="right-top-part">
+                <div class="row full-width rounded-24 bg-white full-height">
+                  123
+                </div>
               </div>
-              <div class="right-part col-grow"></div>
+              <div class="right-bottom-part col-grow bg-secondary1"></div>
             </div>
           </div>
         </div>
@@ -45,22 +47,23 @@ const steps = [
 
 <style lang="scss" scoped>
 .left-part {
-  background-color: red;
+  background-color: $secondary1;
   height: 340px;
   border-radius: 24px 24px 0 24px;
 }
 
-.right-part {
-  z-index: 10;
+.right-bottom-part {
+  border-radius: 0 24px 24px 0;
 }
 
-.overflow-part {
-  z-index: 1;
-  background-color: white;
-  margin-top: -40px;
+.right-top-part {
   height: 70px;
-  border-radius: 24px 24px 0 24px;
-  width: 100%;
+  background: linear-gradient(
+    30deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(244, 244, 244) 0%,
+    rgba(0, 236, 255, 0) 50%
+  );
 }
 
 .item-block {
