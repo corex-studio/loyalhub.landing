@@ -3,7 +3,7 @@
     <div class="column full-width no-wrap items-center pb-5">
       <div class="mega-header2 bold text-center">
         Почему рестораторы выбирают <br />
-        Loyalhub ?
+        Loyalhub?
       </div>
       <div class="row full-width justify-center gap-10 mt-20">
         <div
@@ -34,7 +34,7 @@
       </div>
       <div
         :class="`bg-${selectedReason.block.color}`"
-        class="content-block px-25 pt-25 full-width relative-position mt-20"
+        class="content-block row full-width relative-position mt-20"
         style="overflow: hidden"
       >
         <q-img
@@ -50,13 +50,20 @@
           style="position: absolute; bottom: 0; right: 0; z-index: 0"
         />
 
-        <div class="column gap-10" style="width: 55%">
+        <div class="column gap-10 pl-25 pt-20" style="width: 55%">
           <div class="header1 bold" style="z-index: 1">
             {{ selectedReason.block.title }}
           </div>
           <div style="z-index: 1">
             {{ selectedReason.block.text }}
           </div>
+        </div>
+        <div class="col-grow row">
+          <q-img
+            :src="`assets/${selectedReason.block.image}`"
+            :width="selectedReason.block.imageWidth"
+            fit="contain"
+          />
         </div>
       </div>
       <CButton
@@ -82,6 +89,8 @@ type Reason = {
     title: string;
     text: string;
     color: string;
+    image: string;
+    imageWidth: string;
   };
 };
 
@@ -95,6 +104,8 @@ const reasons: Reason[] = [
         'С Loyalhub вы получаете все необходимые инструменты за фиксированную ежемесячную плату. Продукт постоянно обновляется \n' +
         'и развивается, учитывая тренды и пожелания наших клиентов.',
       color: 'accent1',
+      image: 'reason1.png',
+      imageWidth: '83%',
     },
   },
   {
@@ -104,6 +115,8 @@ const reasons: Reason[] = [
       title: 'Хотят лучше узнать своего гостя',
       text: 'Loyalhub вы сможете оцифровать до 80% своей клиентской базы, чтобы лучше понимать потребности и предпочтения гостей.',
       color: 'secondary1',
+      image: 'reason2.png',
+      imageWidth: '90%',
     },
   },
   {
@@ -115,6 +128,8 @@ const reasons: Reason[] = [
         'Настроим каждый аспект вашего бизнеса\n' +
         'От дизайна приложения до автоматических уведомлений и условий программы лояльности – чтобы создать идеальное решение для ваших заведений.',
       color: 'secondary1',
+      image: 'reason3.png',
+      imageWidth: '90%',
     },
   },
   {
@@ -124,6 +139,8 @@ const reasons: Reason[] = [
       title: 'Loyalhub легко адаптируется к вашим потребностям ',
       text: 'Подключайте новые заведения, включая франчайзинговые сети с разным меню и условиями, без сложностей и затрат на интеграцию.',
       color: 'secondary1',
+      image: 'reason4.png',
+      imageWidth: '90%',
     },
   },
   {
@@ -133,6 +150,8 @@ const reasons: Reason[] = [
       title: 'Мы консультируем вас на каждом этапе работы',
       text: 'Получайте персонализированные рекомендации от наших экспертов по увеличению среднего чека, оптимизации заказов и повышению лояльности клиентов.',
       color: 'secondary1',
+      image: 'reason5.png',
+      imageWidth: '90%',
     },
   },
 ];
@@ -153,7 +172,7 @@ const selectedReason = ref<Reason>(reasons[0]);
 }
 
 .content-block {
-  height: 380px;
+  height: 370px;
   border-radius: 30px;
 }
 

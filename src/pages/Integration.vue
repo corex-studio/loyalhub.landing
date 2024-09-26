@@ -2,7 +2,7 @@
   <div class="default-parent-block">
     <div class="c-container">
       <div
-        class="bg-secondary1 rounded-30 pa-25 relative-position"
+        class="bg-secondary1 rounded-30 px-25 py-20 relative-position"
         style="height: 79dvh; max-height: 620px"
       >
         <q-img

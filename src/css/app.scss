@@ -9,6 +9,10 @@
   margin: 0 auto;
 }
 
+.text-underline {
+  border-bottom: 3px $accent2 solid;
+}
+
 .default-parent-block {
   padding: 100px 0 0 0;
 }
@@ -19,6 +23,14 @@
 
 .rounded-12 {
   border-radius: 12px;
+}
+
+.rounded-14 {
+  border-radius: 14px;
+}
+
+.rounded-15 {
+  border-radius: 15px;
 }
 
 .rounded-20 {

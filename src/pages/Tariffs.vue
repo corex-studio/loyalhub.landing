@@ -1,0 +1,98 @@
+<template>
+  <div class="default-parent-block">
+    <div class="c-container">
+      <div class="text-center mega-header2 bold">
+        <span class="bold text-underline">Единый тариф</span>
+        для всего продукта
+      </div>
+      <div class="mt-23 row full-width gap-10">
+        <div
+          class="rounded-30 bg-secondary1 col px-25 py-20 column relative-position"
+        >
+          <q-img
+            src="assets/tariffLeftVector.svg"
+            style="position: absolute; bottom: 0; left: 0; z-index: 0"
+          />
+          <q-img
+            src="assets/tariffLeftMoc.png"
+            style="
+              position: absolute;
+              top: 18px;
+              right: 0;
+              z-index: 0;
+              max-width: 200px;
+            "
+            width="100%"
+          />
+          <div class="header1 bold text-primary" style="z-index: 1">
+            Тариф «единый»
+          </div>
+          <div
+            class="mt-10 column gap-8 full-width secondary"
+            style="z-index: 1"
+          >
+            <div
+              v-for="(item, index) in features"
+              :key="index"
+              class="row gap-6 items-center"
+            >
+              <q-icon color="success" name="fa-regular fa-check" size="24px" />
+              <div>
+                {{ item }}
+              </div>
+            </div>
+          </div>
+          <div class="mt-30 row items-center gap-4" style="z-index: 1">
+            <div class="mega-header2 bold text-accent2">от 6 000 ₽</div>
+            <div class="secondary text-secondary3">/в месяц</div>
+          </div>
+        </div>
+        <div
+          class="rounded-30 bg-primary col relative-position px-25 py-20 text-white"
+        >
+          <q-img
+            src="assets/tariffRightVector.svg"
+            style="position: absolute; bottom: 0; left: 0; z-index: 0"
+          />
+          <div class="header1 bold">Рассчитать количество торговых точек</div>
+          <div class="secondary mt-6" style="max-width: 450px">
+            Выберите число торговых точек, чем больше точек – тем ниже цена
+          </div>
+          <div class="mt-12 column gap-10 no-wrap full-width">
+            <div
+              class="row items-center gap-5 px-8 py-6 rounded-12"
+              style="
+                background-color: rgba(255, 255, 255, 0.2);
+                width: fit-content;
+              "
+            >
+              <q-icon color="accent1" name="fa-solid fa-shop" size="22px" />
+              <div class="secondary">1 торговая точка = 6000 ₽</div>
+            </div>
+            <div class="row items-center gap-6">
+              <div>-</div>
+              <CInput v-model="quantity" />
+              <div>+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import CInput from 'components/templates/inputs/CInput.vue';
+import { ref } from 'vue';
+
+const quantity = ref(0);
+
+const features = [
+  'Описание тарифа  единый',
+  'Описание тарифа  единый',
+  'Описание тарифа  единый',
+  'Описание тарифа  единый',
+  'Описание тарифа  единый',
+  'Описание тарифа  единый',
+];
+</script>

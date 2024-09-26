@@ -7,7 +7,7 @@
           Минимизируйте ручную работу с отчетами <br />
           и получайте данные в один клик
         </div>
-        <div class="row gap-8 mt-22">
+        <div class="row gap-8 mt-20">
           <div
             v-for="(item, index) in abilities"
             :key="index"
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div
-          class="mt-25 bg-secondary1 rounded-30 pa-25 row full-width relative-position"
+          class="mt-25 bg-secondary1 rounded-30 px-25 py-20 row full-width relative-position"
           style="overflow: hidden; min-height: 55dvh"
         >
           <q-img
