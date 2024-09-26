@@ -13,6 +13,8 @@
     <Analysis />
     <Tarifs />
     <Questions />
+    <RequestBlock />
+    <Footer />
   </div>
 </template>
 <script lang="ts" setup>
@@ -29,4 +31,6 @@ import HowToLaunch from 'pages/HowToLaunch.vue';
 import Reviews from 'pages/Reviews.vue';
 import Analysis from 'pages/Analysis.vue';
 import Questions from 'pages/Questions.vue';
+import RequestBlock from 'pages/RequestBlock.vue';
+import Footer from 'pages/Footer.vue';
 </script>

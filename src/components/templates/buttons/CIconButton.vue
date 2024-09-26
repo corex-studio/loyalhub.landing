@@ -1,6 +1,6 @@
 <template>
   <div :style="`display: ${wrapperDisplay};`">
-    <div class="column" :style="badge ? 'position: relative' : ''">
+    <div :style="badge ? 'position: relative' : ''" class="column">
       <div
         v-if="badge"
         style="
@@ -16,31 +16,31 @@
         "
       ></div>
       <q-badge
-        class="items-center justify-center"
         v-if="count"
-        rounded
-        color="accent3"
         :label="count"
+        class="items-center justify-center"
+        color="accent3"
+        rounded
       />
       <q-btn
-        @mouseover="_hover = true"
-        @mouseleave="_hover = false"
-        :ripple="ripple"
-        :unelevated="unelevated"
-        :outline="outline"
-        :color="_color"
-        @click="$emit('click')"
-        :text-color="_iconColor"
-        :to="to"
-        :href="href"
-        :target="target"
-        :loading="loading"
-        :disabled="_disabled"
-        :disable="_disabled"
         :class="classes"
+        :color="_color"
+        :disable="_disabled"
+        :disabled="_disabled"
+        :href="href"
+        :loading="loading"
+        :outline="outline"
+        :ripple="ripple"
         :style="`${iconStyle}; width:${_size}; height:${_size}; padding: ${
           noPadding ? '0px' : '4px 16px; border-radius: 10px;'
         }`"
+        :target="target"
+        :text-color="_iconColor"
+        :to="to"
+        :unelevated="unelevated"
+        @click="$emit('click')"
+        @mouseleave="_hover = false"
+        @mouseover="_hover = true"
       >
         <q-icon
           v-if="icon"
@@ -84,7 +84,7 @@ const props = defineProps({
     type: String,
   },
   hoverIconColor: {
-    default: 'white',
+    default: 'accent2',
     type: String,
   },
   size: {
@@ -138,7 +138,7 @@ const _iconColor = computed(() => {
     return props.iconColor;
 
   if (props.disabled) {
-    return 'secondary';
+    return 'black';
   }
   return _hover.value && props.hoverIconColor
     ? props.hoverIconColor
@@ -177,6 +177,11 @@ const _iconSize = computed(() => {
   transition: 0.3s ease-in-out;
   text-transform: unset !important;
   min-height: unset;
+}
+
+.q-btn.disabled {
+  opacity: 1 !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 .q-badge {
@@ -228,6 +233,6 @@ body.screen--sm {
 }
 
 .rounded {
-  border-radius: 10px;
+  border-radius: 12px;
 }
 </style>

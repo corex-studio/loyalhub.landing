@@ -14,12 +14,11 @@
     :ripple="ripple"
     :style="`width:${_width}; height:${_height};font-size:${textSize}; padding:${
       textButton || noPadding ? '0px;' : '4px 16px;'
-    } ${absolute ? 'position: absolute !important;' : ''}; cursor: ${iconLoading && loading ? 'not-allowed' : ''}`"
+    } ${absolute ? 'position: absolute !important;' : ''}; cursor: ${iconLoading && loading ? 'not-allowed' : ''}; border-radius: ${round ? '100px' : '12px'}`"
     :text-color="_textColor"
     :to="to"
     :unelevated="unelevated"
     class="c-btn body"
-    style="border-radius: 12px"
     @click="clickHandler"
     @mouseleave="_hover = false"
     @mouseover="_hover = true"

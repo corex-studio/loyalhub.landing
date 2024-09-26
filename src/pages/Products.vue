@@ -6,6 +6,7 @@
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
           align-content: start;
+          grid-auto-rows: 1fr;
           gap: 20px;
         "
       >
@@ -13,7 +14,7 @@
           v-for="(el, index) in products"
           :key="index"
           :class="el.text ? 'bg-accent1' : 'bg-secondary1'"
-          class="relative-position column gap-10 justify-between items-center pa-15 rounded-30"
+          class="relative-position column no-wrap gap-10 justify-between items-center pa-15 rounded-30"
           style="overflow: hidden"
         >
           <div class="column full-width items-center">
@@ -63,6 +64,7 @@
           />
           <q-img
             :src="`assets/${el.image}`"
+            fit="contain"
             style="margin-bottom: -30px; max-width: 500px"
           />
         </div>

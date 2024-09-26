@@ -105,7 +105,7 @@ const reasons: Reason[] = [
         'и развивается, учитывая тренды и пожелания наших клиентов.',
       color: 'accent1',
       image: 'reason1.png',
-      imageWidth: '83%',
+      imageWidth: '80%',
     },
   },
   {
@@ -116,7 +116,7 @@ const reasons: Reason[] = [
       text: 'Loyalhub вы сможете оцифровать до 80% своей клиентской базы, чтобы лучше понимать потребности и предпочтения гостей.',
       color: 'secondary1',
       image: 'reason2.png',
-      imageWidth: '90%',
+      imageWidth: '88%',
     },
   },
   {
@@ -129,7 +129,7 @@ const reasons: Reason[] = [
         'От дизайна приложения до автоматических уведомлений и условий программы лояльности – чтобы создать идеальное решение для ваших заведений.',
       color: 'secondary1',
       image: 'reason3.png',
-      imageWidth: '90%',
+      imageWidth: '89%',
     },
   },
   {
@@ -140,7 +140,7 @@ const reasons: Reason[] = [
       text: 'Подключайте новые заведения, включая франчайзинговые сети с разным меню и условиями, без сложностей и затрат на интеграцию.',
       color: 'secondary1',
       image: 'reason4.png',
-      imageWidth: '90%',
+      imageWidth: '81%',
     },
   },
   {

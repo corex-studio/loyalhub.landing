@@ -2,63 +2,63 @@
   <div :class="{ 'menu-mode': menuMode }">
     <div
       v-if="externalLabel"
-      class="row gap-3 items-end"
       :class="externalLabelClass ? externalLabelClass : 'mb-4 helper-text bold'"
+      class="row gap-3 items-end"
     >
       <slot name="externalLabelPrepend"></slot>
       {{ externalLabel }}
     </div>
     <q-input
-      class="body"
-      :dark="white"
-      @update:model-value="updateModelValue"
-      :modelValue="
-        props.customFormattedValue !== undefined && !focused && mounted
-          ? customFormattedValue
-          : formattedValue
-      "
-      @keyup.enter.prevent="$emit('enter')"
-      @blur="_blurInput"
-      @keydown.right="emitDirectionKeys('right', $event)"
-      @keydown.left="emitDirectionKeys('left', $event)"
-      @keydown.up.prevent="$emit('up')"
-      @keydown.down.prevent="$emit('down')"
-      @focus="_focusInput"
       ref="inputRef"
-      :readonly="_readonly"
-      :color="color"
-      :label-color="labelColor"
-      :standout="standout"
-      :label="label"
-      :type="_type"
-      :hint="hint"
-      :mask="mask"
-      :rules="rules"
-      :fill-mask="fillMask"
-      :clearable="clearable"
-      :borderless="borderless"
-      :filled="filled"
-      :loading="loading"
-      :outlined="true"
-      :dense="dense"
-      :input-style="inputStyle"
-      :input-class="inputClass"
-      :placeholder="placeholder"
-      :bg-color="_bgColor"
+      :autocomplete="autocomplete"
       :autogrow="autoGrow"
-      :disabled="_disabled"
-      :disable="_disabled"
-      :style="`width:${width || 'unset'}; height:${_height};`"
+      :bg-color="_bgColor"
+      :borderless="borderless"
       :class="{
         'label-top': _labelTop,
         'no-icon': _noIcon,
         default: $props.default,
       }"
-      :unmasked-value="unmaskedValue"
+      :clearable="clearable"
+      :color="color"
+      :dark="white"
+      :dense="dense"
+      :disable="_disabled"
+      :disabled="_disabled"
+      :fill-mask="fillMask"
+      :filled="filled"
+      :hint="hint"
+      :input-class="inputClass"
+      :input-style="inputStyle"
+      :label="label"
+      :label-color="labelColor"
+      :loading="loading"
+      :mask="mask"
+      :modelValue="
+        props.customFormattedValue !== undefined && !focused && mounted
+          ? customFormattedValue
+          : formattedValue
+      "
+      :outlined="true"
+      :placeholder="placeholder"
+      :readonly="_readonly"
+      :rules="rules"
       :square="square ? true : false"
-      :autocomplete="autocomplete"
+      :standout="standout"
+      :style="`width:${width || 'unset'}; height:${_height};`"
+      :type="_type"
+      :unmasked-value="unmaskedValue"
+      class="body"
+      @blur="_blurInput"
+      @focus="_focusInput"
+      @update:model-value="updateModelValue"
+      @keyup.enter.prevent="$emit('enter')"
+      @keydown.right="emitDirectionKeys('right', $event)"
+      @keydown.left="emitDirectionKeys('left', $event)"
+      @keydown.up.prevent="$emit('up')"
+      @keydown.down.prevent="$emit('down')"
     >
-      <template v-slot:prepend v-if="$slots.prepend">
+      <template v-if="$slots.prepend" v-slot:prepend>
         <slot name="prepend"></slot>
         <q-icon
           v-if="leftIcon"
@@ -73,11 +73,11 @@
         <slot name="append"></slot>
         <q-icon
           v-if="icon"
+          :class="`${iconClass}`"
           :name="icon"
           :style="`font-size:${iconSize || '16px'} !important; color:${
             iconColor || 'white'
           }; opacity:${iconOpacity}; `"
-          :class="`${iconClass}`"
           @click="$emit('iconClick')"
         />
       </template>
@@ -90,7 +90,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { QInput, ValidationRule } from 'quasar';
 import { computed, ref, watchEffect, onMounted } from 'vue';
 import { QInputProps } from 'quasar';
@@ -268,7 +268,7 @@ watchEffect(() => {
 
 <style lang="scss" scoped>
 .q-input :deep(.q-field__control) {
-  border-radius: 20px !important;
+  border-radius: 12px !important;
   padding: 0 20px;
 }
 

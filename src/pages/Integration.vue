@@ -48,7 +48,7 @@
           <CButton
             color="accent1"
             height="52px"
-            label="Начать инеграцию"
+            label="Начать интеграцию"
             width="235px"
           />
         </div>

@@ -52,6 +52,7 @@
               <div
                 :style="`width: ${getProgress()}%`"
                 class="progress-bar row items-center justify-center"
+                style="transition: width 0.45s ease-in-out"
               >
                 <div v-if="getProgress()" class="secondary">
                   {{ getProgress().toFixed() }}%

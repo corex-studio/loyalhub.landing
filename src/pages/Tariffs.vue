@@ -48,32 +48,66 @@
           </div>
         </div>
         <div
-          class="rounded-30 bg-primary col relative-position px-25 py-20 text-white"
+          class="rounded-30 bg-primary col column justify-between relative-position px-25 py-20 text-white"
         >
           <q-img
             src="assets/tariffRightVector.svg"
             style="position: absolute; bottom: 0; left: 0; z-index: 0"
           />
-          <div class="header1 bold">Рассчитать количество торговых точек</div>
-          <div class="secondary mt-6" style="max-width: 450px">
-            Выберите число торговых точек, чем больше точек – тем ниже цена
+          <div class="column full-width">
+            <div class="header1 bold">Рассчитать количество торговых точек</div>
+            <div class="secondary mt-6" style="max-width: 450px">
+              Выберите число торговых точек, чем больше точек – тем ниже цена
+            </div>
+            <div class="mt-12 column gap-10 no-wrap full-width">
+              <div
+                class="row items-center gap-5 px-8 py-6 rounded-12"
+                style="
+                  background-color: rgba(255, 255, 255, 0.2);
+                  width: fit-content;
+                "
+              >
+                <q-icon color="accent1" name="fa-solid fa-shop" size="22px" />
+                <div class="secondary">
+                  1 торговая точка = {{ currentPrice }} ₽
+                </div>
+              </div>
+              <div class="row items-center gap-6">
+                <CIconButton
+                  :disabled="pointsCount === 0"
+                  color="white"
+                  icon="fa-regular fa-minus"
+                  icon-color="black"
+                  icon-size="22px"
+                  size="48px"
+                  @click="pointsCount--"
+                />
+                <CInput
+                  v-model="pointsCount"
+                  class="quantity-input"
+                  height="48px"
+                  type="number"
+                  width="120px"
+                />
+                <CIconButton
+                  color="white"
+                  icon="fa-regular fa-plus"
+                  icon-color="black"
+                  icon-size="22px"
+                  size="48px"
+                  @click="pointsCount++"
+                />
+              </div>
+            </div>
           </div>
-          <div class="mt-12 column gap-10 no-wrap full-width">
-            <div
-              class="row items-center gap-5 px-8 py-6 rounded-12"
-              style="
-                background-color: rgba(255, 255, 255, 0.2);
-                width: fit-content;
-              "
-            >
-              <q-icon color="accent1" name="fa-solid fa-shop" size="22px" />
-              <div class="secondary">1 торговая точка = 6000 ₽</div>
-            </div>
-            <div class="row items-center gap-6">
-              <div>-</div>
-              <CInput v-model="quantity" />
-              <div>+</div>
-            </div>
+          <div class="column full-width gap-6">
+            <div class="header2">Итого: {{ totalPrice }} ₽</div>
+            <CButton
+              color="accent1"
+              height="56px"
+              label="Оставить заявку"
+              width="290px"
+            />
           </div>
         </div>
       </div>
@@ -83,9 +117,25 @@
 
 <script lang="ts" setup>
 import CInput from 'components/templates/inputs/CInput.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import CIconButton from 'components/templates/buttons/CIconButton.vue';
+import CButton from 'components/templates/buttons/CButton.vue';
 
-const quantity = ref(0);
+const pointsCount = ref(1);
+
+const totalPrice = computed(() => {
+  return pointsCount.value * currentPrice.value;
+});
+
+const currentPrice = computed(() => {
+  return pointsCount.value <= 2
+    ? 6000
+    : pointsCount.value <= 4
+      ? 5000
+      : pointsCount.value < 20
+        ? 4000
+        : 3000;
+});
 
 const features = [
   'Описание тарифа  единый',
@@ -96,3 +146,9 @@ const features = [
   'Описание тарифа  единый',
 ];
 </script>
+
+<style lang="scss" scoped>
+.quantity-input :deep(input) {
+  text-align: center !important;
+}
+</style>

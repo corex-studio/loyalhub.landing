@@ -1,94 +1,82 @@
 <template>
   <CDialog
-    :model-value="model || false"
-    @update:model-value="$emit('update:modelValue', $event)"
-    width="463px"
-    :position="$q.screen.sm ? 'bottom' : undefined"
     :maximized="$q.screen.sm"
+    :model-value="model || false"
+    :position="$q.screen.sm ? 'bottom' : undefined"
+    width="560px"
+    @update:model-value="$emit('update:modelValue', $event)"
   >
     <div v-if="!completed" class="column full-width text-black4 items-center">
-      <div class="mega-text3 bold text-center">Оставьте заявку</div>
+      <div class="header1 bold text-center">Оставьте заявку</div>
       <div
-        class="text-center body mt-6"
         :style="$q.screen.sm ? '' : 'width: 75%'"
+        class="text-center body mt-14"
       >
         Наши менеджеры свяжутся с вами в ближайшее время.
       </div>
-      <q-form @submit="send()" @validation-error="validationError = true">
+      <q-form
+        class="full-width mt-17"
+        @submit="send()"
+        @validation-error="validationError = true"
+      >
         <CInput
-          :rules="[rules.required]"
-          placeholder="Ваше имя"
-          v-model="data.name"
-          :height="$q.screen.sm ? '44px' : undefined"
-          @blur="rules.required(data.name) ? (validationError = true) : ''"
-          class="full-width mt-12"
-        />
-        <CInput
+          v-model="data.phone"
           :rules="[
             rules.required,
             (v: string) => (v.length < 11 ? 'Телефон некорректный' : true),
           ]"
-          @blur="rules.required(data.name) ? (validationError = true) : ''"
-          v-model="data.phone"
+          class="full-width"
+          height="50px"
           mask="+# (###) ###-##-##"
           placeholder="+7 (999) 99 99-99"
-          :height="$q.screen.sm ? '44px' : undefined"
           unmasked-value
-          class="full-width"
-          :class="'mt-10'"
-        />
-        <CInput
-          placeholder="Email"
-          :rules="[rules.email]"
-          :height="$q.screen.sm ? '44px' : undefined"
-          v-model="data.email"
-          class="full-width mt-10"
-        />
-        <CInput
-          placeholder="Описание"
-          v-model="data.description"
-          dense
-          text-area
+          width="100%"
           @blur="rules.required(data.name) ? (validationError = true) : ''"
-          class="full-width mt-10"
         />
-        <q-checkbox
-          class="full-width secondary-text text-secondary2"
-          :class="'mt-8'"
-          dense
-          size="40px"
-          v-model="confirmation"
-          label="Я соглашаюсь с политикой конфиденциальности"
+        <CInput
+          v-model="data.name"
+          :rules="[rules.required]"
+          class="full-width mt-7"
+          height="50px"
+          placeholder="Ваше имя"
+          @blur="rules.required(data.name) ? (validationError = true) : ''"
         />
         <CButton
+          :disabled="!confirmation"
           :loading="loading"
+          class="mt-7"
+          height="50px"
           label="Оставить заявку"
           type="submit"
-          :height="$q.screen.sm ? '44px' : '50px'"
-          class="rounded-100 mt-12"
-          :disabled="!confirmation"
           width="100%"
         />
+        <div class="row full-width justify-center mt-7">
+          <div class="text-center" style="max-width: 370px">
+            Нажимая на кнопку, вы соглашаетесь на обработку персональных данных
+          </div>
+        </div>
       </q-form>
     </div>
-
     <div v-else class="column full-width text-black4 items-center">
       <div class="mega-text3 bold text-center">Спасибо за вашу заявку!</div>
       <div
-        class="text-center body mt-10"
         :style="$q.screen.sm ? '' : 'width: 85%'"
+        class="text-center body mt-10"
       >
         Наши менеджеры свяжутся с вами в ближайшее время для уточнения деталей.
       </div>
-      <q-separator class="bg-secondary my-10" style="width: 70%; opacity: 0.3"></q-separator>
-      <div
-        class="text-center body"
-        :style="$q.screen.sm ? '' : 'width: 80%'"
-      >
+      <q-separator
+        class="bg-secondary my-10"
+        style="width: 70%; opacity: 0.3"
+      ></q-separator>
+      <div :style="$q.screen.sm ? '' : 'width: 80%'" class="text-center body">
         Следите за нашими новостями в
       </div>
-      <div @click="goToTelegram" class="subtitle-text2 mt-3 text-primary cursor-pointer"
-           style="text-decoration: underline">
+      <div
+        class="subtitle-text2 mt-3 text-primary cursor-pointer"
+        style="text-decoration: underline"
+        @click="goToTelegram"
+      >
         Telegram
       </div>
     </div>
@@ -117,10 +105,9 @@ const getEmptyData = () => {
     phone: null,
     name: null,
     description: null,
-    email: null
+    email: null,
   };
 };
-
 
 const data = ref<{
   phone: string | null;
@@ -128,7 +115,6 @@ const data = ref<{
   description: string | null;
   email: string | null;
 }>(getEmptyData());
-
 
 const goToTelegram = () => {
   metrikaTick({ goalEvent: METRIKA_GOAL_EVENT.TELEGRAM_AFTER_SUBMIT_REQUEST });
@@ -141,7 +127,7 @@ const send = async () => {
     data.value.phone,
     data.value.name,
     data.value.description,
-    data.value.email
+    data.value.email,
   );
   if (success) {
     metrikaTick({ goalEvent: METRIKA_GOAL_EVENT.SUBMIT_REQUEST });
