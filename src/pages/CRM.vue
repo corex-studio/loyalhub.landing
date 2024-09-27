@@ -2,7 +2,7 @@
   <div class="default-parent-block">
     <div class="c-container">
       <div class="column full-width items-center">
-        <div class="mega-header1 bold">CRM система</div>
+        <div class="mega-header2 bold">CRM система</div>
         <div class="mt-10 subtitle text-center">
           Минимизируйте ручную работу с отчетами <br />
           и получайте данные в один клик

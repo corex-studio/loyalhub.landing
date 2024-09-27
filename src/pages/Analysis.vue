@@ -8,16 +8,16 @@
       </div>
       <div class="mt-20 main-block row no-wrap full-width">
         <div class="column" style="width: 68%">
-          <div class="column px-25 pt-20">
+          <div class="column px-25 pt-16">
             <div
-              class="px-10 py-4 secondary bg-secondary2 rounded-12"
+              class="px-5 py-2 caption bg-secondary2 rounded-5"
               style="width: fit-content"
             >
               Вопрос {{ previewStep }} из
               {{ questions.length }}
             </div>
-            <div class="mt-7 header3 bold">{{ currentStep.question }}</div>
-            <div class="mt-17">
+            <div class="mt-5 header3 bold">{{ currentStep.question }}</div>
+            <div class="mt-15">
               <transition mode="out-in" name="slide-fade">
                 <div v-bind:key="step" class="row gap-7">
                   <div
@@ -32,21 +32,23 @@
                     style="height: 65px"
                     @click="selectVariant(item)"
                   >
-                    <q-radio
-                      :label="item"
-                      :model-value="currentStep.selected"
-                      :val="item"
-                      color="accent1"
-                      dense
-                      @click="selectVariant(item)"
-                    />
+                    <div class="row items-center gap-6 no-wrap">
+                      <q-radio
+                        :model-value="currentStep.selected"
+                        :val="item"
+                        color="accent1"
+                        dense
+                        @click="selectVariant(item)"
+                      />
+                      {{ item }}
+                    </div>
                   </div>
                 </div>
               </transition>
             </div>
           </div>
-          <q-separator class="mt-25 mb-14 mr-10" color="secondary1" />
-          <div class="column gap-6 px-25 pb-20">
+          <!--          <q-separator class="mt-25 mb-14 mr-10" color="secondary1" />-->
+          <div class="column gap-6 px-25 pb-16 mt-15">
             <div class="secondary">До бесплатного анализа:</div>
             <div class="row full-width progress-block">
               <div

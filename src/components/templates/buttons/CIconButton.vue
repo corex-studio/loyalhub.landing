@@ -84,7 +84,6 @@ const props = defineProps({
     type: String,
   },
   hoverIconColor: {
-    default: 'accent2',
     type: String,
   },
   size: {

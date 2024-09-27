@@ -28,7 +28,7 @@
             <div class="mega-header2 bold mt-5">
               Интеграция <span class="text-accent2 bold">с iiko</span>
             </div>
-            <div class="subtitle mt-10">
+            <div class="body mt-8" style="max-width: 600px">
               Мы полностью интегрированы, расширия возможности ваших заведений.
               Используйте все возможности вашей учетной системы
             </div>

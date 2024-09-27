@@ -37,9 +37,6 @@
   </div>
 </template>
 <script lang="ts" setup>
-// const openLink = (link: string) => {
-//   window.open(link, '_blank');
-// };
 import CButton from 'components/templates/buttons/CButton.vue';
 </script>
 

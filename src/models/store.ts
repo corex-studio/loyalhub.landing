@@ -15,4 +15,8 @@ export const beautifyNumber = (x: number, toFixed = false) => {
   return parts.join('.');
 };
 
+export const openLink = (link: string) => {
+  window.open(link, '_blank');
+};
+
 export const store = reactive(new Store());

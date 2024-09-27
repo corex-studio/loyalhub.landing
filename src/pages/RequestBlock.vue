@@ -13,7 +13,10 @@
           style="position: absolute; bottom: -32px; right: 0; max-width: 616px"
         />
         <div style="max-width: 560px">
-          <div class="mega-header2 bold">Давайте покажем, как все работает</div>
+          <div class="mega-header2 bold">
+            Давайте покажем, <br />
+            как все работает
+          </div>
           <div class="mt-14 body">
             Оставьте контакты - мы напишем вам в течение 2 дней, чтобы обсудить
             проект
@@ -23,17 +26,19 @@
               v-model="data.phone"
               class="col"
               height="50px"
+              label="Телефон"
               mask="+7 (###) ###-##-##"
-              placeholder="+7 (999) 99 99-99"
+              placeholder="+7 (###) ## ##-##"
               unmasked-value
             />
             <CInput
               v-model="data.name"
               class="col"
               height="50px"
-              placeholder="Ваше имя"
+              label="Ваше имя"
             />
             <CButton
+              :disabled="!isActionAvailable"
               :loading="loading"
               color="accent1"
               height="50px"
@@ -55,7 +60,7 @@
 
 <script lang="ts" setup>
 import CInput from 'components/templates/inputs/CInput.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import CButton from 'components/templates/buttons/CButton.vue';
 import { sendRequest } from 'src/models/sendRequest';
 import { METRIKA_GOAL_EVENT, useMetrikaTick } from 'boot/metrika';
@@ -79,6 +84,12 @@ const data = ref<{
   description: string | null;
   email: string | null;
 }>(getEmptyData());
+
+const isActionAvailable = computed(() => {
+  return (
+    data.value.phone && data.value.phone.length >= 10 && data.value.name?.length
+  );
+});
 
 const send = async () => {
   loading.value = true;

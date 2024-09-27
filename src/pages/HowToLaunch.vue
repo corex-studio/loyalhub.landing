@@ -10,19 +10,18 @@
           <div
             v-for="(item, index) in steps"
             :key="index"
-            :class="{ 'justify-center': index !== 1 }"
-            class="item-block col row no-wrap relative-position"
+            class="item-block justify-center col row no-wrap relative-position"
           >
             <div
-              class="header2 px-16"
-              style="position: absolute; top: 90px; z-index: 2"
+              class="header3 bold px-16"
+              style="position: absolute; top: 70px; z-index: 2"
             >
               {{ item.title }}
             </div>
             <q-img
               :src="`assets/${item.image}`"
               style="position: absolute; z-index: 1; bottom: 0"
-              width="90%"
+              width="80%"
             />
             <div class="left-part"></div>
             <div class="col column relative-position">
@@ -31,7 +30,7 @@
                   class="row full-width justify-end rounded-24 bg-white full-height"
                 >
                   <div
-                    class="bg-accent1 py-5 rounded-100 row justify-center header2"
+                    class="bg-accent1 py-3 rounded-100 row justify-center header3"
                     style="height: fit-content; width: 105px"
                   >
                     0{{ index + 1 }}
@@ -60,8 +59,10 @@
           <CButton
             height="58px"
             icon="fa-solid fa-paper-plane"
+            icon-size="22px"
             label="Хочу знать больше"
             width="280px"
+            @click="openLink('https://t.me/loyalhub_news')"
           />
         </div>
       </div>
@@ -71,6 +72,7 @@
 
 <script lang="ts" setup>
 import CButton from 'components/templates/buttons/CButton.vue';
+import { openLink } from 'src/models/store';
 
 const steps = [
   {
@@ -95,7 +97,7 @@ const steps = [
 <style lang="scss" scoped>
 .left-part {
   background-color: $secondary1;
-  height: 380px;
+  height: 340px;
   border-radius: 24px 24px 0 24px;
   width: 61%;
 }
@@ -105,7 +107,7 @@ const steps = [
 }
 
 .right-top-part {
-  height: 70px;
+  height: 55px;
   background: linear-gradient(
     30deg,
     rgba(0, 0, 0, 0) 0%,
@@ -115,6 +117,6 @@ const steps = [
 }
 
 .item-block {
-  height: 380px;
+  height: 340px;
 }
 </style>

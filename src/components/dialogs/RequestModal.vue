@@ -3,19 +3,19 @@
     :maximized="$q.screen.sm"
     :model-value="model || false"
     :position="$q.screen.sm ? 'bottom' : undefined"
-    width="560px"
+    width="520px"
     @update:model-value="$emit('update:modelValue', $event)"
   >
     <div v-if="!completed" class="column full-width text-black4 items-center">
       <div class="header1 bold text-center">Оставьте заявку</div>
       <div
         :style="$q.screen.sm ? '' : 'width: 75%'"
-        class="text-center body mt-14"
+        class="text-center body mt-10"
       >
         Наши менеджеры свяжутся с вами в ближайшее время.
       </div>
       <q-form
-        class="full-width mt-17"
+        class="full-width mt-12"
         @submit="send()"
         @validation-error="validationError = true"
       >
@@ -23,12 +23,13 @@
           v-model="data.phone"
           :rules="[
             rules.required,
-            (v: string) => (v.length < 11 ? 'Телефон некорректный' : true),
+            (v: string) => (v.length < 10 ? 'Телефон некорректный' : true),
           ]"
           class="full-width"
           height="50px"
-          mask="+# (###) ###-##-##"
-          placeholder="+7 (999) 99 99-99"
+          label="Телефон"
+          mask="+7 (###) ###-##-##"
+          placeholder="+7 (####) ## ##-##"
           unmasked-value
           width="100%"
           @blur="rules.required(data.name) ? (validationError = true) : ''"
@@ -36,15 +37,16 @@
         <CInput
           v-model="data.name"
           :rules="[rules.required]"
-          class="full-width mt-7"
+          class="full-width mt-8"
           height="50px"
-          placeholder="Ваше имя"
+          label="Ваше имя"
           @blur="rules.required(data.name) ? (validationError = true) : ''"
         />
         <CButton
-          :disabled="!confirmation"
+          :disabled="!isActionAvailable"
           :loading="loading"
-          class="mt-7"
+          class="mt-12"
+          color="accent1"
           height="50px"
           label="Оставить заявку"
           type="submit"
@@ -85,7 +87,7 @@
 <script lang="ts" setup>
 import CDialog from 'src/components/templates/dialogs/CDialog.vue';
 import CInput from '../templates/inputs/CInput.vue';
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import CButton from '../templates/buttons/CButton.vue';
 import rules from 'src/corexModels/rules';
 import { sendRequest } from 'src/models/sendRequest';
@@ -98,7 +100,6 @@ const loading = ref(false);
 const completed = ref(false);
 
 const validationError = ref(false);
-const confirmation = ref(false);
 
 const getEmptyData = () => {
   return {
@@ -115,6 +116,12 @@ const data = ref<{
   description: string | null;
   email: string | null;
 }>(getEmptyData());
+
+const isActionAvailable = computed(() => {
+  return (
+    data.value.phone && data.value.phone.length >= 10 && data.value.name?.length
+  );
+});
 
 const goToTelegram = () => {
   metrikaTick({ goalEvent: METRIKA_GOAL_EVENT.TELEGRAM_AFTER_SUBMIT_REQUEST });
@@ -140,7 +147,6 @@ watch(model, (v) => {
   if (v) {
     completed.value = false;
     loading.value = false;
-    confirmation.value = false;
     data.value = getEmptyData();
   }
 });

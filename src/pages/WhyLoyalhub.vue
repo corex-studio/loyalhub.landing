@@ -1,11 +1,8 @@
 <template>
   <div class="c-container default-parent-block">
     <div class="column full-width no-wrap items-center pb-5">
-      <div class="mega-header2 bold text-center">
-        Почему рестораторы выбирают <br />
-        Loyalhub?
-      </div>
-      <div class="row full-width justify-center gap-10 mt-20">
+      <div class="mega-header2 bold text-center">Почему выбирают Loyalhub?</div>
+      <div class="row full-width justify-center gap-8 mt-20">
         <div
           v-for="(item, index) in reasons"
           :key="index"
@@ -14,7 +11,7 @@
               ? 'bg-primary text-white'
               : 'bg-secondary1'
           "
-          class="chip-block px-10 py-6 items-center gap-6 cursor-pointer row no-wrap"
+          class="chip-block pr-8 pl-5 py-4 items-center gap-6 cursor-pointer row no-wrap"
           style="transition: background 0.35s"
           @click="selectedReason = item"
         >
@@ -24,7 +21,7 @@
                 selectedReason.title === item.title ? 'primary' : 'accent2'
               "
               :name="item.icon"
-              size="26px"
+              size="22px"
             />
           </div>
           <div>
@@ -99,7 +96,7 @@ const reasons: Reason[] = [
     title: 'Своя разработка слишком дорого',
     icon: 'fa-solid fa-handshake',
     block: {
-      title: 'Разработка собственного решения – это большие затраты и время',
+      title: 'Разработка собственного решения – это большие затраты',
       text:
         'С Loyalhub вы получаете все необходимые инструменты за фиксированную ежемесячную плату. Продукт постоянно обновляется \n' +
         'и развивается, учитывая тренды и пожелания наших клиентов.',
@@ -166,13 +163,13 @@ const selectedReason = ref<Reason>(reasons[0]);
 
 .icon-block {
   border-radius: 100px;
-  height: 44px;
-  width: 44px;
+  height: 40px;
+  width: 40px;
   background-color: white;
 }
 
 .content-block {
-  height: 370px;
+  height: 310px;
   border-radius: 30px;
 }
 

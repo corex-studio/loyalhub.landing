@@ -16,7 +16,7 @@
             </div>
             <div class="header1 bold mt-12">
               От концепции до реализации – все инструменты
-              <span class="text-accent2"> в одной платформе</span>
+              <span class="text-accent2 bold"> в одной платформе</span>
             </div>
             <div class="body mt-8">
               Получите полный функционал – доставка, бронирование, уведомления и

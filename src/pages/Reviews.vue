@@ -19,12 +19,15 @@
             </q-avatar>
             <div class="column gap-2" style="z-index: 1">
               <div class="body">{{ item.from.name }}</div>
-              <div class="secondary text-secondary3">
+              <div class="caption text-secondary3">
                 {{ item.from.position }}
               </div>
             </div>
           </div>
-          <div class="review-icon mt-10 row items-center justify-center">
+          <div
+            class="review-icon row items-center justify-center"
+            style="position: absolute; top: -10px; right: -10px"
+          >
             <q-icon name="fa-solid fa-quote-left" style="color: #c7a51f" />
           </div>
           <div class="mt-12 secondary" style="z-index: 1">{{ item.text }}</div>

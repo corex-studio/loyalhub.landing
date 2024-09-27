@@ -1,8 +1,8 @@
 <template>
   <div class="default-parent-block">
     <div class="c-container column items-center">
-      <div class="secondary bg-secondary1 rounded-5 py-2 px-17">FAQ</div>
-      <div class="mt-10 mega-header2 bold">Остались вопросы?</div>
+      <div class="secondary bg-secondary1 rounded-5 py-2 px-5">FAQ</div>
+      <div class="mega-header2 bold">Остались вопросы?</div>
       <div class="row full-width gap-10 mt-20">
         <div
           class="col column justify-between relative-position rounded-30 py-20 px-25 bg-accent1"
@@ -74,7 +74,7 @@ const questions = ref([
     question: 'Сколько времени займет запуск?',
     answer:
       'Мы запустим ваш продукт за 2 недели после всех необходимых проверок и настроек.',
-    expanded: false,
+    expanded: true,
   },
   {
     question: 'Ваши решения подходят для всех видов заведений?',

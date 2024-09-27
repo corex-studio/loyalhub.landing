@@ -28,7 +28,7 @@
                   text-color="accent2"
                 />
               </div>
-              <div class="mt-8 mega-header2 bold">
+              <div class="mt-8 mega-header1 bold">
                 Ваши гости,<br />
                 Ваш бренд
               </div>
@@ -138,7 +138,7 @@ const products = [
   },
   {
     image: 'program3.png',
-    title: 'Сайт',
+    title: 'Веб-сайт',
     textColor: 'black1',
   },
   {

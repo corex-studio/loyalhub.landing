@@ -6,38 +6,41 @@
       <img height="56" src="assets/loyalhubLogo.png" />
       <div v-if="$q.screen.gt.md" class="row items-center no-wrap gap-16">
         <CButton
-          @click="scrollHandler('cards')"
           label="Наши продукты"
           text-button
           text-color="black"
+          @click="scrollHandler('cards')"
         />
         <CButton
-          @click="scrollHandler('benefits')"
           label="Преимущества"
-          text-color="black"
           text-button
+          text-color="black"
+          @click="scrollHandler('benefits')"
         />
-        <CButton label="Блог" text-color="black" text-button />
-        <CButton label="Кейсы" text-color="black" text-button />
+        <CButton label="Блог" text-button text-color="black" />
+        <CButton label="Кейсы" text-button text-color="black" />
         <CButton
-          @click="scrollHandler('footer')"
           label="Контакты"
-          text-color="black"
           text-button
+          text-color="black"
+          @click="scrollHandler('footer')"
         />
       </div>
       <div class="row items-center gap-10">
         <div>+7 900 351 90 50</div>
-        <CIconButton icon="fa-solid fa-paper-plane" size="45px" />
-
+        <CIconButton
+          icon="fa-solid fa-paper-plane"
+          size="45px"
+          @click="openLink('https://t.me/loyalhub_news')"
+        />
         <CButton
           v-if="$q.screen.gt.md"
-          @click="store.requestModal = true"
-          label="Начать бесплатно"
           :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
-          width="210px"
           class="secondary"
           height="44px"
+          label="Начать бесплатно"
+          width="210px"
+          @click="store.requestModal = true"
         />
       </div>
 
@@ -64,7 +67,7 @@
 </template>
 <script lang="ts" setup>
 import CButton from 'src/components/templates/buttons/CButton.vue';
-import { store } from 'src/models/store';
+import { openLink, store } from 'src/models/store';
 import { scroll } from 'quasar';
 import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 import CIconButton from 'components/templates/buttons/CIconButton.vue';
