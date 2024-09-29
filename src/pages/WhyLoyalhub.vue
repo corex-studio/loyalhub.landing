@@ -55,7 +55,13 @@
             {{ selectedReason.block.text }}
           </div>
         </div>
-        <div class="col-grow row">
+        <div
+          :class="{
+            'items-end':
+              selectedReason.title === 'Своя разработка слишком дорого',
+          }"
+          class="col-grow justify-center row"
+        >
           <q-img
             :src="`assets/${selectedReason.block.image}`"
             :width="selectedReason.block.imageWidth"
@@ -102,7 +108,7 @@ const reasons: Reason[] = [
         'и развивается, учитывая тренды и пожелания наших клиентов.',
       color: 'accent1',
       image: 'reason1.png',
-      imageWidth: '80%',
+      imageWidth: '63%',
     },
   },
   {
@@ -126,7 +132,7 @@ const reasons: Reason[] = [
         'От дизайна приложения до автоматических уведомлений и условий программы лояльности – чтобы создать идеальное решение для ваших заведений.',
       color: 'secondary1',
       image: 'reason3.png',
-      imageWidth: '89%',
+      imageWidth: '82%',
     },
   },
   {
@@ -137,7 +143,7 @@ const reasons: Reason[] = [
       text: 'Подключайте новые заведения, включая франчайзинговые сети с разным меню и условиями, без сложностей и затрат на интеграцию.',
       color: 'secondary1',
       image: 'reason4.png',
-      imageWidth: '81%',
+      imageWidth: '70%',
     },
   },
   {
@@ -148,7 +154,7 @@ const reasons: Reason[] = [
       text: 'Получайте персонализированные рекомендации от наших экспертов по увеличению среднего чека, оптимизации заказов и повышению лояльности клиентов.',
       color: 'secondary1',
       image: 'reason5.png',
-      imageWidth: '90%',
+      imageWidth: '85%',
     },
   },
 ];
