@@ -11,11 +11,21 @@
         </div>
         <div class="column col-sm-12 col-md-shrink gap-2">
           <div>e-mail</div>
-          <div>support@loyalhub.ru</div>
+          <div
+            class="hover-block"
+            @click="openLink('mailto:support@loyalhub.ru')"
+          >
+            support@loyalhub.ru
+          </div>
         </div>
         <div class="column col-sm-12 col-md-shrink gap-2">
           <div>telegram</div>
-          <div>@loyalhub_news</div>
+          <div
+            class="hover-block"
+            @click="openLink('https://t.me/loyalhub_news')"
+          >
+            @loyalhub_news
+          </div>
         </div>
         <div class="row items-center">
           <CButton
@@ -38,17 +48,19 @@
 </template>
 <script lang="ts" setup>
 import CButton from 'components/templates/buttons/CButton.vue';
+import { openLink } from 'src/models/store';
 </script>
 
 <style lang="scss" scoped>
 .hover-block:hover {
-  color: $primary;
+  color: $accent2;
   transition: all 0.4s ease;
 }
 
 .hover-block {
   color: white;
   transition: all 0.4s ease;
+  cursor: pointer;
 }
 
 .doc-block {

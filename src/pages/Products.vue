@@ -15,7 +15,7 @@
           :key="index"
           :class="el.text ? 'bg-accent1' : 'bg-secondary1'"
           class="relative-position column no-wrap gap-10 justify-between items-center pa-15 rounded-30"
-          style="overflow: hidden"
+          style="overflow: hidden; max-height: 580px"
         >
           <div class="column full-width items-center">
             <div class="header1 bold text-center" style="z-index: 1">
@@ -65,7 +65,7 @@
           <q-img
             :src="`assets/${el.image}`"
             fit="contain"
-            style="margin-bottom: -30px; max-width: 500px"
+            style="margin-bottom: -30px"
           />
         </div>
       </div>

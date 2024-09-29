@@ -14,11 +14,7 @@
       >
         Наши менеджеры свяжутся с вами в ближайшее время.
       </div>
-      <q-form
-        class="full-width mt-12"
-        @submit="send()"
-        @validation-error="validationError = true"
-      >
+      <q-form class="full-width mt-12" @submit="send()">
         <CInput
           v-model="data.phone"
           :rules="[
@@ -32,20 +28,23 @@
           placeholder="+7 (####) ## ##-##"
           unmasked-value
           width="100%"
-          @blur="rules.required(data.name) ? (validationError = true) : ''"
+          @blur="phoneError = !data.phone || data.phone.length < 10"
+          @update:model-value="phoneError = !$event || $event.length < 10"
         />
         <CInput
           v-model="data.name"
+          :class="phoneError ? 'mt-12' : 'mt-8'"
           :rules="[rules.required]"
-          class="full-width mt-8"
+          class="full-width"
           height="50px"
           label="Ваше имя"
-          @blur="rules.required(data.name) ? (validationError = true) : ''"
+          @blur="nameError = !data.name"
+          @update:model-value="nameError = !$event"
         />
         <CButton
+          :class="nameError ? 'mt-16' : 'mt-12'"
           :disabled="!isActionAvailable"
           :loading="loading"
-          class="mt-12"
           color="accent1"
           height="50px"
           label="Оставить заявку"
@@ -99,7 +98,18 @@ const { metrikaTick } = useMetrikaTick();
 const loading = ref(false);
 const completed = ref(false);
 
-const validationError = ref(false);
+const phoneError = ref(false);
+const nameError = ref(false);
+
+watch(
+  () => model.value,
+  (v) => {
+    if (v) {
+      phoneError.value = false;
+      nameError.value = false;
+    }
+  },
+);
 
 const getEmptyData = () => {
   return {

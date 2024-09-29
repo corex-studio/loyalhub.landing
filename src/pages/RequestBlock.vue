@@ -21,7 +21,7 @@
             Оставьте контакты - мы напишем вам в течение 2 дней, чтобы обсудить
             проект
           </div>
-          <div class="column gap-7 full-width mt-25">
+          <div class="column gap-8 full-width mt-25">
             <CInput
               v-model="data.phone"
               class="col"
