@@ -1,18 +1,29 @@
 <template>
-  <div class="parent relative-position pt-8" style="overflow-x: hidden">
+  <div
+    :class="{ 'bg-secondary1': $q.screen.lt.lg }"
+    class="parent relative-position pt-8"
+    style="overflow-x: hidden"
+  >
     <Header />
     <div class="c-container column">
-      <div class="row full-width mt-15 gap-10">
+      <div class="row full-width mt-lg-15 gap-10">
         <div
           ref="leftBlock"
-          class="col column gap-10"
+          :class="$q.screen.gt.md ? 'col' : ' full-width'"
+          class="column gap-xl-10 gap-md-8 gap-sm-6"
           style="height: fit-content"
         >
           <div
-            class="column no-wrap full-width px-25 py-18 bg-secondary1 rounded-30 justify-evenly relative-position"
-            style="height: 60dvh; max-height: 600px !important"
+            :class="$q.screen.gt.md ? 'bg-secondary1' : ''"
+            :style="
+              $q.screen.gt.md
+                ? 'height: 60dvh; max-height: 600px !important'
+                : ''
+            "
+            class="column no-wrap full-width px-xl-25 px-lg-18 py-lg-16 py-sm-10 rounded-30 justify-evenly relative-position"
           >
             <q-img
+              v-if="$q.screen.gt.md"
               src="assets/mainVector.svg"
               style="position: absolute; bottom: 0; left: 0"
             />
@@ -28,43 +39,71 @@
                   text-color="accent2"
                 />
               </div>
-              <div class="mt-8 mega-header1 bold">
+              <div class="mt-md-8 mt-sm-4 mega-header1 bold">
                 Ваши гости,<br />
                 Ваш бренд
               </div>
-              <div class="body mt-7 text-secondary3">
+              <div
+                :class="{ 'text-secondary3': $q.screen.gt.md }"
+                class="body mt-7"
+              >
                 Сайт, приложение, QR-меню и другие решения в одном продукте.
                 Повышайте доход, развивайте бренд и улучшайте клиентский опыт с
                 Loyalhub – просто и без лишних затрат
               </div>
             </div>
-            <div class="row full-width gap-10 mt-14">
+            <div
+              v-if="$q.screen.gt.md"
+              class="row full-width gap-xl-10 gap-lg-8 gap-sm-6 mt-14"
+            >
               <CButton
                 class="col secondary"
                 color="accent1"
                 height="48px"
                 label="Начать бесплатно"
                 text-color="black1"
+                @click="store.requestModal = true"
               />
               <CButton
                 class="col secondary"
                 height="48px"
                 label="Подобрать решение"
+                @click="store.requestModal = true"
               />
             </div>
           </div>
-          <div class="row gap-10">
+          <teleport
+            :disabled="!featuresSmSpot || $q.screen.gt.md"
+            :to="featuresSmSpot"
+          >
             <div
-              v-for="(item, index) in features"
-              :key="index"
-              class="col px-10 py-8 rounded-20 bg-secondary1 column gap-2"
+              :class="$q.screen.gt.md ? 'row ' : 'column'"
+              class="gap-xl-10 gap-md-8 gap-sm-6"
             >
-              <div class="header2 bold">{{ item.title }}</div>
-              <div class="caption text-primary">{{ item.text }}</div>
+              <div
+                v-for="(item, index) in features"
+                :key="index"
+                :class="{ 'text-center items-center': $q.screen.lt.lg }"
+                class="col px-xl-10 px-lg-8 px-sm-6 py-xl-8 py-lg-7 py-sm-10 rounded-20 bg-secondary1 column gap-2"
+              >
+                <div class="header2 bold">{{ item.title }}</div>
+                <div
+                  :class="{ 'text-center': $q.screen.lt.lg }"
+                  :style="$q.screen.lt.lg ? 'max-width: 240px' : ''"
+                  class="caption text-primary"
+                >
+                  {{ item.text }}
+                </div>
+              </div>
             </div>
-          </div>
+          </teleport>
         </div>
-        <div class="col rounded-30 self-stretch" style="overflow: hidden">
+        <!--        style="overflow: hidden"-->
+
+        <div
+          :class="$q.screen.gt.md ? 'col rounded-30' : ' full-width rounded-30'"
+          class="self-stretch"
+        >
           <SwiperContainer
             :items="products"
             :slides-per-view="1"
@@ -78,6 +117,7 @@
             <template v-slot:item="{ item }">
               <div class="column items-center">
                 <div
+                  v-if="$q.screen.gt.md"
                   :class="`text-${item.textColor}`"
                   class="header1 bold"
                   style="position: absolute; top: 5%; z-index: 1"
@@ -96,6 +136,9 @@
       </div>
     </div>
   </div>
+  <div v-if="$q.screen.lt.lg" class="c-container">
+    <div ref="featuresSmSpot" class="mt-15"></div>
+  </div>
 </template>
 <script lang="ts" setup>
 import Header from './Header.vue';
@@ -103,8 +146,11 @@ import CButton from 'components/templates/buttons/CButton.vue';
 import SwiperContainer from 'components/containers/SwiperContainer.vue';
 import { computed, ref } from 'vue';
 import { useElementSize } from '@vueuse/core';
+import { store } from 'src/models/store';
 
-const leftBlock = ref<HTMLDivElement | null>(null);
+const featuresSmSpot = ref<HTMLDivElement | null>(null);
+
+const leftBlock = ref<HTMLDivElement>();
 
 const height = computed(() => {
   return useElementSize(leftBlock).height;

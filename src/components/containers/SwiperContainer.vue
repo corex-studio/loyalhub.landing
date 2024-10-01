@@ -53,6 +53,7 @@
     <swiper
       :autoplay="autoPlay"
       :class="noNavigation ? 'no-navigation' : 'navigation'"
+      :initial-slide="initialSlide"
       :loop="loop"
       :modules="modules"
       :mousewheel="{
@@ -64,7 +65,7 @@
         clickable: true,
       }"
       :slides-per-view="slidesPerView || 3"
-      :space-between="spaceBetween || 20"
+      :space-between="spaceBetween === undefined ? 20 : spaceBetween"
       navigation
       @swiper="onSwiper"
     >
@@ -96,11 +97,11 @@ const props = defineProps<{
   noNavigation?: boolean;
   autoPlay?: boolean;
   topNavigation?: boolean;
+  initialSlide?: number;
 }>();
 
 const modules = computed(() => {
   const res = [];
-  res.push(Mousewheel);
 
   if (props.autoPlay) {
     res.push(Autoplay);
@@ -108,13 +109,10 @@ const modules = computed(() => {
   if (props.useBullets) {
     res.push(Pagination);
   }
+  res.push(Mousewheel);
 
   return res;
 });
-
-const onSwiper = (swiper: SwiperClass) => {
-  swiperInstance = swiper;
-};
 
 const nextPage = () => {
   swiperInstance?.slideNext();
@@ -122,6 +120,10 @@ const nextPage = () => {
 
 const prevPage = () => {
   swiperInstance?.slidePrev();
+};
+
+const onSwiper = (swiper: SwiperClass) => {
+  swiperInstance = swiper;
 };
 </script>
 
@@ -157,6 +159,28 @@ const prevPage = () => {
   border-radius: 50px;
   width: 8%;
   height: 6px;
+}
+
+body.screen--md,
+body.screen--sm {
+  .swiper :deep(.swiper-pagination) {
+  }
+
+  .swiper
+    :deep(.swiper-pagination-bullet):not(.swiper-pagination-bullet-active) {
+    background-color: white;
+    opacity: 1;
+  }
+
+  .swiper :deep(.swiper-pagination-bullet-active) {
+    background-color: #e7e8f1;
+  }
+
+  .swiper :deep(.swiper-pagination) {
+    position: absolute;
+    top: -10 px;
+    height: fit-content;
+  }
 }
 
 .swiper :deep(.swiper-pagination-bullet):not(.swiper-pagination-bullet-active) {

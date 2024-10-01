@@ -28,6 +28,7 @@
               height="58px"
               label="Подобрать решение"
               width="235px"
+              @click="store.requestModal = true"
             />
           </div>
           <q-img
@@ -44,6 +45,7 @@
 
 <script lang="ts" setup>
 import CButton from 'components/templates/buttons/CButton.vue';
+import { store } from 'src/models/store';
 </script>
 
 <style lang="scss" scoped>

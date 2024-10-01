@@ -65,8 +65,8 @@
         </div>
         <div class="column col px-16 py-20 rounded-30 bg-secondary1 gap-12">
           <div class="row gap-10 items-center no-wrap">
-            <q-avatar size="84px">
-              <q-img height="84px" src="assets/director.jpg" width="84px" />
+            <q-avatar size="94px">
+              <q-img height="94px" src="assets/elena.png" width="94px" />
             </q-avatar>
             <div class="column gap-2">
               <div class="subtitle bold">Елена</div>

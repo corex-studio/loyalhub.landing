@@ -107,6 +107,7 @@
               height="56px"
               label="Оставить заявку"
               width="290px"
+              @click="store.requestModal = true"
             />
           </div>
         </div>
@@ -120,6 +121,7 @@ import CInput from 'components/templates/inputs/CInput.vue';
 import { computed, ref } from 'vue';
 import CIconButton from 'components/templates/buttons/CIconButton.vue';
 import CButton from 'components/templates/buttons/CButton.vue';
+import { store } from 'src/models/store';
 
 const pointsCount = ref(1);
 

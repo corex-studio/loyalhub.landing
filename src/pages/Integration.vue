@@ -50,6 +50,7 @@
             height="52px"
             label="Начать интеграцию"
             width="235px"
+            @click="store.requestModal = true"
           />
         </div>
         <q-img
@@ -57,7 +58,7 @@
           style="
             z-index: 1;
             position: absolute;
-            bottom: 0;
+            bottom: -40px;
             right: -50px;
             max-width: 880px;
           "
@@ -71,6 +72,7 @@
 <script lang="ts" setup>
 import CButton from 'components/templates/buttons/CButton.vue';
 import CIcon from 'components/templates/buttons/CIcon.vue';
+import { store } from 'src/models/store';
 
 const advantages = [
   'Мгновенная отправка заказов на терминал',

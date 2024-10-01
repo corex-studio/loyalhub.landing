@@ -25,7 +25,7 @@
         </div>
         <div
           class="mt-25 bg-secondary1 rounded-30 px-25 py-20 row full-width relative-position"
-          style="overflow: hidden; min-height: 395px"
+          style="overflow: hidden; min-height: 405px"
         >
           <q-img
             src="assets/CRMVector.svg"

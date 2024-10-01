@@ -10,7 +10,12 @@
         />
         <q-img
           src="assets/requestMoc.png"
-          style="position: absolute; bottom: -32px; right: 0; max-width: 616px"
+          style="
+            position: absolute;
+            bottom: 0px;
+            right: -40px;
+            max-width: 616px;
+          "
         />
         <div style="max-width: 560px">
           <div class="mega-header2 bold">
@@ -24,7 +29,7 @@
           <div class="column gap-8 full-width mt-25">
             <CInput
               v-model="data.phone"
-              class="col"
+              class="col subtitle"
               height="50px"
               label="Телефон"
               mask="+7 (###) ###-##-##"
@@ -33,7 +38,7 @@
             />
             <CInput
               v-model="data.name"
-              class="col"
+              class="col subtitle"
               height="50px"
               label="Ваше имя"
             />

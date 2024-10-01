@@ -175,7 +175,7 @@ const selectedReason = ref<Reason>(reasons[0]);
 }
 
 .content-block {
-  height: 310px;
+  min-height: 310px;
   border-radius: 30px;
 }
 

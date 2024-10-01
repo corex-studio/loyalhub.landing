@@ -4,7 +4,7 @@
     <Companies />
     <WhyLoyalhub />
     <EcoSystem />
-    <Products />
+    <Products id="products" />
     <Integration />
     <CRM />
     <HowToLaunch />

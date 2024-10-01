@@ -44,6 +44,7 @@ body.screen--md {
     margin: 0 auto;
     padding-left: 20px !important;
     padding-right: 20px !important;
+    max-width: 680px;
   }
 
   .c-gutter:not(.product-gutters) > * {
@@ -69,6 +70,8 @@ body.screen--sm {
     margin: 0 auto;
     padding-left: 16px;
     padding-right: 16px;
+    max-width: 560px;
+
   }
 
   .c-gutter:not(.product-gutters) > * {
@@ -100,6 +103,7 @@ body.screen--xs {
     padding-right: 10px;
   }
 }
+
 .product-gutters {
   grid-gap: 10px;
   margin-top: 0 !important;

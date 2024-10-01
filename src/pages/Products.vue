@@ -55,6 +55,7 @@
                 label="Подключить сейчас"
                 style="z-index: 1"
                 width="235px"
+                @click="store.requestModal = true"
               />
             </template>
           </div>
@@ -76,6 +77,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import CButton from 'components/templates/buttons/CButton.vue';
+import { store } from 'src/models/store';
 
 const products = ref([
   {
@@ -127,7 +129,7 @@ const products = ref([
       },
       {
         name: 'Гибкость',
-        text: 'Разгрузите персонал и уменьшите очереди, давая клиентам возможность заказывать напрямую со своих телефонов',
+        text: 'Используйте QR-коды для каждого стола или общего зала, подходящие как для ресторанов, так и для кафе.',
       },
     ],
     selectedTab: 0,

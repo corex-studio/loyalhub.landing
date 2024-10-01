@@ -42,15 +42,24 @@
           </div>
         </div>
         <div
-          class="mt-10 row full-width bg-secondary1 justify-between gap-10 items-center rounded-24 px-15 py-22 relative-position"
+          class="mt-10 row full-width no-wrap bg-secondary1 justify-between gap-10 items-center rounded-24 px-15 py-22 relative-position"
           style="overflow: hidden"
         >
           <q-img
             src="assets/howToVector.svg"
-            style="position: absolute; z-index: 0"
+            style="position: absolute; z-index: 0; bottom: 0; height: 100%"
           />
-          <div class="row items-center gap-20 col-8 no-wrap" style="z-index: 1">
-            <div>ФОТО</div>
+          <div class="row items-center gap-20 col-9 no-wrap" style="z-index: 1">
+            <div class="row items-center no-wrap">
+              <q-avatar
+                v-for="el in 5"
+                :key="el"
+                :style="`margin-left: ${el === 1 ? '' : '-20px'}`"
+                size="88px"
+              >
+                <q-img src="assets/director.jpg" width="88px" />
+              </q-avatar>
+            </div>
             <div class="subtitle">
               Наши специалисты всегда на связи и готовы помочь вам на каждом
               этапе запуска

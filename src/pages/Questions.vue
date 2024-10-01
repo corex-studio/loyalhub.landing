@@ -30,6 +30,7 @@
             label="Задать вопрос"
             style="margin-top: 30%"
             width="235px"
+            @click="store.requestModal = true"
           />
         </div>
         <div class="col column gap-5">
@@ -68,6 +69,7 @@
 <script lang="ts" setup>
 import CButton from 'components/templates/buttons/CButton.vue';
 import { ref } from 'vue';
+import { store } from 'src/models/store';
 
 const questions = ref([
   {
