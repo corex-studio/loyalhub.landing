@@ -27,6 +27,7 @@
                   label="Официальный партнер iiko"
                   text-button
                   text-color="accent2"
+                  @click="openLink('https://store.iiko.ru/loyalhub')"
                 />
               </div>
               <div class="mega-header2 bold mt-lg-5 mt-sm-4">
@@ -98,7 +99,7 @@
 <script lang="ts" setup>
 import CButton from 'components/templates/buttons/CButton.vue';
 import CIcon from 'components/templates/buttons/CIcon.vue';
-import { store } from 'src/models/store';
+import { openLink, store } from 'src/models/store';
 
 const advantages = [
   'Мгновенная отправка заказов на терминал',

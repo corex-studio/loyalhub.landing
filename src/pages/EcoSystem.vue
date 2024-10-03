@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-lg-15">
+  <div class="mt-lg-15" style="overflow: hidden">
     <div class="parent-block relative-position">
       <q-img
         v-if="$q.screen.gt.md"

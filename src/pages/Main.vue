@@ -37,6 +37,7 @@
                   label="Официальный партнер iiko"
                   text-button
                   text-color="accent2"
+                  @click="openLink('https://store.iiko.ru/loyalhub')"
                 />
               </div>
               <div class="mt-md-8 mt-sm-4 mega-header1 bold">
@@ -172,7 +173,7 @@ import CButton from 'components/templates/buttons/CButton.vue';
 import SwiperContainer from 'components/containers/SwiperContainer.vue';
 import { computed, ref } from 'vue';
 import { useElementSize } from '@vueuse/core';
-import { store } from 'src/models/store';
+import { openLink, store } from 'src/models/store';
 
 const featuresSmSpot = ref<HTMLDivElement | null>(null);
 

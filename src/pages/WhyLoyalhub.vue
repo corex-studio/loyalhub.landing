@@ -93,6 +93,7 @@
         icon-size="22px"
         label="Узнать больше"
         text-button
+        @click="store.requestModal = true"
       />
     </div>
   </div>
@@ -102,6 +103,7 @@
 import CIcon from 'src/components/templates/buttons/CIcon.vue';
 import { ref } from 'vue';
 import CButton from 'components/templates/buttons/CButton.vue';
+import { store } from 'src/models/store';
 
 type Reason = {
   title: string;

@@ -17,16 +17,26 @@
           label="Преимущества"
           text-button
           text-color="black"
-          @click="scrollHandler('benefits')"
+          @click="scrollHandler('why')"
         />
         <CButton
           label="Наши продукты"
           text-button
           text-color="black"
-          @click="scrollHandler('cards')"
+          @click="scrollHandler('products')"
         />
-        <CButton label="Отзывы" text-button text-color="black" />
-        <CButton label="Кейсы" text-button text-color="black" />
+        <CButton
+          label="Кейсы"
+          text-button
+          text-color="black"
+          @click="scrollHandler('examples')"
+        />
+        <CButton
+          label="Отзывы"
+          text-button
+          text-color="reviews"
+          @click="scrollHandler('reviews')"
+        />
       </div>
       <div class="row items-center no-wrap gap-xl-10 gap-lg-6 gap-sm-4">
         <div v-if="$q.screen.gt.lg" style="text-wrap: nowrap">
