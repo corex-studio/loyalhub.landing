@@ -88,9 +88,55 @@
   font-weight: 400;
 }
 
-body.screen--md {
+body.screen--md, body.screen--sm, {
+  .mega-header1 {
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  .mega-header2 {
+    font-size: 30px;
+    line-height: 32px;
+  }
+
+  .header1 {
+    font-size: 23px;
+    line-height: 26px;
+  }
+
+  .header2 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .header3 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+
+  .body {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
+  }
+
+  .secondary {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+  }
+
+  .caption {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+  }
 }
 
-body.screen--sm,
-body.screen--xs {
-}
+

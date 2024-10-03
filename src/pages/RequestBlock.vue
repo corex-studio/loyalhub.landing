@@ -2,35 +2,43 @@
   <div class="parent-block">
     <div class="c-container">
       <div
-        class="main-block relative-position rounded-30 px-25 py-20 text-white"
+        class="main-block relative-position rounded-30 px-lg-25 px-sm-6 py-lg-20 py-sm-15 text-white"
       >
         <q-img
           src="assets/requestVector.svg"
           style="position: absolute; bottom: 0"
         />
         <q-img
+          v-if="$q.screen.gt.md"
+          :width="$q.screen.lt.xl ? '50%' : '100%'"
           src="assets/requestMoc.png"
           style="
             position: absolute;
             bottom: 0px;
             right: -40px;
-            max-width: 616px;
+            max-width: 646px;
+            z-index: 0;
           "
         />
-        <div style="max-width: 560px">
+        <div
+          :class="{ 'text-center': $q.screen.lt.lg }"
+          :style="`max-width: ${$q.screen.lt.lg ? '' : '560px'}`"
+          class="column full-width relative-position"
+          style="z-index: 2 !important"
+        >
           <div class="mega-header2 bold">
             Давайте покажем, <br />
             как все работает
           </div>
-          <div class="mt-14 body">
+          <div class="mt-lg-14 mt-sm-6 body">
             Оставьте контакты - мы напишем вам в течение 2 дней, чтобы обсудить
             проект
           </div>
-          <div class="column gap-8 full-width mt-25">
+          <div class="column gap-8 full-width mt-lg-25 mt-sm-15">
             <CInput
               v-model="data.phone"
+              :height="$q.screen.lt.lg ? '48px' : '50px'"
               class="col subtitle"
-              height="50px"
               label="Телефон"
               mask="+7 (###) ###-##-##"
               placeholder="+7 (###) ## ##-##"
@@ -38,19 +46,19 @@
             />
             <CInput
               v-model="data.name"
+              :height="$q.screen.lt.lg ? '48px' : '50px'"
               class="col subtitle"
-              height="50px"
               label="Ваше имя"
             />
             <CButton
               :disabled="!isActionAvailable"
+              :height="$q.screen.lt.lg ? '48px' : '50px'"
               :loading="loading"
               color="accent1"
-              height="50px"
               label="Оставить заявку"
               @click="send()"
             />
-            <div class="secondary row full-width justify-center">
+            <div class="secondary row mt-lg-0 full-width justify-center">
               <div class="text-center" style="max-width: 370px">
                 Нажимая на кнопку, вы соглашаетесь на обработку персональных
                 данных
@@ -113,5 +121,12 @@ const send = async () => {
 
 .main-block {
   background-color: $primary;
+}
+
+body.screen--md,
+body.screen--sm {
+  .parent-block {
+    padding: 80px 0;
+  }
 }
 </style>

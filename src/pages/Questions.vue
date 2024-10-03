@@ -1,64 +1,93 @@
 <template>
   <div class="default-parent-block">
     <div class="c-container column items-center">
-      <div class="secondary bg-secondary1 rounded-5 py-2 px-5">FAQ</div>
-      <div class="mega-header2 bold">Остались вопросы?</div>
-      <div class="row full-width gap-10 mt-20">
+      <div
+        class="secondary text-primary bg-secondary1 rounded-5 py-lg-2 py-sm-5 px-lg-5 px-sm-8"
+      >
+        FAQ
+      </div>
+      <div class="mega-header2 bold mt-sm-4 mt-lg-0">Остались вопросы?</div>
+      <div
+        :class="$q.screen.lt.lg ? 'column' : 'row'"
+        class="no-wrap full-width gap-lg-10 gap-sm-6 mt-lg-20 mt-sm-15"
+      >
         <div
-          class="col column justify-between relative-position rounded-30 py-20 px-25 bg-accent1"
+          :class="$q.screen.lt.lg ? 'rounded-20' : 'rounded-30'"
+          class="col column justify-between relative-position py-lg-20 py-sm-12 px-lg-25 px-sm-8 bg-accent1"
           style="height: fit-content"
         >
-          <q-img
-            src="assets/questionsVector.svg"
-            style="position: absolute; left: 0; bottom: 0; z-index: 0"
-          />
-          <q-img
-            src="assets/questionsMoc.png"
-            style="position: absolute; right: 0; bottom: 0; max-width: 330px"
-          />
+          <template v-if="$q.screen.gt.md">
+            <q-img
+              src="assets/questionsVector.svg"
+              style="position: absolute; left: 0; bottom: 0; z-index: 0"
+            />
+            <q-img
+              src="assets/questionsMoc.png"
+              style="position: absolute; right: 0; bottom: 0; max-width: 330px"
+            />
+          </template>
+          <template v-else>
+            <q-img
+              height="100%"
+              src="assets/smQuestionsVector.svg"
+              style="position: absolute; left: 0; top: 0; z-index: 0"
+            />
+            <q-img
+              src="assets/smQuestionsMoc.png"
+              style="position: absolute; right: 0; bottom: 0"
+              width="180px"
+            />
+          </template>
+
           <div class="column full-width" style="z-index: 1">
             <div class="header1 bold">
               Loyalhub поможет в решении ваших вопросов
             </div>
-            <div class="subtitle mt-20">
-              Вот ответы на самые частые из них. <br />
+            <div
+              :class="$q.screen.lt.lg ? 'body' : 'subtitle'"
+              class="mt-lg-20 mt-sm-4"
+            >
+              Вот ответы на самые частые из них. <br v-if="$q.screen.gt.md" />
               Или можно просто написать нам в телеграм и спросить
             </div>
           </div>
           <CButton
-            height="58px"
+            :height="$q.screen.lt.lg ? '40px' : '58px'"
+            :style="$q.screen.lt.lg ? 'margin-top: 12px' : 'margin-top: 30%'"
+            :width="$q.screen.lt.lg ? '160px' : '235px'"
             label="Задать вопрос"
-            style="margin-top: 30%"
-            width="235px"
             @click="store.requestModal = true"
           />
         </div>
-        <div class="col column gap-5">
+        <div class="col column gap-lg-5 gap-sm-6">
           <q-expansion-item
             v-for="(el, index) in questions"
             :key="index"
             v-model="el.expanded"
-            class="bg-secondary2 rounded-15 px-11 py-10 cursor-pointer full-width"
+            :class="$q.screen.lt.lg ? 'rounded-12' : 'rounded-15'"
+            class="bg-secondary2 px-lg-11 px-sm-6 py-lg-10 py-sm-6 cursor-pointer full-width"
           >
             <template v-slot:header>
               <div
                 class="row full-width justify-between gap-5 items-center no-wrap"
               >
-                <div class="col subtitle">{{ el.question || '-' }}</div>
+                <div :class="{ bold: $q.screen.lt.lg }" class="col subtitle">
+                  {{ el.question || '-' }}
+                </div>
                 <div
                   class="expanded-icon-block row items-center justify-center"
                 >
                   <q-icon
+                    :size="$q.screen.lt.lg ? '18px' : '20px'"
                     :style="el.expanded ? 'transform: rotate(135deg)' : ''"
                     color="white"
                     name="fa-regular fa-plus"
-                    size="20px"
                     style="transition: 0.25s"
                   />
                 </div>
               </div>
             </template>
-            <div class="mt-8 secondary">{{ el.answer }}</div>
+            <div class="mt-lg-8 mt-sm-5 secondary">{{ el.answer }}</div>
           </q-expansion-item>
         </div>
       </div>

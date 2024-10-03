@@ -1,15 +1,15 @@
 <template>
   <div
-    :class="{ 'bg-secondary1': $q.screen.lt.lg }"
+    :class="{ 'bg-secondary1 rounded-bottom': $q.screen.lt.lg }"
     class="parent relative-position pt-8"
-    style="overflow-x: hidden"
+    style="overflow: hidden"
   >
     <Header />
-    <div class="c-container column">
-      <div class="row full-width mt-lg-15 gap-10">
+    <div :class="{ 'c-container': $q.screen.gt.md }" class="column">
+      <div class="row full-width mt-lg-15 gap-lg-10 gap-sm-8 justify-center">
         <div
           ref="leftBlock"
-          :class="$q.screen.gt.md ? 'col' : ' full-width'"
+          :class="$q.screen.gt.md ? 'col' : ' full-width c-container'"
           class="column gap-xl-10 gap-md-8 gap-sm-6"
           style="height: fit-content"
         >
@@ -20,7 +20,7 @@
                 ? 'height: 60dvh; max-height: 600px !important'
                 : ''
             "
-            class="column no-wrap full-width px-xl-25 px-lg-18 py-lg-16 py-sm-10 rounded-30 justify-evenly relative-position"
+            class="column no-wrap full-width px-xl-25 px-lg-18 py-lg-16 pt-sm-10 rounded-30 justify-evenly relative-position"
           >
             <q-img
               v-if="$q.screen.gt.md"
@@ -86,11 +86,16 @@
                 :class="{ 'text-center items-center': $q.screen.lt.lg }"
                 class="col px-xl-10 px-lg-8 px-sm-6 py-xl-8 py-lg-7 py-sm-10 rounded-20 bg-secondary1 column gap-2"
               >
-                <div class="header2 bold">{{ item.title }}</div>
                 <div
-                  :class="{ 'text-center': $q.screen.lt.lg }"
+                  :class="$q.screen.lt.lg ? 'mega-header1' : 'header2 '"
+                  class="bold"
+                >
+                  {{ item.title }}
+                </div>
+                <div
+                  :class="$q.screen.lt.lg ? 'text-center body' : 'caption'"
                   :style="$q.screen.lt.lg ? 'max-width: 240px' : ''"
-                  class="caption text-primary"
+                  class="text-primary"
                 >
                   {{ item.text }}
                 </div>
@@ -98,16 +103,16 @@
             </div>
           </teleport>
         </div>
-        <!--        style="overflow: hidden"-->
-
         <div
           :class="$q.screen.gt.md ? 'col rounded-30' : ' full-width rounded-30'"
           class="self-stretch"
         >
           <SwiperContainer
+            :class="{ swiper: $q.screen.gt.md }"
             :items="products"
             :slides-per-view="1"
             :space-between="0.01"
+            :style="$q.screen.lt.lg ? 'max-height: 450px' : ''"
             auto-play
             loop
             no-navigation
@@ -115,7 +120,10 @@
             use-bullets
           >
             <template v-slot:item="{ item }">
-              <div class="column items-center">
+              <div
+                class="column items-center full-height"
+                style="overflow: hidden; z-index: 2 !important"
+              >
                 <div
                   v-if="$q.screen.gt.md"
                   :class="`text-${item.textColor}`"
@@ -125,8 +133,13 @@
                   {{ item.title }}
                 </div>
                 <q-img
-                  :src="`assets/${item.image}`"
-                  :style="`height: ${height.value}px`"
+                  :class="{ 'mt-14': $q.screen.lt.lg }"
+                  :position="
+                    $q.screen.lt.lg ? item.smPosition || 'center' : undefined
+                  "
+                  :src="`assets/${$q.screen.lt.lg ? item.smImage : item.image}`"
+                  :style="`height: ${$q.screen.lt.lg ? '' : height.value + 'px'}; max-width: ${$q.screen.lt.lg ? item.smMaxWidth : ''};`"
+                  :width="$q.screen.lt.lg ? item.smWidth : undefined"
                   fit="cover"
                 />
               </div>
@@ -135,6 +148,19 @@
         </div>
       </div>
     </div>
+    <div
+      v-if="$q.screen.lt.lg"
+      class="c-container"
+      style="position: sticky; bottom: 20px; z-index: 2"
+    >
+      <CButton
+        height="48px"
+        label="Подобрать решение"
+        width="100%"
+        @click="store.requestModal = true"
+      />
+    </div>
+    <div v-if="$q.screen.lt.lg" class="full-width dimmed-block"></div>
   </div>
   <div v-if="$q.screen.lt.lg" class="c-container">
     <div ref="featuresSmSpot" class="mt-15"></div>
@@ -174,28 +200,43 @@ const features = [
 const products = [
   {
     image: 'program1.png',
+    smImage: 'smProgram1.png',
     title: 'Приложение',
     textColor: 'black1',
+    smWidth: '105%',
+    smMaxWidth: '470px',
   },
   {
     image: 'program2.png',
+    smImage: 'smProgram2.png',
     title: 'Тейбл тент',
     textColor: 'white',
+    smWidth: '110%',
+    smMaxWidth: '470px',
   },
   {
     image: 'program3.png',
+    smImage: 'smProgram3.png',
     title: 'Веб-сайт',
     textColor: 'black1',
+    smWidth: '200%',
+    smMaxWidth: '610px',
   },
   {
     image: 'program4.png',
+    smImage: 'smProgram4.png',
     title: 'QR-меню',
     textColor: 'white',
+    smWidth: '100%',
+    smMaxWidth: '470px',
   },
   {
     image: 'program5.png',
+    smImage: 'smProgram5.png',
     title: 'Crm – система',
     textColor: 'black1',
+    smWidth: '200%',
+    smMaxWidth: '610px',
   },
 ];
 </script>
@@ -203,9 +244,32 @@ const products = [
 <style lang="scss" scoped>
 .parent {
   min-height: 100dvh;
-  background-position: bottom;
-  background-clip: content;
-  background-size: cover;
-  background-repeat: no-repeat;
+}
+
+body.screen--md,
+body.screen--sm {
+  .parent {
+    min-height: fit-content;
+  }
+}
+
+.swiper {
+  border-radius: 30px;
+}
+
+.rounded-bottom {
+  border-radius: 0 0 20px 20px;
+}
+
+.dimmed-block {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(244, 244, 244, 0) 0,
+    rgb(244, 244, 244) 100%
+  );
+  z-index: 1;
+  height: 40px;
 }
 </style>

@@ -2,7 +2,9 @@
   <div class="c-container default-parent-block">
     <div class="column full-width no-wrap items-center pb-5">
       <div class="mega-header2 bold text-center">Почему выбирают Loyalhub?</div>
-      <div class="row full-width justify-center gap-8 mt-20">
+      <div
+        class="row full-width justify-center gap-lg-8 gap-sm-4 mt-lg-20 mt-sm-10"
+      >
         <div
           v-for="(item, index) in reasons"
           :key="index"
@@ -11,7 +13,7 @@
               ? 'bg-primary text-white'
               : 'bg-secondary1'
           "
-          class="chip-block pr-8 pl-5 py-4 items-center gap-6 cursor-pointer row no-wrap"
+          class="chip-block pr-lg-8 pr-sm-6 pl-lg-5 pl-sm-4 py-lg-4 py-sm-3 items-center gap-lg-6 gap-sm-3 cursor-pointer row no-wrap"
           style="transition: background 0.35s"
           @click="selectedReason = item"
         >
@@ -21,17 +23,21 @@
                 selectedReason.title === item.title ? 'primary' : 'accent2'
               "
               :name="item.icon"
-              size="22px"
+              :size="$q.screen.lt.lg ? '18px' : '22px'"
             />
           </div>
-          <div>
-            {{ item.title }}
-          </div>
+          <div
+            class="secondary"
+            v-html="$q.screen.lt.md ? item.smTitle : item.title"
+          ></div>
         </div>
       </div>
       <div
-        :class="`bg-${selectedReason.block.color}`"
-        class="content-block row full-width relative-position mt-20"
+        :class="[
+          `bg-${selectedReason.block.color}`,
+          $q.screen.lt.lg ? 'column' : 'row ',
+        ]"
+        class="content-block full-width no-wrap relative-position mt-lg-20 mt-sm-15"
         style="overflow: hidden"
       >
         <q-img
@@ -46,8 +52,10 @@
           src="assets/whyVector.svg"
           style="position: absolute; bottom: 0; right: 0; z-index: 0"
         />
-
-        <div class="column gap-10 pl-25 pt-20" style="width: 55%">
+        <div
+          :style="`width: ${$q.screen.lt.lg ? '100%' : '55%'}`"
+          class="column gap-lg-10 gap-sm-4 pl-lg-25 pr-lg-0 px-sm-8 pt-lg-20 pt-sm-10"
+        >
           <div class="header1 bold" style="z-index: 1">
             {{ selectedReason.block.title }}
           </div>
@@ -56,16 +64,26 @@
           </div>
         </div>
         <div
-          :class="{
-            'items-end':
-              selectedReason.title === 'Своя разработка слишком дорого',
-          }"
+          :class="
+            selectedReason.title === 'Своя разработка слишком дорого'
+              ? 'items-end'
+              : 'items-center'
+          "
           class="col-grow justify-center row"
         >
           <q-img
-            :src="`assets/${selectedReason.block.image}`"
-            :width="selectedReason.block.imageWidth"
+            :position="
+              selectedReason.title === 'Своя разработка слишком дорого'
+                ? 'bottom'
+                : $q.screen.lt.lg
+                  ? selectedReason.block.smPosition || 'bottom'
+                  : 'center'
+            "
+            :src="`assets/${$q.screen.lt.lg ? 'sm' + selectedReason.block.image[0].toLocaleUpperCase() + selectedReason.block.image.slice(1) : selectedReason.block.image}`"
+            :style="`min-height: ${$q.screen.lt.lg ? '230' : '300'}px; max-height: ${$q.screen.lt.lg ? '290px' : '320px'} `"
             fit="contain"
+            height="100%"
+            width="100%"
           />
         </div>
       </div>
@@ -87,19 +105,21 @@ import CButton from 'components/templates/buttons/CButton.vue';
 
 type Reason = {
   title: string;
+  smTitle: string;
   icon: string;
   block: {
     title: string;
     text: string;
     color: string;
     image: string;
-    imageWidth: string;
+    smPosition?: string;
   };
 };
 
 const reasons: Reason[] = [
   {
     title: 'Своя разработка слишком дорого',
+    smTitle: 'Дорогая <br/>разработка',
     icon: 'fa-solid fa-handshake',
     block: {
       title: 'Разработка собственного решения – это большие затраты',
@@ -108,22 +128,22 @@ const reasons: Reason[] = [
         'и развивается, учитывая тренды и пожелания наших клиентов.',
       color: 'accent1',
       image: 'reason1.png',
-      imageWidth: '63%',
     },
   },
   {
     title: 'Хотят лучше узнать своего гостя',
+    smTitle: 'Хотят узнать <br/> своего гостя',
     icon: 'fa-solid fa-heart',
     block: {
       title: 'Хотят лучше узнать своего гостя',
       text: 'Loyalhub вы сможете оцифровать до 80% своей клиентской базы, чтобы лучше понимать потребности и предпочтения гостей.',
       color: 'secondary1',
       image: 'reason2.png',
-      imageWidth: '88%',
     },
   },
   {
     title: 'Нет подходящих решений',
+    smTitle: 'Нет подходящих <br/>  решений',
     icon: 'fa-solid fa-question',
     block: {
       title: 'Нет подходящего решения',
@@ -132,29 +152,29 @@ const reasons: Reason[] = [
         'От дизайна приложения до автоматических уведомлений и условий программы лояльности – чтобы создать идеальное решение для ваших заведений.',
       color: 'secondary1',
       image: 'reason3.png',
-      imageWidth: '76%',
+      smPosition: 'right',
     },
   },
   {
     title: 'Гибкое масштабирование бизнеса',
+    smTitle: 'Масштабирование <br/>  бизнеса',
     icon: 'fa-solid fa-badge-check',
     block: {
       title: 'Loyalhub легко адаптируется к вашим потребностям ',
       text: 'Подключайте новые заведения, включая франчайзинговые сети с разным меню и условиями, без сложностей и затрат на интеграцию.',
       color: 'secondary1',
       image: 'reason4.png',
-      imageWidth: '70%',
     },
   },
   {
     title: 'Нужен экспертный анализ и поддержка',
+    smTitle: 'Экспертный анализ <br/>  и поддержка',
     icon: 'fa-solid fa-sack',
     block: {
       title: 'Мы консультируем вас на каждом этапе работы',
       text: 'Получайте персонализированные рекомендации от наших экспертов по увеличению среднего чека, оптимизации заказов и повышению лояльности клиентов.',
       color: 'secondary1',
       image: 'reason5.png',
-      imageWidth: '85%',
     },
   },
 ];
@@ -175,15 +195,29 @@ const selectedReason = ref<Reason>(reasons[0]);
 }
 
 .content-block {
-  min-height: 310px;
+  height: 340px;
   border-radius: 30px;
+}
+
+body.screen--md,
+body.screen--sm {
+  .icon-block {
+    border-radius: 100px;
+    height: 32px;
+    width: 32px;
+    background-color: white;
+  }
+
+  .content-block {
+    height: auto;
+    border-radius: 30px;
+  }
 }
 
 .underlined:after {
   height: 2px;
   width: 100%;
   cursor: pointer;
-
   background-color: $accent2;
 }
 </style>

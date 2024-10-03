@@ -2,20 +2,31 @@
   <div class="default-parent-block">
     <div class="c-container">
       <div
-        style="
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
-          align-content: start;
-          grid-auto-rows: 1fr;
-          gap: 20px;
+        v-if="$q.screen.lt.lg"
+        class="row full-width justify-center mega-header2 bold"
+      >
+        Продукты
+      </div>
+      <div
+        :class="{ 'column full-width gap-6': $q.screen.lt.lg }"
+        :style="
+          $q.screen.gt.md
+            ? 'display: grid;\n' +
+              '          grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));\n' +
+              '          align-content: start;\n' +
+              '          grid-auto-rows: 1fr;\n' +
+              '          gap: 20px;'
+            : ''
         "
+        class="mt-sm-15 mt-lg-0"
       >
         <div
           v-for="(el, index) in products"
           :key="index"
           :class="el.text ? 'bg-accent1' : 'bg-secondary1'"
-          class="relative-position column no-wrap gap-10 justify-between items-center pa-15 rounded-30"
-          style="overflow: hidden; max-height: 580px"
+          :style="`max-height: ${$q.screen.lt.lg ? '450' : '580'}px`"
+          class="relative-position column no-wrap gap-lg-10 gap-sm-5 justify-between items-center pa-lg-15 px-sm-5 py-sm-12 rounded-30"
+          style="overflow: hidden"
         >
           <div class="column full-width items-center">
             <div class="header1 bold text-center" style="z-index: 1">
@@ -23,35 +34,36 @@
             </div>
             <template v-if="el.tabs">
               <div
-                class="row gap-6 full-width justify-center mt-9"
+                class="row gap-lg-6 gap-sm-4 full-width justify-center mt-lg-9 mt-sm-6"
                 style="z-index: 1"
               >
                 <div
                   v-for="(tab, index) in el.tabs"
                   :key="index"
-                  :class="
+                  :class="[
                     el.selectedTab === index
                       ? 'bg-primary text-white bold'
-                      : 'bg-white'
-                  "
-                  class="cursor-pointer px-10 py-5 rounded-100"
+                      : 'bg-white',
+                    { secondary: $q.screen.lt.lg },
+                  ]"
+                  class="cursor-pointer px-lg-10 px-sm-7 py-lg-5 py-sm-4 rounded-100"
                   style="transition: background-color 0.35s ease-in-out"
                   @click="el.selectedTab = index"
                 >
                   {{ tab.name }}
                 </div>
               </div>
-              <div class="mt-8 text-center" style="z-index: 1">
+              <div class="mt-lg-8 mt-sm-6 text-center" style="z-index: 1">
                 {{ el.tabs[el.selectedTab].text }}
               </div>
             </template>
             <template v-else>
-              <div class="text-center mt-8" style="z-index: 1">
+              <div class="text-center mt-lg-8 mt-sm-4" style="z-index: 1">
                 {{ el.text }}
               </div>
               <CButton
-                class="mt-24"
-                height="52px"
+                :height="$q.screen.lt.lg ? '40px' : '52px'"
+                class="mt-lg-24 mt-sm-9"
                 label="Подключить сейчас"
                 style="z-index: 1"
                 width="235px"
@@ -60,14 +72,43 @@
             </template>
           </div>
           <q-img
+            v-if="$q.screen.gt.md || el.tabs"
             src="assets/productVector.svg"
             style="position: absolute; bottom: 0; z-index: 0"
           />
           <q-img
+            v-else
+            src="assets/smPriceProductVector.svg"
+            style="position: absolute; bottom: 0; z-index: 0"
+          />
+          <q-img
+            v-if="$q.screen.gt.md || el.tabs"
             :src="`assets/${el.image}`"
             fit="contain"
             style="margin-bottom: -30px"
           />
+          <template v-else>
+            <q-img
+              :src="`assets/smPriceProductLeft.png`"
+              style="
+                position: absolute;
+                top: -10px;
+                left: -40px;
+                min-width: 220px;
+              "
+              width="40%"
+            />
+            <q-img
+              :src="`assets/smPriceProductRight.png`"
+              style="
+                position: absolute;
+                bottom: 10px;
+                right: -40px;
+                min-width: 120px;
+              "
+              width="20%"
+            />
+          </template>
         </div>
       </div>
     </div>

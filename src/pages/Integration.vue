@@ -1,69 +1,95 @@
 <template>
   <div class="default-parent-block">
-    <div class="c-container">
+    <div :class="{ 'c-container': $q.screen.gt.md }">
       <div
-        class="bg-secondary1 rounded-30 px-25 py-20 relative-position"
-        style="height: 79dvh; max-height: 620px"
+        :class="$q.screen.gt.md ? 'rounded-30' : 'rounded-20'"
+        :style="$q.screen.lt.lg ? '' : 'height: 79dvh; max-height: 620px'"
+        class="bg-secondary1 px-lg-25 px-sm-0 py-lg-20 py-sm-15 relative-position"
       >
-        <q-img
-          src="assets/integrationVector.svg"
-          style="position: absolute; left: 0; bottom: 0; z-index: 0"
-        />
-        <div
-          class="column full-width no-wrap gap-10 justify-between full-height"
-          style="max-width: 700px"
-        >
-          <div style="z-index: 2">
-            <div class="row no-wrap items-center text-accent2">
-              <q-img src="assets/iikoLogo.png" width="80px" />
-              <CButton
-                class="secondary"
-                icon-right="fa-solid fa-arrow-up-right"
-                icon-size="20px"
-                label="Официальный партнер iiko"
-                text-button
-                text-color="accent2"
-              />
-            </div>
-            <div class="mega-header2 bold mt-5">
-              Интеграция <span class="text-accent2 bold">с iiko</span>
-            </div>
-            <div class="body mt-8" style="max-width: 600px">
-              Мы полностью интегрированы, расширия возможности ваших заведений.
-              Используйте все возможности вашей учетной системы
-            </div>
-            <div class="mt-15 column full-width gap-10">
+        <div class="full-height">
+          <q-img
+            v-if="$q.screen.gt.md"
+            src="assets/integrationVector.svg"
+            style="position: absolute; left: 0; bottom: 0; z-index: 0"
+          />
+          <div
+            :class="{ 'items-center': $q.screen.lt.lg }"
+            :style="`max-width: ${$q.screen.lt.lg ? '100%' : '700px'}`"
+            class="column full-width no-wrap justify-between full-height"
+          >
+            <div :class="{ 'c-container': $q.screen.lt.lg }" style="z-index: 2">
+              <div class="row no-wrap items-center text-accent2">
+                <q-img src="assets/iikoLogo.png" width="80px" />
+                <CButton
+                  class="secondary"
+                  icon-right="fa-solid fa-arrow-up-right"
+                  icon-size="20px"
+                  label="Официальный партнер iiko"
+                  text-button
+                  text-color="accent2"
+                />
+              </div>
+              <div class="mega-header2 bold mt-lg-5 mt-sm-4">
+                Интеграция <span class="text-accent2 bold">с iiko</span>
+              </div>
               <div
-                v-for="(el, index) in advantages"
-                :key="index"
-                class="secondary row gap-6 items-center no-wrap"
+                :class="$q.screen.lt.lg ? 'subtitle' : 'body'"
+                class="mt-lg-8 mt-sm-9"
+                style="max-width: 600px"
               >
-                <CIcon color="success" name="fa-regular fa-check" size="22px" />
-                <div>
-                  {{ el }}
+                Мы полностью интегрированы, расширия возможности ваших
+                заведений. Используйте все возможности вашей учетной системы
+              </div>
+              <div class="mt-lg-15 mt-sm-9 column full-width gap-10">
+                <div
+                  v-for="(el, index) in advantages"
+                  :key="index"
+                  :class="$q.screen.lt.lg ? 'body' : 'secondary'"
+                  class="row gap-lg-6 gap-sm-4 items-center no-wrap"
+                >
+                  <CIcon
+                    color="success"
+                    name="fa-regular fa-check"
+                    size="22px"
+                  />
+                  <div>
+                    {{ el }}
+                  </div>
                 </div>
               </div>
             </div>
+            <q-img
+              v-if="$q.screen.lt.lg"
+              class="mt-10"
+              src="assets/smIntegrationMoc.png"
+              width="420px"
+            />
+            <div :class="{ 'c-container': $q.screen.lt.lg }">
+              <CButton
+                :height="$q.screen.lt.lg ? '48px' : '52px'"
+                :label="
+                  $q.screen.lt.lg ? 'Подобрать решение' : 'Начать интеграцию'
+                "
+                :width="$q.screen.lt.lg ? '100%' : '235px'"
+                color="accent1"
+                @click="store.requestModal = true"
+              />
+            </div>
           </div>
-          <CButton
-            color="accent1"
-            height="52px"
-            label="Начать интеграцию"
-            width="235px"
-            @click="store.requestModal = true"
+          <q-img
+            v-if="$q.screen.gt.md"
+            src="assets/integrationMoc.png"
+            style="
+              z-index: 1;
+              position: absolute;
+              bottom: -40px;
+              right: -50px;
+              max-width: 880px;
+              min-width: 650px;
+            "
+            width="65%"
           />
         </div>
-        <q-img
-          src="assets/integrationMoc.png"
-          style="
-            z-index: 1;
-            position: absolute;
-            bottom: -40px;
-            right: -50px;
-            max-width: 880px;
-          "
-          width="65%"
-        />
       </div>
     </div>
   </div>

@@ -2,17 +2,17 @@
   <div class="body">
     <Main />
     <Companies />
-    <WhyLoyalhub />
+    <WhyLoyalhub id="why" />
     <EcoSystem />
     <Products id="products" />
     <Integration />
     <CRM />
-    <HowToLaunch />
-    <Examples />
-    <Reviews />
+    <HowToLaunch id="steps" />
+    <Examples id="examples" />
+    <Reviews id="reviews" />
     <Analysis />
-    <Tarifs />
-    <Questions />
+    <Tarifs id="tariffs" />
+    <Questions id="faq" />
     <RequestBlock />
     <Footer />
   </div>

@@ -69,7 +69,11 @@
       navigation
       @swiper="onSwiper"
     >
-      <swiper-slide v-for="(item, index) in items" :key="index">
+      <swiper-slide
+        v-for="(item, index) in items"
+        :key="index"
+        style="height: auto"
+      >
         <slot name="item" v-bind:item="item"></slot>
       </swiper-slide>
     </swiper>
@@ -163,7 +167,11 @@ const onSwiper = (swiper: SwiperClass) => {
 
 body.screen--md,
 body.screen--sm {
-  .swiper :deep(.swiper-pagination) {
+  .swiper :deep(.swiper-pagination-bullet) {
+    border-radius: 50px;
+    width: 100%;
+    max-width: 100px;
+    height: 5px;
   }
 
   .swiper
@@ -178,7 +186,11 @@ body.screen--sm {
 
   .swiper :deep(.swiper-pagination) {
     position: absolute;
-    top: -10 px;
+    display: flex;
+    width: 100%;
+    padding: 0 15px;
+    justify-content: center;
+    flex-wrap: nowrap;
     height: fit-content;
   }
 }

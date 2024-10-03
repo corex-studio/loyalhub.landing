@@ -1,54 +1,67 @@
 <template>
   <div class="default-parent-block">
-    <div class="c-container">
+    <div :class="{ 'c-container': $q.screen.gt.md }" class="row justify-center">
       <div class="row full-width justify-center">
         <div class="mega-header2 bold text-center" style="max-width: 880px">
-          Получите бесплатный анализ для вашего заведения
+          Получите бесплатный анализ
+          <br v-if="$q.screen.lt.lg && $q.screen.width > 550" />
+          для вашего заведения
         </div>
       </div>
-      <div class="mt-20 main-block row no-wrap full-width">
-        <div class="column" style="width: 68%">
-          <div class="column px-25 pt-16">
+      <div
+        :class="$q.screen.lt.lg ? 'column reverse c-container' : 'row'"
+        class="mt-lg-20 mt-sm-15 main-block no-wrap full-width"
+      >
+        <div :style="$q.screen.lt.lg ? '' : 'width: 68%'" class="column">
+          <div class="column px-lg-25 pt-lg-16">
             <div
-              class="px-5 py-2 caption bg-secondary2 rounded-5"
+              :class="$q.screen.lt.lg ? 'rounded-12' : 'rounded-5'"
+              class="px-lg-5 px-sm-8 py-lg-2 py-sm-5 caption bg-secondary1 text-primary"
               style="width: fit-content"
             >
               Вопрос {{ previewStep }} из
-              {{ questions.length }}
+              {{ questions.length + 1 }}
             </div>
-            <div class="mt-5 header3 bold">{{ currentStep.question }}</div>
-            <div class="mt-15">
+            <div v-if="currentStep" class="mt-lg-5 mt-sm-6 header3 bold">
+              {{ currentStep.question }}
+            </div>
+            <div class="mt-lg-15 mt-sm-10">
               <transition mode="out-in" name="slide-fade">
                 <div v-bind:key="step" class="row gap-7">
-                  <div
-                    v-for="(item, index) in currentStep.variants"
-                    :key="index"
-                    :class="
-                      currentStep.selected === item
-                        ? 'active-variant'
-                        : ' inactive-variant'
-                    "
-                    class="col-5 px-6 rounded-14 cursor-pointer secondary items-center row"
-                    style="height: 65px"
-                    @click="selectVariant(item)"
-                  >
-                    <div class="row items-center gap-6 no-wrap">
-                      <q-radio
-                        :model-value="currentStep.selected"
-                        :val="item"
-                        color="accent1"
-                        dense
-                        @click="selectVariant(item)"
-                      />
-                      {{ item }}
+                  <template v-if="currentStep">
+                    <div
+                      v-for="(item, index) in currentStep.variants"
+                      :key="index"
+                      :class="
+                        currentStep.selected === item
+                          ? 'active-variant'
+                          : ' inactive-variant'
+                      "
+                      :style="`height: ${$q.screen.lt.lg ? '' : '65px'} `"
+                      class="col-lg-5 py-sm-6 py-lg-0 col-sm-12 px-6 rounded-14 cursor-pointer items-center row"
+                      @click="selectVariant(item)"
+                    >
+                      <div
+                        :class="$q.screen.lt.lg ? 'body' : 'secondary'"
+                        class="row items-center gap-6 no-wrap"
+                      >
+                        <q-radio
+                          :model-value="currentStep.selected"
+                          :val="item"
+                          color="accent1"
+                          dense
+                          @click="selectVariant(item)"
+                        />
+                        {{ item }}
+                      </div>
                     </div>
-                  </div>
+                  </template>
+                  <RequestForm v-else />
                 </div>
               </transition>
             </div>
           </div>
-          <!--          <q-separator class="mt-25 mb-14 mr-10" color="secondary1" />-->
-          <div class="column gap-6 px-25 pb-16 mt-15">
+          <div class="column gap-6 px-lg-25 pb-lg-16 pb-sm-10 mt-15">
             <div class="secondary">До бесплатного анализа:</div>
             <div class="row full-width progress-block">
               <div
@@ -63,25 +76,7 @@
             </div>
           </div>
         </div>
-        <div class="column col px-16 py-20 rounded-30 bg-secondary1 gap-12">
-          <div class="row gap-10 items-center no-wrap">
-            <q-avatar size="94px">
-              <q-img height="94px" src="assets/elena.png" width="94px" />
-            </q-avatar>
-            <div class="column gap-2">
-              <div class="subtitle bold">Елена</div>
-              <div class="secondary">Ведущий менеджер компании Loyalhub</div>
-            </div>
-          </div>
-          <div
-            class="bg-white rounded-15 px-8 py-14 top-arrow relative-position secondary"
-          >
-            Пройдите наш короткий опрос и получите персонализированный отчет по
-            улучшению обслуживания и увеличению среднего чека для вашего
-            заведения. Это поможет вам увидеть, как наши решения могут сделать
-            ваш бизнес более эффективным!
-          </div>
-        </div>
+        <Manager />
       </div>
     </div>
   </div>
@@ -89,6 +84,8 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
+import Manager from './Manager.vue';
+import RequestForm from 'components/RequestForm.vue';
 
 const step = ref(1);
 
@@ -130,25 +127,25 @@ const questions = ref<
 ]);
 
 const previewStep = computed(() => {
-  return step.value > questions.value.length
+  return step.value > questions.value.length + 1
     ? questions.value.length
     : step.value;
 });
 
 const currentStep = computed(() => {
-  if (step.value > questions.value.length)
-    return questions.value[questions.value.length - 1];
+  if (step.value > questions.value.length) return;
   return questions.value[step.value - 1];
 });
 
 const getProgress = () => {
-  return (previewStep.value / questions.value.length) * 100;
+  return (previewStep.value / (questions.value.length + 1)) * 100;
 };
 
 const selectVariant = (val: string) => {
+  if (!currentStep.value) return;
   currentStep.value.selected = val;
   setTimeout(() => {
-    if (step.value < questions.value.length) {
+    if (step.value < questions.value.length + 1) {
       step.value++;
     }
   }, 400);
@@ -183,17 +180,6 @@ const selectVariant = (val: string) => {
 .progress-bar {
   background-color: $accent1;
   border-radius: 30px;
-}
-
-.top-arrow:before {
-  content: ' ';
-  height: 0;
-  position: absolute;
-  width: 0;
-  top: -20px;
-  left: 10%;
-  border: 10px solid transparent;
-  border-bottom-color: white;
 }
 
 .slide-fade-enter-active {

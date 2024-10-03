@@ -8,8 +8,7 @@
         :height="$q.screen.gt.lg ? 56 : 52"
         src="assets/loyalhubLogo.png"
       />
-      <img v-else height="42" src="assets/loyalhubLogoSmall.svg" width="42" />
-
+      <img v-else src="assets/loyalhubLogoSmall.svg" width="165px" />
       <div
         v-if="$q.screen.gt.md"
         class="row items-center no-wrap gap-xl-16 gap-sm-10"
@@ -26,15 +25,8 @@
           text-color="black"
           @click="scrollHandler('cards')"
         />
-
         <CButton label="Отзывы" text-button text-color="black" />
         <CButton label="Кейсы" text-button text-color="black" />
-        <!--        <CButton-->
-        <!--          label="Контакты"-->
-        <!--          text-button-->
-        <!--          text-color="black"-->
-        <!--          @click="scrollHandler('footer')"-->
-        <!--        />-->
       </div>
       <div class="row items-center no-wrap gap-xl-10 gap-lg-6 gap-sm-4">
         <div v-if="$q.screen.gt.lg" style="text-wrap: nowrap">
@@ -52,7 +44,7 @@
           @click="openLink('https://t.me/loyalhub_news')"
         />
         <CIcon
-          v-if="$q.screen.lt.md"
+          v-if="$q.screen.lt.lg"
           class="cursor-pointer ml-6"
           hover-color="accent2"
           name="fa-solid fa-bars"

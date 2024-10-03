@@ -5,14 +5,14 @@
   >
     <div class="c-container text-black2">
       <SwiperContainer
-        style="width: 100%"
+        :items="blocks"
         :slides-per-view="$q.screen.gt.md ? 2 : $q.screen.md ? 1.35 : 1"
         :space-between="12"
-        loop
-        :items="blocks"
         :use-bullets="$q.screen.lt.md"
-        no-navigation
         auto-play
+        loop
+        no-navigation
+        style="width: 100%"
       >
         <template v-slot:title>
           <div class="mega-text bold col-lg-8 col-md-10">
@@ -25,16 +25,16 @@
         </template>
         <template v-slot:item="{ item }">
           <div
-            style="overflow: hidden; height: inherit"
             class="column no-wrap bg-white rounded-40"
+            style="overflow: hidden; height: inherit"
           >
             <q-img
               :height="
                 $q.screen.gt.md ? '454px' : $q.screen.md ? '400px' : '249px'
               "
-              fit="cover"
-              class="rounded-40"
               :src="`assets/${item.image}`"
+              class="rounded-40"
+              fit="cover"
             />
             <div
               class="column full-width gap-md-6 gap-sm-4 pa-lg-15 pa-md-10 pa-sm-6"
@@ -48,9 +48,9 @@
               >
                 <div
                   v-for="(el, index) in item.types"
-                  class="body px-md-8 py-md-5 row gap-3 pl-sm-3 pl-md-0"
-                  :class="{ 'type-block': $q.screen.gt.sm }"
                   :key="index"
+                  :class="{ 'type-block': $q.screen.gt.sm }"
+                  class="body px-md-8 py-md-5 row gap-3 pl-sm-3 pl-md-0"
                 >
                   <div v-if="$q.screen.lt.md">•</div>
                   {{ el }}

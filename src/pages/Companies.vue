@@ -6,17 +6,22 @@
         Loyalhub для управление клиентским опытом – <br />
         от онлайн заказов до лояльности
       </div>
-      <div class="mt-25">
-        <div class="row full-width gap-10 text-black2 slide-block-top no-wrap">
+      <div class="mt-lg-25 mt-sm-15">
+        <div
+          class="row full-width gap-md-10 gap-sm-6 text-black2 slide-block-top no-wrap"
+        >
           <div
             v-for="(el, index) in companies"
             :key="index"
             class="subtitle-text"
           >
             <q-img
-              :src="`assets/companiesLogo/${el}.png`"
+              :src="`assets/companiesLogo/${$q.screen.lt.md ? 'sm' + el[0].toLocaleUpperCase() + el.slice(1) : el}.png`"
+              :width="
+                $q.screen.lt.lg ? ($q.screen.md ? '300px' : '150px') : '325px'
+              "
+              class="rounded-20"
               height="150px"
-              width="325px"
             />
           </div>
         </div>

@@ -3,13 +3,16 @@
     <div class="c-container">
       <div class="mega-header2 bold text-center">Отзывы</div>
 
-      <div class="full-width">
+      <div class="full-width mt-lg-20 mt-sm-15">
         <SwiperContainer
+          :initial-slide="1"
           :items="reviews"
-          :slides-per-view="2"
+          :slides-per-view="
+            $q.screen.xl ? 3 : $q.screen.lg ? 2 : $q.screen.md ? 1.4 : 1.1
+          "
           :space-between="20"
           auto-play
-          class="mt-10"
+          class="swiper-block"
           loop
           no-navigation
           style="width: 100%"
@@ -28,43 +31,46 @@
               };
             }"
           >
-            <div class="pt-10">
-              <div class="relative-position">
+            <div
+              :style="`height: ${$q.screen.lt.lg ? '320' : '400'}px`"
+              class="rounded-30 px-lg-15 px-sm-8 px-md-12 pt-10 pb-lg-15 pb-sm-10 bg-secondary1 relative-position column no-wrap justify-between"
+              style="overflow: hidden; cursor: default"
+            >
+              <div
+                :style="`height: ${$q.screen.lt.lg ? '76%' : '81%'}`"
+                class="column"
+              >
+                <q-img
+                  fit="cover"
+                  src="assets/reviewVector.svg"
+                  style="position: absolute; left: 0; bottom: 0; z-index: 0"
+                />
+                <CIcon
+                  color="accent1"
+                  name="fa-solid fa-quote-left"
+                  size="40px"
+                />
                 <div
-                  class="review-icon row items-center justify-center"
-                  style="position: absolute; top: -10px; right: 0px"
+                  class="mt-4 secondary col custom-scroll-bar"
+                  style="z-index: 1; overflow: auto"
                 >
-                  <q-icon
-                    name="fa-solid fa-quote-left"
-                    style="color: #c7a51f"
-                  />
+                  {{ item.text }}
                 </div>
-                <div
-                  class="bg-secondary2 review-block no-wrap rounded-30 px-13 py-13 column relative-position"
-                  style="overflow: hidden"
-                >
+              </div>
+              <div class="row no-wrap full-width gap-6 items-center">
+                <q-avatar size="64px">
                   <q-img
-                    fit="cover"
-                    src="assets/reviewVector.svg"
-                    style="position: absolute; left: 0; bottom: 0; z-index: 0"
+                    :src="`assets/companiesLogo/${item.from.image}`"
+                    height="64px"
+                    width="64px"
                   />
-                  <div class="row full-width gap-4 items-center no-wrap">
-                    <q-avatar size="64px">
-                      <q-img
-                        height="64px"
-                        src="assets/director.jpg"
-                        width="64px"
-                      />
-                    </q-avatar>
-                    <div class="column gap-2" style="z-index: 1">
-                      <div class="body">{{ item.from.name }}</div>
-                      <div class="caption text-secondary3">
-                        {{ item.from.position }}
-                      </div>
-                    </div>
+                </q-avatar>
+                <div class="column gap-1" style="z-index: 1">
+                  <div class="subtitle bold">
+                    {{ item.from.name }}
                   </div>
-                  <div class="mt-12 secondary" style="z-index: 1">
-                    {{ item.text }}
+                  <div class="text-secondary3 caption">
+                    {{ item.from.position }}
                   </div>
                 </div>
               </div>
@@ -77,38 +83,39 @@
 </template>
 <script lang="ts" setup>
 import SwiperContainer from 'components/containers/SwiperContainer.vue';
-import { ref } from 'vue';
+import CIcon from 'components/templates/buttons/CIcon.vue';
 
-const reviews = ref([
-  {
-    from: {
-      name: 'Kirin',
-      position: '',
-      image: '',
-    },
-    text: 'Работа с Loyalhub — это отличный опыт. Мы подключили сайт и приложение для доставки, самовывоза и бронирования, что сильно упростило управление процессами. Теперь все в одном месте, от заказов до взаимодействия с клиентами. Удобно, быстро и эффективно!',
-  },
+const reviews = [
   {
     from: {
       name: 'Рыба Агонь',
-      position: '',
-      image: '',
+      position: 'Моисеева Дарья, управляющий',
+      image: 'smRyba.png',
     },
     text: 'Мы довольны сотрудничеством с Loyalhub — сайт и приложение для доставки и самовывоза работают как часы. Кроме того, команда Loyalhub всегда на связи и готова оперативно помочь с решением любых вопросов или внедрить новую идею. Теперь процесс заказов стал более удобным, а клиенты чаще возвращаются. Сама панель администратора тоже становиться только лучше - появляются всё новые возможности для оперативной аналитики доставки и сбора данных! Интуитивно понятный и визуально приятный интерфейс позволяет легко обучить любого сотрудника работе в системе',
   },
   {
     from: {
+      name: 'Kirin',
+      position: 'Варанкина Анна, маркетолог',
+      image: 'smKirin.png',
+    },
+    text: 'Работа с Loyalhub — это отличный опыт. Мы подключили сайт и приложение для доставки, самовывоза и бронирования, что сильно упростило управление процессами. Теперь все в одном месте, от заказов до взаимодействия с клиентами. Удобно, быстро и эффективно!',
+  },
+
+  {
+    from: {
       name: 'Фьюжн Экспресс',
-      position: '',
-      image: '',
+      position: 'Романенко Татьяна,  менеджер',
+      image: 'smFusionLogo.png',
     },
     text: 'Мы начали работать с Loyalhub, чтобы внедрить мобильное приложение для самовывоза. Результаты не заставили себя ждать — процесс заказа стал значительно проще, а количество возвращающихся клиентов заметно увеличилось. Удобство использования приложения и поддержка от команды Loyalhub действительно делают работу более эффективной.',
   },
   {
     from: {
       name: 'Gurman de Gusto',
-      position: '',
-      image: '',
+      position: 'Фомина Алина, маркетолог',
+      image: 'smGurman.png',
     },
     text:
       'Loyalhub помог нам внедрить мобильное приложение с системой лояльности, меню и бронированием. Это решение значительно упростило управление клиентской базой и улучшило взаимодействие с нашими гостями. Количество постоянных клиентов выросло, а удобство бронирования стало большим плюсом для наших гостей.\n' +
@@ -117,12 +124,12 @@ const reviews = ref([
   {
     from: {
       name: 'Точка вкуса',
-      position: '',
-      image: '',
+      position: 'Безверхий Евгений , совладелец',
+      image: 'smTochkaLogo.png',
     },
     text: 'Сайт для доставки и самовывоза, который нам предложил Loyalhub, изменил наш бизнес в лучшую сторону. Процессы стали быстрее, а клиенты довольны удобством заказа. Особенно радует интеграция с CRM — мы теперь лучше понимаем потребности наших гостей и можем предлагать им актуальные предложения.',
   },
-]);
+];
 </script>
 
 <style lang="scss" scoped>
@@ -137,5 +144,12 @@ const reviews = ref([
 
 .review-block {
   transition: height 0.35s ease;
+}
+
+body.screen--md,
+body.screen--sm {
+  .swiper-block :deep(.swiper) {
+    overflow: visible !important;
+  }
 }
 </style>

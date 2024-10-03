@@ -63,6 +63,26 @@
   }
 }
 
+.custom-scroll-bar {
+  &::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 4px;
+    background-color: white;
+  }
+
+  &::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-thumb {
+    background-color: $primary;
+    border-radius: 10px;
+  }
+}
+
 .q-dialog .q-dialog__backdrop {
   background: rgba(0, 0, 0, 0.7) !important;
 }

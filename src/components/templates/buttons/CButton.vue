@@ -149,7 +149,7 @@ const { metrikaTick } = useMetrikaTick();
 
 const iconGap_ = computed(() => {
   if (props.iconNoGutters) return '0';
-  if (!props.iconGap) return '8';
+  if (!props.iconGap) return '3';
   if (Number.isNaN(Number(props.iconGap)))
     console.warn(
       'Icon gap prop expected number or numerical string, got string',
