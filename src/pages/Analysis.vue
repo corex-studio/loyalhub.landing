@@ -12,7 +12,12 @@
         :class="$q.screen.lt.lg ? 'column reverse c-container' : 'row'"
         class="mt-lg-20 mt-sm-15 main-block no-wrap full-width"
       >
-        <div :style="$q.screen.lt.lg ? '' : 'width: 68%'" class="column">
+        <div
+          :style="
+            $q.screen.lt.lg ? '' : $q.screen.lg ? 'width: 60%' : 'width: 68%'
+          "
+          class="column"
+        >
           <div class="column px-lg-25 pt-lg-16">
             <div
               :class="$q.screen.lt.lg ? 'rounded-12' : 'rounded-5'"
@@ -39,6 +44,7 @@
                       "
                       :style="`height: ${$q.screen.lt.lg ? '' : '65px'} `"
                       class="col-lg-5 py-sm-6 py-lg-0 col-sm-12 px-6 rounded-14 cursor-pointer items-center row"
+                      style="min-width: 220px"
                       @click="selectVariant(item)"
                     >
                       <div

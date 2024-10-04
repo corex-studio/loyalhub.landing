@@ -4,7 +4,7 @@
     :breakpoint="0"
     :width="$q.screen.width > 400 ? 400 : $q.screen.width"
     behavior="mobile"
-    class="column full-width pt-10 relative-position"
+    class="column no-wrap full-width pt-10 relative-position"
     overlay
     show-if-above
     side="right"
@@ -46,7 +46,7 @@
         />
       </div>
     </div>
-    <div class="mt-20 bg-primary col-grow bottom-block px-8 pt-16 text-white">
+    <div class="mt-20 bg-primary col-grow bottom-block px-8 py-16 text-white">
       <div class="row full-width">
         <div class="column col gap-15">
           <CButton
@@ -120,14 +120,27 @@ const tabs = [
       scrollHandler('why');
     },
   },
+
   {
-    title: 'Наши продукты',
+    title: 'Продукты',
     click: () => {
       scrollHandler('products');
     },
   },
   {
-    title: 'Этапы',
+    title: 'Интегарция с айко',
+    click: () => {
+      scrollHandler('integration');
+    },
+  },
+  {
+    title: 'Crm система',
+    click: () => {
+      scrollHandler('crm');
+    },
+  },
+  {
+    title: 'Этапы работы',
     click: () => {
       scrollHandler('steps');
     },
@@ -144,14 +157,12 @@ const tabs = [
       scrollHandler('reviews');
     },
   },
-
   {
     title: 'Тарифы',
     click: () => {
       scrollHandler('tariffs');
     },
   },
-
   {
     title: 'FAQ',
     click: () => {

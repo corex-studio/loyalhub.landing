@@ -5,8 +5,8 @@
     <WhyLoyalhub id="why" />
     <EcoSystem />
     <Products id="products" />
-    <Integration />
-    <CRM />
+    <Integration id="integration" />
+    <CRM id="crm" />
     <HowToLaunch id="steps" />
     <Examples id="examples" />
     <Reviews id="reviews" />

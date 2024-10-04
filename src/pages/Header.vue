@@ -9,47 +9,49 @@
         src="assets/loyalhubLogo.png"
       />
       <img v-else src="assets/loyalhubLogoSmall.svg" width="165px" />
-      <div
-        v-if="$q.screen.gt.md"
-        class="row items-center no-wrap gap-xl-16 gap-sm-10"
-      >
-        <CButton
-          label="Преимущества"
-          text-button
-          text-color="black"
-          @click="scrollHandler('why')"
-        />
-        <CButton
-          label="Наши продукты"
-          text-button
-          text-color="black"
-          @click="scrollHandler('products')"
-        />
-        <CButton
-          label="Кейсы"
-          text-button
-          text-color="black"
-          @click="scrollHandler('examples')"
-        />
-        <CButton
-          label="Отзывы"
-          text-button
-          text-color="reviews"
-          @click="scrollHandler('reviews')"
-        />
-      </div>
-      <div class="row items-center no-wrap gap-xl-10 gap-lg-6 gap-sm-4">
-        <div v-if="$q.screen.gt.lg" style="text-wrap: nowrap">
-          +7 900 351 90 50
-        </div>
+      <!--      <div-->
+      <!--        v-if="$q.screen.gt.md"-->
+      <!--        class="row items-center no-wrap gap-xl-16 gap-sm-10"-->
+      <!--      >-->
+      <!--        <CButton-->
+      <!--          label="Преимущества"-->
+      <!--          text-button-->
+      <!--          text-color="black"-->
+      <!--          @click="scrollHandler('why')"-->
+      <!--        />-->
+      <!--        <CButton-->
+      <!--          label="Наши продукты"-->
+      <!--          text-button-->
+      <!--          text-color="black"-->
+      <!--          @click="scrollHandler('products')"-->
+      <!--        />-->
+      <!--        <CButton-->
+      <!--          label="Кейсы"-->
+      <!--          text-button-->
+      <!--          text-color="black"-->
+      <!--          @click="scrollHandler('examples')"-->
+      <!--        />-->
+      <!--        <CButton-->
+      <!--          label="Отзывы"-->
+      <!--          text-button-->
+      <!--          text-color="reviews"-->
+      <!--          @click="scrollHandler('reviews')"-->
+      <!--        />-->
+      <!--      </div>-->
+      <div class="row items-center no-wrap gap-lg-6 gap-sm-4">
         <CIconButton
-          v-else
-          :size="$q.screen.gt.md ? '45px' : '40px'"
+          :color="$q.screen.lt.lg ? 'primary' : 'secondary1'"
+          :icon-color="$q.screen.lt.lg ? 'white' : 'black'"
+          :icon-size="$q.screen.lt.lg ? '16px' : '18px'"
+          :size="$q.screen.gt.md ? '44px' : '40px'"
           icon="fa-solid fa-phone"
           @click="openLink('tel:+79003519050')"
         />
         <CIconButton
-          :size="$q.screen.gt.md ? '45px' : '40px'"
+          :color="$q.screen.lt.lg ? 'primary' : 'secondary1'"
+          :icon-color="$q.screen.lt.lg ? 'white' : 'black'"
+          :icon-size="$q.screen.lt.lg ? '16px' : '18px'"
+          :size="$q.screen.gt.md ? '44px' : '40px'"
           icon="fa-solid fa-paper-plane"
           @click="openLink('https://t.me/loyalhub_news')"
         />
@@ -64,13 +66,28 @@
         <CButton
           v-if="$q.screen.gt.md"
           :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
-          :width="$q.screen.gt.lg ? '210px' : 'auto'"
+          :width="$q.screen.gt.lg ? '195px' : 'auto'"
           class="secondary"
           height="44px"
           label="Начать бесплатно"
           @click="store.requestModal = true"
         />
       </div>
+    </div>
+    <div
+      v-if="$q.screen.gt.md"
+      class="row full-width no-wrap mt-6 gap-12 pb-2"
+      style="overflow: auto"
+    >
+      <CButton
+        v-for="(el, index) in tabs"
+        :key="index"
+        :label="el.title"
+        class="secondary"
+        text-button
+        text-color="black"
+        @click="el.click()"
+      />
     </div>
   </div>
 </template>
@@ -83,6 +100,64 @@ import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 import CIconButton from 'components/templates/buttons/CIconButton.vue';
 
 const { setVerticalScrollPosition, getScrollTarget } = scroll;
+
+const tabs = [
+  {
+    title: 'Преимущества',
+    click: () => {
+      scrollHandler('why');
+    },
+  },
+
+  {
+    title: 'Продукты',
+    click: () => {
+      scrollHandler('products');
+    },
+  },
+  {
+    title: 'Интегарция с айко',
+    click: () => {
+      scrollHandler('integration');
+    },
+  },
+  {
+    title: 'Crm система',
+    click: () => {
+      scrollHandler('crm');
+    },
+  },
+  {
+    title: 'Этапы работы',
+    click: () => {
+      scrollHandler('steps');
+    },
+  },
+  {
+    title: 'Кейсы',
+    click: () => {
+      scrollHandler('examples');
+    },
+  },
+  {
+    title: 'Отзывы',
+    click: () => {
+      scrollHandler('reviews');
+    },
+  },
+  {
+    title: 'Тарифы',
+    click: () => {
+      scrollHandler('tariffs');
+    },
+  },
+  {
+    title: 'FAQ',
+    click: () => {
+      scrollHandler('faq');
+    },
+  },
+];
 
 const scrollHandler = (spot: string) => {
   const targetSpot = document.getElementById(spot);

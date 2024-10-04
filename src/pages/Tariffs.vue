@@ -20,6 +20,7 @@
         <div
           :class="$q.screen.lt.lg ? 'rounded-20' : 'rounded-30'"
           class="bg-secondary1 col px-lg-25 px-sm-8 py-lg-20 py-sm-12 column relative-position"
+          style="overflow: hidden"
         >
           <q-img
             src="assets/tariffLeftVector.svg"
@@ -70,7 +71,7 @@
         </div>
         <div
           :class="$q.screen.lt.lg ? 'rounded-20' : 'rounded-30'"
-          class="bg-primary col column justify-between relative-position px-lg-25 px-sm-8 py-lg-20 py-sm-12 text-white"
+          class="bg-primary col column gap-5 justify-between relative-position px-lg-25 px-sm-8 py-lg-20 py-sm-12 text-white"
         >
           <q-img
             v-if="$q.screen.gt.md"

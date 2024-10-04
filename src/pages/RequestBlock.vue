@@ -22,7 +22,7 @@
         />
         <div
           :class="{ 'text-center': $q.screen.lt.lg }"
-          :style="`max-width: ${$q.screen.lt.lg ? '' : '560px'}`"
+          :style="`max-width: ${$q.screen.lt.lg ? '' : $q.screen.lg ? '500px' : '560px'}`"
           class="column full-width relative-position"
           style="z-index: 2 !important"
         >

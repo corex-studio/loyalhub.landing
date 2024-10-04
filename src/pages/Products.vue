@@ -12,7 +12,7 @@
         :style="
           $q.screen.gt.md
             ? 'display: grid;\n' +
-              '          grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));\n' +
+              '          grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));\n' +
               '          align-content: start;\n' +
               '          grid-auto-rows: 1fr;\n' +
               '          gap: 20px;'

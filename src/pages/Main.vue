@@ -6,7 +6,7 @@
   >
     <Header />
     <div :class="{ 'c-container': $q.screen.gt.md }" class="column">
-      <div class="row full-width mt-lg-15 gap-lg-10 gap-sm-8 justify-center">
+      <div class="row full-width mt-lg-12 gap-lg-10 gap-sm-8 justify-center">
         <div
           ref="leftBlock"
           :class="$q.screen.gt.md ? 'col' : ' full-width c-container'"

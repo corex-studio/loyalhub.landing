@@ -22,9 +22,12 @@
             style="overflow: hidden"
           >
             <div
-              :class="{ 'bold ': $q.screen.gt.md }"
+              :class="[
+                { 'bold ': $q.screen.gt.md },
+                $q.screen.lg ? 'subtitle' : 'header3',
+              ]"
               :style="`top: ${$q.screen.lt.lg ? '20px' : '70px'};left: ${$q.screen.lt.lg ? '0' : undefined}`"
-              class="header3 px-lg-16 px-sm-10"
+              class="px-xl-16 px-sm-10"
               style="position: absolute; z-index: 2"
               v-html="$q.screen.lt.lg ? item.smTitle : item.title"
             ></div>
@@ -54,7 +57,7 @@
         </div>
         <div
           :class="$q.screen.lt.lg ? 'column' : 'row items-center'"
-          class="mt-10 full-width no-wrap bg-secondary1 justify-between gap-lg-10 gap-sm-8 rounded-24 px-lg-15 px-sm-10 py-lg-22 py-sm-18 relative-position"
+          class="mt-10 full-width bg-secondary1 justify-between gap-lg-10 gap-sm-8 rounded-24 px-xl-15 px-sm-10 py-lg-22 py-sm-18 relative-position"
           style="overflow: hidden"
         >
           <q-img
@@ -67,15 +70,21 @@
               height: 100%;
             "
           />
-          <div class="row items-center gap-20 col-9 no-wrap" style="z-index: 1">
+          <div
+            class="row items-center gap-xl-20 gap-sm-10 col-9 no-wrap"
+            style="z-index: 1"
+          >
             <div v-if="$q.screen.gt.md" class="row items-center no-wrap">
               <q-avatar
                 v-for="el in 5"
                 :key="el"
+                :size="$q.screen.lt.xl ? '78px' : '88px'"
                 :style="`margin-left: ${el === 1 ? '' : '-20px'}`"
-                size="88px"
               >
-                <q-img src="assets/director.jpg" width="88px" />
+                <q-img
+                  :width="$q.screen.lt.lg ? '78px' : '88px'"
+                  src="assets/director.jpg"
+                />
               </q-avatar>
             </div>
             <div class="subtitle">
@@ -86,7 +95,9 @@
           <CButton
             :height="$q.screen.lt.lg ? '40px' : '58px'"
             :icon-size="$q.screen.lt.lg ? '18px' : '22px'"
-            :width="$q.screen.lt.lg ? '220px' : '280px'"
+            :width="
+              $q.screen.lt.lg ? '220px' : $q.screen.lg ? '240px' : '280px'
+            "
             icon="fa-solid fa-paper-plane"
             icon-gap="7"
             label="Хочу знать больше"

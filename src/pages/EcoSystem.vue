@@ -45,7 +45,7 @@
             v-if="$q.screen.gt.md"
             fit="contain"
             src="assets/ecoRightPic.png"
-            style="position: absolute; right: 0%; top: 50px"
+            style="position: absolute; right: 0%; bottom: 10%; min-width: 620px"
             width="55%"
           />
           <q-img
