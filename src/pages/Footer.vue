@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary parent-block text-white">
+  <footer class="bg-primary parent-block text-white">
     <div class="c-container py-lg-33 pt-sm-15 pt-md-20 pb-sm-35 body">
       <div class="row full-width justify-between gap-10">
         <q-img
@@ -55,7 +55,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 </template>
 <script lang="ts" setup>
 import CButton from 'components/templates/buttons/CButton.vue';

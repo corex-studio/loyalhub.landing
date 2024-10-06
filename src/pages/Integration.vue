@@ -1,5 +1,5 @@
 <template>
-  <div class="default-parent-block">
+  <section class="default-parent-block">
     <div :class="{ 'c-container': $q.screen.gt.md }">
       <div
         :class="$q.screen.gt.md ? 'rounded-30' : 'rounded-20'"
@@ -69,6 +69,7 @@
             />
             <div :class="{ 'c-container': $q.screen.lt.lg }">
               <CButton
+                :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
                 :height="$q.screen.lt.lg ? '48px' : '52px'"
                 :label="
                   $q.screen.lt.lg ? 'Подобрать решение' : 'Начать интеграцию'
@@ -96,13 +97,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
 import CButton from 'components/templates/buttons/CButton.vue';
 import CIcon from 'components/templates/buttons/CIcon.vue';
 import { openLink, store } from 'src/models/store';
+import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 
 const advantages = [
   'Мгновенная отправка заказов на терминал',

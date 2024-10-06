@@ -1,5 +1,5 @@
 <template>
-  <div class="default-parent-block">
+  <section class="default-parent-block">
     <div class="c-container">
       <div class="text-center">
         <h2 v-if="$q.screen.gt.sm">
@@ -123,7 +123,7 @@
                   icon-color="black"
                   icon-size="22px"
                   size="48px"
-                  @click="pointsCount--"
+                  @click="changePointsCount(pointsCount - 1)"
                 />
                 <CInput
                   :model-value="pointsCount"
@@ -132,7 +132,7 @@
                   type="number"
                   width="120px"
                   @update:model-value="
-                    $event > 0 ? (pointsCount = $event) : void 0
+                    $event > 0 ? changePointsCount($event) : void 0
                   "
                 />
                 <CIconButton
@@ -141,7 +141,7 @@
                   icon-color="black"
                   icon-size="22px"
                   size="48px"
-                  @click="pointsCount++"
+                  @click="changePointsCount(pointsCount + 1)"
                 />
               </div>
             </div>
@@ -151,6 +151,7 @@
               Итого: {{ totalPrice }} ₽
             </h4>
             <CButton
+              :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
               :height="$q.screen.lt.lg ? '48px' : '56px'"
               color="accent1"
               label="Оставить заявку"
@@ -162,7 +163,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
@@ -171,6 +172,9 @@ import { computed, ref } from 'vue';
 import CIconButton from 'components/templates/buttons/CIconButton.vue';
 import CButton from 'components/templates/buttons/CButton.vue';
 import { store } from 'src/models/store';
+import { METRIKA_GOAL_EVENT, useMetrikaTick } from 'boot/metrika';
+
+const { metrikaTick } = useMetrikaTick();
 
 const pointsCount = ref(1);
 
@@ -196,6 +200,13 @@ const features = [
   'Описание тарифа  единый',
   'Описание тарифа  единый',
 ];
+
+const changePointsCount = (newValue: number) => {
+  pointsCount.value = newValue;
+  metrikaTick({
+    goalEvent: METRIKA_GOAL_EVENT.TARIFF_COMPUTED,
+  });
+};
 </script>
 
 <style lang="scss" scoped>

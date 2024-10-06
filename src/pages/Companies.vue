@@ -1,5 +1,5 @@
 <template>
-  <div class="default-parent-block" style="overflow-x: hidden">
+  <section class="default-parent-block" style="overflow-x: hidden">
     <div class="c-container">
       <h4 class="text-center">
         Более <span class="bold text-accent2"> 150 заведений </span>выбрали
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>

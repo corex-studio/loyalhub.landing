@@ -223,7 +223,6 @@ const _disabled = computed(() => {
 
 const clickHandler = (e: Event) => {
   if (props.loading && props.iconLoading) return;
-
   metrikaTick({
     goalEvent: props.goalEvent as METRIKA_GOAL_EVENT,
   });

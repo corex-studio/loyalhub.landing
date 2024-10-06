@@ -1,5 +1,5 @@
 <template>
-  <div class="c-container">
+  <header class="c-container">
     <div
       class="header-block row no-wrap gap-5 items-center full-width justify-between"
     >
@@ -46,7 +46,7 @@
         />
       </div>
     </div>
-    <div
+    <nav
       v-if="$q.screen.gt.md"
       class="row full-width no-wrap mt-6 gap-12 pb-2"
       style="overflow: auto"
@@ -60,8 +60,8 @@
         text-color="black"
         @click="el.click()"
       />
-    </div>
-  </div>
+    </nav>
+  </header>
 </template>
 <script lang="ts" setup>
 import CButton from 'src/components/templates/buttons/CButton.vue';

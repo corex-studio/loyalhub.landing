@@ -5,7 +5,7 @@
     style="overflow: hidden"
   >
     <Header />
-    <div :class="{ 'c-container': $q.screen.gt.md }" class="column">
+    <section :class="{ 'c-container': $q.screen.gt.md }" class="column">
       <div class="row full-width mt-lg-12 gap-lg-10 gap-sm-8 justify-center">
         <div
           ref="leftBlock"
@@ -59,6 +59,7 @@
               class="row full-width gap-xl-10 gap-lg-8 gap-sm-6 mt-14"
             >
               <CButton
+                :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
                 class="col secondary"
                 color="accent1"
                 height="48px"
@@ -67,6 +68,7 @@
                 @click="store.requestModal = true"
               />
               <CButton
+                :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
                 class="col secondary"
                 height="48px"
                 label="Подобрать решение"
@@ -148,7 +150,7 @@
           </SwiperContainer>
         </div>
       </div>
-    </div>
+    </section>
     <div
       v-if="$q.screen.lt.lg"
       class="c-container"
@@ -174,6 +176,7 @@ import SwiperContainer from 'components/containers/SwiperContainer.vue';
 import { computed, ref } from 'vue';
 import { useElementSize } from '@vueuse/core';
 import { openLink, store } from 'src/models/store';
+import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 
 const featuresSmSpot = ref<HTMLDivElement | null>(null);
 

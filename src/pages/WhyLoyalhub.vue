@@ -1,5 +1,5 @@
 <template>
-  <div class="c-container default-parent-block">
+  <section class="c-container default-parent-block">
     <div class="column full-width no-wrap items-center pb-5">
       <h2 class="bold text-center">Почему выбирают Loyalhub?</h2>
       <div
@@ -91,6 +91,7 @@
         </div>
       </div>
       <CButton
+        :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
         class="mt-15 underlined"
         icon-right="fa-solid fa-arrow-up-right"
         icon-size="22px"
@@ -99,7 +100,7 @@
         @click="store.requestModal = true"
       />
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
@@ -107,6 +108,7 @@ import CIcon from 'src/components/templates/buttons/CIcon.vue';
 import { ref } from 'vue';
 import CButton from 'components/templates/buttons/CButton.vue';
 import { store } from 'src/models/store';
+import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 
 type Reason = {
   title: string;

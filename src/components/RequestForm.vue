@@ -114,16 +114,16 @@ const getEmptyData = () => {
   return {
     phone: null,
     name: null,
-    description: null,
-    email: null,
+    // description: null,
+    // email: null,
   };
 };
 
 const data = ref<{
   phone: string | null;
   name: string | null;
-  description: string | null;
-  email: string | null;
+  // description: string | null;
+  // email: string | null;
 }>(getEmptyData());
 
 const isActionAvailable = computed(() => {
@@ -142,8 +142,8 @@ const send = async () => {
   const success = await sendRequest(
     data.value.phone,
     data.value.name,
-    data.value.description,
-    data.value.email,
+    // data.value.description,
+    // data.value.email,
   );
   if (success) {
     metrikaTick({ goalEvent: METRIKA_GOAL_EVENT.SUBMIT_REQUEST });

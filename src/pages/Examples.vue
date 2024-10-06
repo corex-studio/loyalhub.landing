@@ -1,5 +1,5 @@
 <template>
-  <div class="default-parent-block">
+  <section class="default-parent-block">
     <div class="c-container">
       <div class="column full-width items-center">
         <h2 class="bold text-center" style="max-width: 730px">
@@ -125,7 +125,7 @@
         </template>
       </SwiperContainer>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>

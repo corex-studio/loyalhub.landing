@@ -1,5 +1,5 @@
 <template>
-  <div class="default-parent-block">
+  <section class="default-parent-block">
     <div class="c-container">
       <h2 v-if="$q.screen.lt.lg" class="row full-width justify-center bold">
         Продукты
@@ -59,6 +59,7 @@
                 {{ el.text }}
               </div>
               <CButton
+                :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
                 :height="$q.screen.lt.lg ? '40px' : '52px'"
                 class="mt-lg-24 mt-sm-9"
                 label="Подключить сейчас"
@@ -114,13 +115,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
 import CButton from 'components/templates/buttons/CButton.vue';
 import { store } from 'src/models/store';
+import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 
 const products = ref([
   {

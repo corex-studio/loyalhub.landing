@@ -1,5 +1,5 @@
 <template>
-  <div class="default-parent-block">
+  <section class="default-parent-block">
     <div class="c-container">
       <div class="column full-width items-center">
         <div
@@ -107,7 +107,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>

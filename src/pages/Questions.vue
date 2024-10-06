@@ -1,5 +1,5 @@
 <template>
-  <div class="default-parent-block">
+  <section class="default-parent-block">
     <div class="c-container column items-center">
       <div
         class="secondary text-primary bg-secondary1 rounded-5 py-lg-2 py-sm-5 px-lg-5 px-sm-8"
@@ -54,6 +54,7 @@
             </div>
           </div>
           <CButton
+            :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
             :height="$q.screen.lt.lg ? '40px' : '58px'"
             :style="$q.screen.lt.lg ? 'margin-top: 12px' : 'margin-top: 30%'"
             :width="$q.screen.lt.lg ? '160px' : '235px'"
@@ -94,13 +95,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
 import CButton from 'components/templates/buttons/CButton.vue';
 import { ref } from 'vue';
 import { store } from 'src/models/store';
+import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 
 const questions = ref([
   {

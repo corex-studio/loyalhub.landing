@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-lg-15" style="overflow: hidden">
+  <section class="mt-lg-15" style="overflow: hidden">
     <div class="parent-block relative-position">
       <q-img
         v-if="$q.screen.gt.md"
@@ -35,6 +35,7 @@
               аналитика – всего за несколько дней и бесплатно на старте
             </div>
             <CButton
+              :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
               :height="$q.screen.lt.lg ? '48px' : '58px'"
               :width="$q.screen.lt.lg ? '100%' : '235px'"
               class="mt-lg-17 mt-sm-10"
@@ -62,12 +63,13 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
 import CButton from 'components/templates/buttons/CButton.vue';
 import { store } from 'src/models/store';
+import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 </script>
 
 <style lang="scss" scoped>

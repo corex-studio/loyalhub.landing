@@ -1,5 +1,5 @@
 <template>
-  <div class="parent-block">
+  <section class="parent-block">
     <div class="c-container">
       <div
         class="main-block relative-position rounded-30 px-lg-25 px-sm-6 py-lg-20 py-sm-15 text-white"
@@ -23,6 +23,7 @@
           "
         />
         <div
+          v-if="!completed"
           :class="{ 'text-center': $q.screen.lt.lg }"
           :style="`max-width: ${$q.screen.lt.lg ? '' : $q.screen.lg ? '500px' : '560px'}`"
           class="column full-width relative-position"
@@ -68,9 +69,39 @@
             </div>
           </div>
         </div>
+        <div
+          v-else
+          :class="{ 'text-center': $q.screen.lt.lg }"
+          :style="`max-width: ${$q.screen.lt.lg ? '' : $q.screen.lg ? '500px' : '560px'}; min-height: ${$q.screen.lt.lg ? '' : '476px'} `"
+          class="column text-black4 items-center justify-center"
+          style="z-index: 2 !important"
+        >
+          <h3 class="bold text-center">Спасибо за вашу заявку!</h3>
+          <div class="text-center subtitle mt-15" style="z-index: 2">
+            Наши менеджеры свяжутся с вами в ближайшее время для уточнения
+            деталей.
+          </div>
+          <q-separator
+            class="my-10 full-width"
+            color="secondary3"
+          ></q-separator>
+          <div
+            :style="$q.screen.sm ? '' : 'width: 80%'"
+            class="text-center body"
+          >
+            Следите за нашими новостями в
+          </div>
+          <div
+            class="subtitle mt-3 text-accent2 cursor-pointer"
+            style="text-decoration: underline; z-index: 2"
+            @click="goToTelegram"
+          >
+            Telegram
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
@@ -83,6 +114,8 @@ import { METRIKA_GOAL_EVENT, useMetrikaTick } from 'boot/metrika';
 const loading = ref(false);
 
 const { metrikaTick } = useMetrikaTick();
+
+const completed = ref(false);
 
 const getEmptyData = () => {
   return {
@@ -111,8 +144,14 @@ const send = async () => {
   const success = await sendRequest(data.value.phone, data.value.name);
   if (success) {
     metrikaTick({ goalEvent: METRIKA_GOAL_EVENT.SUBMIT_REQUEST });
+    completed.value = true;
   }
   loading.value = false;
+};
+
+const goToTelegram = () => {
+  metrikaTick({ goalEvent: METRIKA_GOAL_EVENT.TELEGRAM_AFTER_SUBMIT_REQUEST });
+  window.open('https://t.me/loyalhub_news', '_self');
 };
 </script>
 

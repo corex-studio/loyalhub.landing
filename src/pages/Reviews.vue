@@ -1,5 +1,5 @@
 <template>
-  <div class="default-parent-block">
+  <section class="default-parent-block">
     <div class="c-container">
       <h2 class="bold text-center">Отзывы</h2>
       <div class="full-width mt-lg-20 mt-sm-15">
@@ -80,7 +80,7 @@
         </SwiperContainer>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script lang="ts" setup>
 import SwiperContainer from 'components/containers/SwiperContainer.vue';

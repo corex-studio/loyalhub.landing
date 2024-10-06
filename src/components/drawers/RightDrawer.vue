@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="mt-20 bg-primary col-grow bottom-block px-8 py-16 text-white">
-      <div class="row full-width">
+      <nav class="row full-width">
         <div class="column col gap-15">
           <CButton
             v-for="(el, index) in tabs.filter((e, i) => i % 2 == 0)"
@@ -76,7 +76,7 @@
             </div>
           </CButton>
         </div>
-      </div>
+      </nav>
       <div class="mt-20">
         <div class="secondary">Связаться с нами</div>
         <CButton

@@ -1,5 +1,5 @@
 <template>
-  <div class="default-parent-block">
+  <section class="default-parent-block">
     <div :class="{ 'c-container': $q.screen.gt.md }" class="row justify-center">
       <div class="row full-width justify-center">
         <h2 class="bold text-center" style="max-width: 880px">
@@ -85,7 +85,7 @@
         <Manager />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
