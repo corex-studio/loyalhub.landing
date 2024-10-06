@@ -1,9 +1,8 @@
 <template>
   <div v-if="!completed" class="column full-width text-black4 items-center">
     <div class="column items-center">
-      <div :class="model ? 'header1' : 'header3'" class="bold text-center">
-        Оставьте заявку
-      </div>
+      <h3 v-if="model" class="bold text-center">Оставьте заявку</h3>
+      <h5 v-else class="bold text-center">Оставьте заявку</h5>
       <div
         :class="model ? 'mt-10 body' : 'mt-3 secondary'"
         :style="$q.screen.sm ? '' : 'width: 75%'"
@@ -65,7 +64,7 @@
     </div>
   </div>
   <div v-else class="column full-width text-black4 items-center">
-    <div class="header2 bold text-center">Спасибо за вашу заявку!</div>
+    <h4 class="bold text-center">Спасибо за вашу заявку!</h4>
     <div class="text-center body mt-10">
       Наши менеджеры свяжутся с вами в ближайшее время для уточнения деталей.
     </div>

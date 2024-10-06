@@ -9,6 +9,7 @@
         <div class="full-height">
           <q-img
             v-if="$q.screen.gt.md"
+            alt="vector"
             src="assets/integrationVector.svg"
             style="position: absolute; left: 0; bottom: 0; z-index: 0"
           />
@@ -19,7 +20,7 @@
           >
             <div :class="{ 'c-container': $q.screen.lt.lg }" style="z-index: 2">
               <div class="row no-wrap items-center text-accent2">
-                <q-img src="assets/iikoLogo.png" width="80px" />
+                <q-img alt="iiko logo" src="assets/iikoLogo.png" width="80px" />
                 <CButton
                   class="secondary"
                   icon-right="fa-solid fa-arrow-up-right"
@@ -30,9 +31,9 @@
                   @click="openLink('https://store.iiko.ru/loyalhub')"
                 />
               </div>
-              <div class="mega-header2 bold mt-lg-5 mt-sm-4">
+              <h2 class="bold mt-lg-5 mt-sm-4">
                 Интеграция <span class="text-accent2 bold">с iiko</span>
-              </div>
+              </h2>
               <div
                 :class="$q.screen.lt.lg ? 'subtitle' : 'body'"
                 class="mt-lg-8 mt-sm-9"
@@ -61,6 +62,7 @@
             </div>
             <q-img
               v-if="$q.screen.lt.lg"
+              alt="picture"
               class="mt-10"
               src="assets/smIntegrationMoc.png"
               width="420px"
@@ -79,6 +81,7 @@
           </div>
           <q-img
             v-if="$q.screen.gt.md"
+            alt="picture"
             src="assets/integrationMoc.png"
             style="
               z-index: 1;

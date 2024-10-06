@@ -1,7 +1,7 @@
 <template>
   <div class="c-container default-parent-block">
     <div class="column full-width no-wrap items-center pb-5">
-      <div class="mega-header2 bold text-center">Почему выбирают Loyalhub?</div>
+      <h2 class="bold text-center">Почему выбирают Loyalhub?</h2>
       <div
         class="row full-width justify-center gap-lg-8 gap-sm-4 mt-lg-20 mt-sm-10"
       >
@@ -42,12 +42,14 @@
       >
         <q-img
           v-if="selectedReason.block.color === 'accent1'"
+          alt="vector"
           height="100%"
           src="assets/whyVectorYellow.svg"
           style="position: absolute; bottom: 0; right: 0; z-index: 0"
         />
         <q-img
           v-else
+          alt="vector"
           height="100%"
           src="assets/whyVector.svg"
           style="position: absolute; bottom: 0; right: 0; z-index: 0"
@@ -56,9 +58,9 @@
           :style="`width: ${$q.screen.lt.lg ? '100%' : '55%'}`"
           class="column gap-lg-10 gap-sm-4 pl-lg-25 pr-lg-0 px-sm-8 pt-lg-20 pt-sm-10"
         >
-          <div class="header1 bold" style="z-index: 1">
+          <h3 class="bold" style="z-index: 1">
             {{ selectedReason.block.title }}
-          </div>
+          </h3>
           <div style="z-index: 1">
             {{ selectedReason.block.text }}
           </div>
@@ -81,6 +83,7 @@
             "
             :src="`assets/${$q.screen.lt.lg ? 'sm' + selectedReason.block.image[0].toLocaleUpperCase() + selectedReason.block.image.slice(1) : selectedReason.block.image}`"
             :style="`min-height: ${$q.screen.lt.lg ? '230' : '300'}px; max-height: ${$q.screen.lt.lg ? '290px' : '320px'} `"
+            alt="picture"
             fit="contain"
             height="100%"
             width="100%"

@@ -1,11 +1,11 @@
 <template>
   <div class="default-parent-block" style="overflow-x: hidden">
     <div class="c-container">
-      <div class="text-center header2">
+      <h4 class="text-center">
         Более <span class="bold text-accent2"> 150 заведений </span>выбрали
         Loyalhub для управление клиентским опытом – <br />
         от онлайн заказов до лояльности
-      </div>
+      </h4>
       <div class="mt-lg-25 mt-sm-15">
         <div
           class="row full-width gap-md-10 gap-sm-6 text-black2 slide-block-top no-wrap"
@@ -16,6 +16,7 @@
             class="subtitle-text"
           >
             <q-img
+              :alt="`company ${index + 1}`"
               :src="`assets/companiesLogo/${$q.screen.lt.md ? 'sm' + el[0].toLocaleUpperCase() + el.slice(1) : el}.png`"
               :width="
                 $q.screen.lt.lg ? ($q.screen.md ? '300px' : '150px') : '325px'

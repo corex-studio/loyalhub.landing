@@ -1,12 +1,9 @@
 <template>
   <div class="default-parent-block">
     <div class="c-container">
-      <div
-        v-if="$q.screen.lt.lg"
-        class="row full-width justify-center mega-header2 bold"
-      >
+      <h2 v-if="$q.screen.lt.lg" class="row full-width justify-center bold">
         Продукты
-      </div>
+      </h2>
       <div
         :class="{ 'column full-width gap-6': $q.screen.lt.lg }"
         :style="
@@ -29,9 +26,9 @@
           style="overflow: hidden"
         >
           <div class="column full-width items-center">
-            <div class="header1 bold text-center" style="z-index: 1">
+            <h3 class="bold text-center" style="z-index: 1">
               {{ el.title }}
-            </div>
+            </h3>
             <template v-if="el.tabs">
               <div
                 class="row gap-lg-6 gap-sm-4 full-width justify-center mt-lg-9 mt-sm-6"
@@ -73,16 +70,19 @@
           </div>
           <q-img
             v-if="$q.screen.gt.md || el.tabs"
+            alt="vector"
             src="assets/productVector.svg"
             style="position: absolute; bottom: 0; z-index: 0"
           />
           <q-img
             v-else
+            alt="vector"
             src="assets/smPriceProductVector.svg"
             style="position: absolute; bottom: 0; z-index: 0"
           />
           <q-img
             v-if="$q.screen.gt.md || el.tabs"
+            :alt="`product ${index}`"
             :src="`assets/${el.image}`"
             fit="contain"
             style="margin-bottom: -30px"
@@ -90,6 +90,7 @@
           <template v-else>
             <q-img
               :src="`assets/smPriceProductLeft.png`"
+              alt="arrow"
               style="
                 position: absolute;
                 top: -10px;
@@ -100,6 +101,7 @@
             />
             <q-img
               :src="`assets/smPriceProductRight.png`"
+              alt="flame"
               style="
                 position: absolute;
                 bottom: 10px;

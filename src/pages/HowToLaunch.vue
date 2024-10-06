@@ -8,9 +8,7 @@
         >
           Внедрение за 14 дней
         </div>
-        <div class="mega-header2 bold mt-sm-4 mt-lg-0">
-          Как происходит запуск?
-        </div>
+        <h2 class="bold mt-sm-4 mt-lg-0">Как происходит запуск?</h2>
         <div
           :class="$q.screen.lt.lg ? 'column' : 'row'"
           class="mt-lg-20 mt-sm-15 gap-lg-10 gap-sm-6 full-width"
@@ -21,17 +19,18 @@
             class="item-block justify-center col row no-wrap relative-position"
             style="overflow: hidden"
           >
-            <div
+            <h5
               :class="[
                 { 'bold ': $q.screen.gt.md },
-                $q.screen.lg ? 'subtitle' : 'header3',
+                $q.screen.lg ? 'subtitle' : '',
               ]"
               :style="`top: ${$q.screen.lt.lg ? '20px' : '70px'};left: ${$q.screen.lt.lg ? '0' : undefined}`"
               class="px-xl-16 px-sm-10"
               style="position: absolute; z-index: 2"
               v-html="$q.screen.lt.lg ? item.smTitle : item.title"
-            ></div>
+            ></h5>
             <q-img
+              :alt="`step ${index}`"
               :src="`assets/${$q.screen.lt.lg ? 'sm' + item.image[0].toLocaleUpperCase() + item.image.slice(1) : item.image}`"
               :style="`right: ${$q.screen.lt.lg ? '8%' : ''}`"
               :width="$q.screen.lt.lg ? '170px' : '80%'"
@@ -43,12 +42,12 @@
                 <div
                   class="row full-width pl-lg-3 pl-sm-4 rounded-24 bg-white full-height"
                 >
-                  <div
-                    class="bg-accent1 py-lg-3 py-sm-4 rounded-100 full-width row justify-center header3"
+                  <h5
+                    class="bg-accent1 py-lg-3 py-sm-4 rounded-100 full-width row justify-center"
                     style="height: fit-content"
                   >
                     0{{ index + 1 }}
-                  </div>
+                  </h5>
                 </div>
               </div>
               <div class="right-bottom-part col-grow bg-secondary1"></div>
@@ -62,6 +61,7 @@
         >
           <q-img
             :src="`assets/${$q.screen.lt.lg ? 'smHowToVector.svg' : 'howToVector.svg'}`"
+            alt="vector"
             style="
               position: absolute;
               z-index: 0;
@@ -82,6 +82,7 @@
                 :style="`margin-left: ${el === 1 ? '' : '-20px'}`"
               >
                 <q-img
+                  :alt="`avatar ${el}`"
                   :width="$q.screen.lt.lg ? '78px' : '88px'"
                   src="assets/director.jpg"
                 />

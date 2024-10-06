@@ -6,6 +6,7 @@
     <div class="row gap-10 items-center no-wrap">
       <q-avatar size="94px">
         <q-img
+          alt="manager photo"
           height="94px"
           src="assets/elena.png"
           style="scale: 1.3"
@@ -36,6 +37,7 @@
           <div class="row gap-10 items-center no-wrap">
             <q-avatar size="50px">
               <q-img
+                alt="manager photo"
                 height="50px"
                 src="assets/elena.png"
                 style="scale: 1.4"
@@ -43,7 +45,7 @@
               />
             </q-avatar>
             <div class="column gap-2">
-              <div class="header2 bold">Елена</div>
+              <h4 class="bold">Елена</h4>
               <div class="row items-center gap-4 no-wrap">
                 <div class="secondary text-primary">Менеджер Loyalhub</div>
                 <div class="online-icon-block row items-center justify-center">

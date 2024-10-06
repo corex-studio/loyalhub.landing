@@ -4,11 +4,11 @@
       <div class="row full-width justify-between gap-10">
         <q-img
           :width="$q.screen.lt.lg ? '155px' : '190px'"
+          alt="loyalhub logo"
           fit="contain"
           height="fit-content"
           src="assets/loyalhubLogo.svg"
         />
-
         <div class="column col-sm-12 col-md-shrink gap-2">
           <div>ООО "Корекс" © 2024 Corex</div>
           <template v-if="$q.screen.gt.md">

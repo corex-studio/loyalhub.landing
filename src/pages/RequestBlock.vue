@@ -5,12 +5,14 @@
         class="main-block relative-position rounded-30 px-lg-25 px-sm-6 py-lg-20 py-sm-15 text-white"
       >
         <q-img
+          alt="vector"
           src="assets/requestVector.svg"
           style="position: absolute; bottom: 0"
         />
         <q-img
           v-if="$q.screen.gt.md"
           :width="$q.screen.lt.xl ? '50%' : '100%'"
+          alt="mockup"
           src="assets/requestMoc.png"
           style="
             position: absolute;
@@ -26,10 +28,10 @@
           class="column full-width relative-position"
           style="z-index: 2 !important"
         >
-          <div class="mega-header2 bold">
+          <h2 class="bold">
             Давайте покажем, <br />
             как все работает
-          </div>
+          </h2>
           <div class="mt-lg-14 mt-sm-6 body">
             Оставьте контакты - мы напишем вам в течение 2 дней, чтобы обсудить
             проект

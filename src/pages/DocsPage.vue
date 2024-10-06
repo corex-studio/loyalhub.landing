@@ -2,15 +2,16 @@
   <div class="pb-30" style="overflow-x: hidden">
     <div class="c-container row items-center" style="height: 100vh">
       <q-img
+        alt="vector"
         src="assets/whyVectorYellow.svg"
         style="position: absolute; top: 0; left: 0; height: 100%; opacity: 0.5"
       />
       <div>
         <div class="row full-width">
-          <div class="mega-header1 col-7" style="z-index: 1">
+          <h1 class="col-7" style="z-index: 1">
             Программное обеспечение
             <span class="text-accent2"> «Loyalhub».</span>
-          </div>
+          </h1>
         </div>
         <div class="mt-20 subtitle relative-position" style="z-index: 10">
           Программное обеспечение "Loyalhub" позволяет быстро запускать
@@ -22,8 +23,8 @@
       </div>
     </div>
     <div class="c-container">
-      <div class="mega-header1 mt-35">Функциональные характеристики ПО:</div>
-      <div class="mt-lg-15 mt-sm-10 header1">Цели и назначения:</div>
+      <h1 class="mt-35">Функциональные характеристики ПО:</h1>
+      <h3 class="mt-lg-15 mt-sm-10">Цели и назначения:</h3>
       <div class="mt-lg-10 mt-sm-8 subtitle">
         «Loyalhub» – это программное обеспечение для совершенствования опыта
         между гостем и рестораном.
@@ -35,7 +36,7 @@
         управление полученными в результате работы данными, обеспечение обратной
         связи и автоматизация части бизнес-процессов с помощью цифровых решений.
       </div>
-      <div class="header1 mt-lg-20 mt-sm-16">Ключевые функции:</div>
+      <h3 class="mt-lg-20 mt-sm-16">Ключевые функции:</h3>
       <ul
         class="pl-lg-20 pl-sm-10 subtitle column gap-lg-5 gap-sm-4 mt-lg-8 mt-sm-6"
       >
@@ -52,7 +53,7 @@
       </ul>
       <div class="row full-width gap-lg-25 gap-sm-15 mt-lg-30 mt-sm-20">
         <div class="col-md col-sm-12 column no-wrap gap-lg-15 gap-sm-10">
-          <div class="header1">Ссылки для скачивания файлов:</div>
+          <h3>Ссылки для скачивания файлов:</h3>
           <div
             class="bordered-block pa-lg-15 pa-sm-6 subtitle column gap-lg-10 gap-sm-6"
           >
@@ -77,7 +78,7 @@
           </div>
         </div>
         <div class="col-md col-sm-12 column gap-lg-15 gap-sm-10">
-          <div class="header1">Стоимость ПО:</div>
+          <h3>Стоимость ПО:</h3>
           <div
             class="bg-primary rounded-20 text-white pa-lg-15 pa-sm-6 subtitle column no-wrap gap-lg-10 gap-sm-6"
           >
@@ -129,7 +130,7 @@
         </div>
       </div>
       <div class="mt-lg-30 mt-sm-20 column">
-        <div class="header2">Служба технической поддержки:</div>
+        <h4>Служба технической поддержки:</h4>
         <div class="subtitle mt-10">
           Телефон:<a href="tel:+79003519050"> +7 (900) 351-90-50</a>
         </div>

@@ -6,7 +6,7 @@
       >
         FAQ
       </div>
-      <div class="mega-header2 bold mt-sm-4 mt-lg-0">Остались вопросы?</div>
+      <h2 class="bold mt-sm-4 mt-lg-0">Остались вопросы?</h2>
       <div
         :class="$q.screen.lt.lg ? 'column' : 'row'"
         class="no-wrap full-width gap-lg-10 gap-sm-6 mt-lg-20 mt-sm-15"
@@ -18,21 +18,25 @@
         >
           <template v-if="$q.screen.gt.md">
             <q-img
+              alt="vector"
               src="assets/questionsVector.svg"
               style="position: absolute; left: 0; bottom: 0; z-index: 0"
             />
             <q-img
+              alt="mockup"
               src="assets/questionsMoc.png"
               style="position: absolute; right: 0; bottom: 0; max-width: 330px"
             />
           </template>
           <template v-else>
             <q-img
+              alt="vector"
               height="100%"
               src="assets/smQuestionsVector.svg"
               style="position: absolute; left: 0; top: 0; z-index: 0"
             />
             <q-img
+              alt="mockup"
               src="assets/smQuestionsMoc.png"
               style="position: absolute; right: 0; bottom: 0"
               width="180px"
@@ -40,9 +44,7 @@
           </template>
 
           <div class="column full-width" style="z-index: 1">
-            <div class="header1 bold">
-              Loyalhub поможет в решении ваших вопросов
-            </div>
+            <h3 class="bold">Loyalhub поможет в решении ваших вопросов</h3>
             <div
               :class="$q.screen.lt.lg ? 'body' : 'subtitle'"
               class="mt-lg-20 mt-sm-4"

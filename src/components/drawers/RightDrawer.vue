@@ -28,9 +28,7 @@
           src="assets/drawerVector.svg"
           style="position: absolute; left: 0; top: 0; z-index: 0"
         />
-        <div class="header1 bold" style="z-index: 1">
-          Готовы обсудить проект?
-        </div>
+        <h3 class="bold" style="z-index: 1">Готовы обсудить проект?</h3>
         <div class="mt-6 body" style="z-index: 1">
           Наши менеджеры свяжутся с вами в ближайшее время
         </div>
@@ -87,7 +85,7 @@
           text-color="white"
           @click="openLink('tel:+79003519050')"
         >
-          <div class="header2">+7 900 351 90 50</div>
+          <h4>+7 900 351 90 50</h4>
         </CButton>
         <CIconButton
           class="mt-13"

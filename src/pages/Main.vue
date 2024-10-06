@@ -24,12 +24,13 @@
           >
             <q-img
               v-if="$q.screen.gt.md"
+              alt="vector"
               src="assets/mainVector.svg"
               style="position: absolute; bottom: 0; left: 0"
             />
             <div class="column" style="z-index: 1">
               <div class="row no-wrap items-center text-accent2">
-                <q-img src="assets/iikoLogo.png" width="80px" />
+                <q-img alt="iiko logo" src="assets/iikoLogo.png" width="80px" />
                 <CButton
                   class="secondary"
                   icon-right="fa-solid fa-arrow-up-right"
@@ -40,10 +41,10 @@
                   @click="openLink('https://store.iiko.ru/loyalhub')"
                 />
               </div>
-              <div class="mt-md-8 mt-sm-4 mega-header1 bold">
+              <h1 class="mt-md-8 mt-sm-4 bold">
                 Ваши гости,<br />
                 Ваш бренд
-              </div>
+              </h1>
               <div
                 :class="{ 'text-secondary3': $q.screen.gt.md }"
                 class="body mt-7"
@@ -87,12 +88,10 @@
                 :class="{ 'text-center items-center': $q.screen.lt.lg }"
                 class="col px-xl-10 px-lg-8 px-sm-6 py-xl-8 py-lg-7 py-sm-10 rounded-20 bg-secondary1 column gap-2"
               >
-                <div
-                  :class="$q.screen.lt.lg ? 'mega-header1' : 'header2 '"
-                  class="bold"
-                >
+                <h1 v-if="$q.screen.lt.lg" class="bold">
                   {{ item.title }}
-                </div>
+                </h1>
+                <h3 v-else class="bold">{{ item.title }}</h3>
                 <div
                   :class="$q.screen.lt.lg ? 'text-center body' : 'caption'"
                   :style="$q.screen.lt.lg ? 'max-width: 240px' : ''"
@@ -125,14 +124,14 @@
                 class="column items-center full-height"
                 style="overflow: hidden; z-index: 2 !important"
               >
-                <div
+                <h3
                   v-if="$q.screen.gt.md"
                   :class="`text-${item.textColor}`"
-                  class="header1 bold"
+                  class="bold"
                   style="position: absolute; top: 5%; z-index: 1"
                 >
                   {{ item.title }}
-                </div>
+                </h3>
                 <q-img
                   :class="{ 'mt-14': $q.screen.lt.lg }"
                   :position="
@@ -141,6 +140,7 @@
                   :src="`assets/${$q.screen.lt.lg ? item.smImage : item.image}`"
                   :style="`height: ${$q.screen.lt.lg ? '' : height.value + 'px'}; max-width: ${$q.screen.lt.lg ? item.smMaxWidth : ''};`"
                   :width="$q.screen.lt.lg ? item.smWidth : undefined"
+                  alt="product"
                   fit="cover"
                 />
               </div>

@@ -2,11 +2,11 @@
   <div class="default-parent-block">
     <div :class="{ 'c-container': $q.screen.gt.md }" class="row justify-center">
       <div class="row full-width justify-center">
-        <div class="mega-header2 bold text-center" style="max-width: 880px">
+        <h2 class="bold text-center" style="max-width: 880px">
           Получите бесплатный анализ
           <br v-if="$q.screen.lt.lg && $q.screen.width > 550" />
           для вашего заведения
-        </div>
+        </h2>
       </div>
       <div
         :class="$q.screen.lt.lg ? 'column reverse c-container' : 'row'"
@@ -27,9 +27,9 @@
               Вопрос {{ previewStep }} из
               {{ questions.length + 1 }}
             </div>
-            <div v-if="currentStep" class="mt-lg-5 mt-sm-6 header3 bold">
+            <h5 v-if="currentStep" class="mt-lg-5 mt-sm-6 bold">
               {{ currentStep.question }}
-            </div>
+            </h5>
             <div class="mt-lg-15 mt-sm-10">
               <transition mode="out-in" name="slide-fade">
                 <div v-bind:key="step" class="row gap-7">

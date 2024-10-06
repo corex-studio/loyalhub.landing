@@ -6,38 +6,10 @@
       <img
         v-if="$q.screen.gt.sm"
         :height="$q.screen.gt.lg ? 56 : 52"
+        alt="logo"
         src="assets/loyalhubLogo.png"
       />
-      <img v-else src="assets/loyalhubLogoSmall.svg" width="165px" />
-      <!--      <div-->
-      <!--        v-if="$q.screen.gt.md"-->
-      <!--        class="row items-center no-wrap gap-xl-16 gap-sm-10"-->
-      <!--      >-->
-      <!--        <CButton-->
-      <!--          label="Преимущества"-->
-      <!--          text-button-->
-      <!--          text-color="black"-->
-      <!--          @click="scrollHandler('why')"-->
-      <!--        />-->
-      <!--        <CButton-->
-      <!--          label="Наши продукты"-->
-      <!--          text-button-->
-      <!--          text-color="black"-->
-      <!--          @click="scrollHandler('products')"-->
-      <!--        />-->
-      <!--        <CButton-->
-      <!--          label="Кейсы"-->
-      <!--          text-button-->
-      <!--          text-color="black"-->
-      <!--          @click="scrollHandler('examples')"-->
-      <!--        />-->
-      <!--        <CButton-->
-      <!--          label="Отзывы"-->
-      <!--          text-button-->
-      <!--          text-color="reviews"-->
-      <!--          @click="scrollHandler('reviews')"-->
-      <!--        />-->
-      <!--      </div>-->
+      <img v-else alt="logo" src="assets/loyalhubLogoSmall.svg" width="165px" />
       <div class="row items-center no-wrap gap-lg-6 gap-sm-4">
         <CIconButton
           :color="$q.screen.lt.lg ? 'primary' : 'secondary1'"

@@ -2,9 +2,9 @@
   <div class="default-parent-block">
     <div class="c-container">
       <div class="column full-width items-center">
-        <div class="mega-header2 bold text-center" style="max-width: 730px">
+        <h2 class="bold text-center" style="max-width: 730px">
           Реальные примеры наших решений
-        </div>
+        </h2>
         <div
           class="mt-lg-10 mt-sm-6 subtitle text-center"
           style="max-width: 600px"
@@ -52,6 +52,7 @@
             style="overflow: hidden; max-height: 400px"
           >
             <q-img
+              :alt="`image ${item.title}`"
               :src="`assets/examples/${(currentType == 'Сайт' ? 'webs/' : 'apps/') + item.image}`"
               style="z-index: 1"
             />
@@ -61,9 +62,9 @@
             class="px-16 col-grow pt-10 column justify-between full-width"
           >
             <div>
-              <div class="header2 bold">
+              <h4 class="bold">
                 {{ item.title }}
-              </div>
+              </h4>
               <div class="mt-6 secondary text-primary">{{ item.text }}</div>
             </div>
             <div
@@ -96,6 +97,7 @@
                 style="overflow: hidden; max-height: 400px"
               >
                 <q-img
+                  :alt="`image ${item.title}`"
                   :src="`assets/examples/${(currentType == 'Сайт' ? 'webs/' : 'apps/') + item.image}`"
                   style="z-index: 1; min-height: 260px"
                 />
@@ -105,9 +107,9 @@
                 class="px-8 col-grow pt-8 column justify-between full-width"
               >
                 <div>
-                  <div class="header2 bold">
+                  <h4 class="bold">
                     {{ item.title }}
-                  </div>
+                  </h4>
                   <div class="mt-2 secondary text-primary">{{ item.text }}</div>
                 </div>
                 <div
@@ -135,7 +137,7 @@ const currentType = ref('Приложение');
 
 const apps = [
   {
-    title: 'Кирин',
+    title: 'Kirin',
     image: 'kirin.png',
     text: 'Cайт про оборудование для цифровой радиографии, которое позволяет быстро находить производственные дефекты',
   },
@@ -193,7 +195,7 @@ const webs = [
     text: 'Cайт про оборудование для цифровой радиографии, которое позволяет быстро находить производственные дефекты',
   },
   {
-    title: 'Кирин',
+    title: 'Kirin',
     image: 'kirin.png',
     text: 'Cайт про оборудование для цифровой радиографии, которое позволяет быстро находить производственные дефекты',
   },

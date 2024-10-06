@@ -2,7 +2,7 @@
   <div class="default-parent-block">
     <div class="c-container">
       <div class="column full-width items-center">
-        <div class="mega-header2 bold">CRM система</div>
+        <h2 class="bold">CRM система</h2>
         <div class="mt-lg-10 mt-sm-6 subtitle text-center">
           Минимизируйте ручную работу с отчетами <br />
           и получайте данные в один клик
@@ -32,11 +32,13 @@
         >
           <q-img
             v-if="$q.screen.gt.md"
+            alt="vector"
             src="assets/CRMVector.svg"
             style="position: absolute; bottom: 0; left: 0; z-index: 0"
           />
           <q-img
             v-else
+            alt="vector"
             src="assets/SmCRMVector.svg"
             style="position: absolute; bottom: 0; left: 0; z-index: 0"
           />
@@ -44,9 +46,9 @@
             :style="$q.screen.lt.lg ? '' : 'width: 50%'"
             class="column px-sm-8 px-lg-0 pt-sm-10 pt-lg-0"
           >
-            <div class="mega-header2 bold" style="z-index: 1">
+            <h2 class="bold" style="z-index: 1">
               {{ selectedAbility.title }}
-            </div>
+            </h2>
             <div class="subtitle bold mt-lg-10 mt-sm-4" style="z-index: 1">
               {{ selectedAbility.subtitle }}
             </div>
@@ -61,12 +63,14 @@
             :src="`assets/${selectedAbility.image}`"
             :style="selectedAbility.imageStyle"
             :width="selectedAbility.imageWidth"
+            alt="picture"
             style="position: absolute"
           />
           <div v-else class="row full-width justify-center mt-6">
             <q-img
               :src="`assets/${'sm' + selectedAbility.image[0].toLocaleUpperCase() + selectedAbility.image.slice(1)}`"
               :style="`max-width: ${selectedAbility.smMaxWidth || 'unset'}`"
+              alt="picture"
               position="top"
               style="max-height: 320px"
               width="100%"

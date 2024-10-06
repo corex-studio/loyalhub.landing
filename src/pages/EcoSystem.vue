@@ -3,11 +3,13 @@
     <div class="parent-block relative-position">
       <q-img
         v-if="$q.screen.gt.md"
+        alt="vector"
         src="assets/ecoVector.svg"
         style="position: absolute; bottom: 0; left: 0"
       />
       <q-img
         v-else
+        alt="vector"
         height="400px"
         src="assets/smEcoVector.svg"
         style="position: absolute; top: 0; left: 0"
@@ -24,10 +26,10 @@
             >
               Постройте свою экосистему
             </div>
-            <div class="header1 bold mt-lg-12 mt-sm-6">
+            <h3 class="bold mt-lg-12 mt-sm-6">
               От концепции до реализации – все инструменты
               <span class="text-accent2 bold"> в одной платформе</span>
-            </div>
+            </h3>
             <div class="body mt-lg-8 mt-sm-6">
               Получите полный функционал – доставка, бронирование, уведомления и
               аналитика – всего за несколько дней и бесплатно на старте
@@ -43,6 +45,7 @@
           </div>
           <q-img
             v-if="$q.screen.gt.md"
+            alt="eco picture"
             fit="contain"
             src="assets/ecoRightPic.png"
             style="position: absolute; right: 0%; bottom: 10%; min-width: 620px"
@@ -50,6 +53,7 @@
           />
           <q-img
             v-else
+            alt="eco picture"
             class="mt-15"
             fit="contain"
             src="assets/smEcoRightPic.png"

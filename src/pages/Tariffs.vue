@@ -2,15 +2,15 @@
   <div class="default-parent-block">
     <div class="c-container">
       <div class="text-center">
-        <div v-if="$q.screen.gt.sm" class="mega-header2">
+        <h2 v-if="$q.screen.gt.sm">
           <span class="bold text-underline">Единый тариф</span>
           для всего продукта
-        </div>
-        <div v-else class="column items-center gap-2 full-width mega-header2">
-          <div class="bold text-underline" style="width: fit-content">
+        </h2>
+        <div v-else class="column items-center gap-2 full-width">
+          <h2 class="bold text-underline" style="width: fit-content">
             Единый тариф
-          </div>
-          <div>для всего продукта</div>
+          </h2>
+          <h2>для всего продукта</h2>
         </div>
       </div>
       <div
@@ -23,11 +23,13 @@
           style="overflow: hidden"
         >
           <q-img
+            alt="vector"
             src="assets/tariffLeftVector.svg"
             style="position: absolute; bottom: 0; left: 0; z-index: 0"
           />
           <q-img
             v-if="$q.screen.gt.md"
+            alt="flame"
             src="assets/tariffLeftMoc.png"
             style="
               position: absolute;
@@ -38,9 +40,7 @@
             "
             width="100%"
           />
-          <div class="header1 bold text-primary" style="z-index: 1">
-            Тариф «единый»
-          </div>
+          <h3 class="bold text-primary" style="z-index: 1">Тариф «единый»</h3>
           <div
             class="mt-10 column gap-8 full-width secondary"
             style="z-index: 1"
@@ -60,7 +60,7 @@
             class="mt-lg-30 mt-sm-20 row items-center gap-4"
             style="z-index: 1"
           >
-            <div class="mega-header2 bold text-accent2">от 6 000 ₽</div>
+            <h2 class="bold text-accent2">от 6 000 ₽</h2>
             <div
               :class="$q.screen.lt.lg ? 'body' : 'secondary'"
               class="text-secondary3"
@@ -75,22 +75,26 @@
         >
           <q-img
             v-if="$q.screen.gt.md"
+            alt="vector"
+            height="100%"
             src="assets/tariffRightVector.svg"
             style="position: absolute; bottom: 0; left: 0; z-index: 0"
           />
           <q-img
             v-else
+            alt="vector"
+            height="100%"
             src="assets/smTariffRightVector.svg"
             style="position: absolute; top: 0; left: 0; z-index: 0"
           />
           <div class="column full-width">
-            <div class="header1 bold">
+            <h3 class="bold">
               {{
                 $q.screen.lt.lg
                   ? 'Рассчитать тариф'
                   : 'Рассчитать количество торговых точек'
               }}
-            </div>
+            </h3>
             <div class="secondary mt-6" style="max-width: 450px">
               Выберите число торговых точек, чем больше точек – тем ниже цена
             </div>
@@ -143,9 +147,9 @@
             </div>
           </div>
           <div class="column mt-sm-19 mt-lg-0 full-width gap-6">
-            <div :class="{ bold: $q.screen.lt.lg }" class="header2">
+            <h4 :class="{ bold: $q.screen.lt.lg }">
               Итого: {{ totalPrice }} ₽
-            </div>
+            </h4>
             <CButton
               :height="$q.screen.lt.lg ? '48px' : '56px'"
               color="accent1"

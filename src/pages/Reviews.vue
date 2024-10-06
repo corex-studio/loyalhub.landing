@@ -1,8 +1,7 @@
 <template>
   <div class="default-parent-block">
     <div class="c-container">
-      <div class="mega-header2 bold text-center">Отзывы</div>
-
+      <h2 class="bold text-center">Отзывы</h2>
       <div class="full-width mt-lg-20 mt-sm-15">
         <SwiperContainer
           :initial-slide="1"
@@ -41,6 +40,7 @@
                 class="column"
               >
                 <q-img
+                  alt="vector"
                   fit="cover"
                   src="assets/reviewVector.svg"
                   style="position: absolute; left: 0; bottom: 0; z-index: 0"
@@ -60,6 +60,7 @@
               <div class="row no-wrap full-width gap-6 items-center">
                 <q-avatar size="64px">
                   <q-img
+                    :alt="`company ${item.from.name}`"
                     :src="`assets/companiesLogo/${item.from.image}`"
                     height="64px"
                     width="64px"
