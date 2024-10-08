@@ -5,11 +5,18 @@
     >
       <img
         v-if="$q.screen.gt.sm"
-        height="48px"
         alt="logo"
+        height="48px"
         src="assets/loyalhubLogo.png"
+        style="z-index: 2"
       />
-      <img v-else alt="logo" src="assets/loyalhubLogoSmall.svg" width="165px" />
+      <img
+        v-else
+        alt="logo"
+        src="assets/loyalhubLogoSmall.svg"
+        style="z-index: 2"
+        width="165px"
+      />
       <div class="row items-center no-wrap gap-lg-6 gap-sm-4">
         <CIconButton
           :color="$q.screen.lt.lg ? 'primary' : 'secondary1'"
@@ -17,6 +24,7 @@
           :icon-size="$q.screen.lt.lg ? '16px' : '18px'"
           :size="$q.screen.gt.md ? '44px' : '40px'"
           icon="fa-solid fa-phone"
+          style="z-index: 2"
           @click="openLink('tel:+79003519050')"
         />
         <CIconButton
@@ -25,6 +33,7 @@
           :icon-size="$q.screen.lt.lg ? '16px' : '18px'"
           :size="$q.screen.gt.md ? '44px' : '40px'"
           icon="fa-solid fa-paper-plane"
+          style="z-index: 2"
           @click="openLink('https://t.me/loyalhub_news')"
         />
         <CIcon
@@ -33,6 +42,7 @@
           hover-color="accent2"
           name="fa-solid fa-bars"
           size="24px"
+          style="z-index: 2"
           @click="store.rightDrawer = true"
         />
         <CButton

@@ -6,7 +6,15 @@
   >
     <Header />
     <section :class="{ 'c-container': $q.screen.gt.md }" class="column">
-      <div class="row full-width mt-lg-12 gap-lg-10 gap-sm-8 justify-center">
+      <div
+        class="row full-width mt-lg-12 gap-lg-10 gap-sm-8 justify-center relative-position"
+      >
+        <q-img
+          v-if="$q.screen.lt.lg"
+          src="assets/smMainVector.svg"
+          style="position: absolute; z-index: 0; top: 145px"
+          width="100%"
+        />
         <div
           ref="leftBlock"
           :class="$q.screen.gt.md ? 'col' : ' full-width c-container'"
@@ -122,11 +130,11 @@
           >
             <template v-slot:item="{ item }">
               <div
-                class="column items-center full-height"
-                style="overflow: hidden; z-index: 2 !important"
                 :style="`
                   height: ${$q.screen.lt.lg ? '476px !important' : ''} ;
                 `"
+                class="column items-center full-height"
+                style="overflow: hidden; z-index: 2 !important"
               >
                 <h3
                   v-if="$q.screen.gt.md"
@@ -152,19 +160,23 @@
           </SwiperContainer>
         </div>
       </div>
+      <div
+        v-if="$q.screen.lt.lg"
+        class="c-container row justify-center relative-position"
+      >
+        <div
+          class="row justify-center full-width px-9"
+          style="position: absolute; bottom: 20px; z-index: 2"
+        >
+          <CButton
+            height="48px"
+            label="Подобрать решение"
+            width="100%"
+            @click="scrollHandler('tariffs')"
+          />
+        </div>
+      </div>
     </section>
-    <div
-      v-if="$q.screen.lt.lg"
-      class="c-container"
-      style="position: absolute; bottom: 20px; z-index: 2"
-    >
-      <CButton
-        height="48px"
-        label="Подобрать решение"
-        width="100%"
-        @click="scrollHandler('tariffs')"
-      />
-    </div>
     <div v-if="$q.screen.lt.lg" class="full-width dimmed-block"></div>
   </div>
   <div v-if="$q.screen.lt.lg" class="c-container">
