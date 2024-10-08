@@ -23,10 +23,7 @@
     <div
       class="bg-white rounded-15 px-8 py-14 top-arrow relative-position secondary"
     >
-      Пройдите наш короткий опрос и получите персонализированный отчет по
-      улучшению обслуживания и увеличению среднего чека для вашего заведения.
-      Это поможет вам увидеть, как наши решения могут сделать ваш бизнес более
-      эффективным!
+      {{ text }}
     </div>
   </div>
   <div v-else class="py-10">
@@ -70,10 +67,11 @@
         </div>
       </template>
       <div class="mt-8 secondary bg-white rounded-12 px-6 py-3 top-arrow body">
-        Пройдите наш короткий опрос и получите персонализированный отчет по
+        {{ text }}
+        <!-- Пройдите наш короткий опрос и получите персонализированный отчет по
         улучшению обслуживания и увеличению среднего чека для вашего заведения.
         Это поможет вам увидеть, как наши решения могут сделать ваш бизнес более
-        эффективным!
+        эффективным! -->
       </div>
     </q-expansion-item>
   </div>
@@ -82,6 +80,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import CIcon from 'src/components/templates/buttons/CIcon.vue';
+
+defineProps<{
+  text: string;
+}>();
 
 const expanded = ref(false);
 </script>

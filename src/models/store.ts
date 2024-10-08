@@ -23,7 +23,7 @@ export const scrollHandler = (spot: string) => {
   if (!targetSpot) return;
   const target = getScrollTarget(targetSpot);
   const offset = targetSpot.offsetTop;
-  const duration = 800;
+  const duration = 1000;
   if (spot !== 'top')
     setTimeout(() => {
       setVerticalScrollPosition(target, offset, duration);
