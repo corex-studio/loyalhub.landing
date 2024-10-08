@@ -274,7 +274,7 @@ const clickHandler = (e: Event) => {
 }
 
 .c-btn:disabled:not(.block):not(.bg-secondary2) {
-  background-color: $disableColor !important;
+  // background-color: $disableColor !important;
   opacity: 1 !important;
 }
 

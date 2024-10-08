@@ -3,11 +3,11 @@
     <div class="c-container">
       <div class="column full-width items-center">
         <h2 class="bold">CRM система</h2>
-        <div class="mt-lg-10 mt-sm-6 subtitle text-center">
-          Минимизируйте ручную работу с отчетами <br />
+        <div class="mt-lg-8 mt-sm-6 subtitle text-center">
+          Минимизируйте ручную работу с отчетами <br v-if="!$q.screen.sm" />
           и получайте данные в один клик
         </div>
-        <div class="row justify-center gap-lg-8 gap-sm-4 mt-lg-20 mt-sm-10">
+        <div class="row justify-center gap-lg-8 gap-sm-4 mt-lg-15 mt-sm-10">
           <div
             v-for="(item, index) in abilities"
             :key="index"
@@ -27,7 +27,7 @@
         </div>
         <div
           :style="`min-height: ${$q.screen.lt.lg ? 'auto' : '405px'}; max-width: ${$q.screen.lt.lg ? '470px' : 'unset'}`"
-          class="mt-lg-25 mt-sm-15 bg-secondary1 rounded-30 px-lg-25 py-lg-20 row full-width relative-position"
+          class="mt-lg-20 mt-sm-15 bg-secondary1 rounded-30 px-lg-25 py-lg-20 row full-width relative-position"
           style="overflow: hidden"
         >
           <q-img

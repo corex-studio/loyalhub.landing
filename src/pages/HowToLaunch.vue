@@ -71,15 +71,15 @@
             "
           />
           <div
-            class="row items-center gap-xl-20 gap-sm-10 col-9 no-wrap"
+            class="row items-center gap-xl-20 gap-sm-10 col-8 no-wrap"
             style="z-index: 1"
           >
             <div v-if="$q.screen.gt.md" class="row items-center no-wrap">
               <q-avatar
-                v-for="el in 5"
+                v-for="el in 4"
                 :key="el"
                 :size="$q.screen.lt.xl ? '78px' : '88px'"
-                :style="`margin-left: ${el === 1 ? '' : '-20px'}`"
+                :style="`margin-left: ${el === 1 ? '' : '-24px'}`"
               >
                 <q-img
                   :alt="`avatar ${el}`"

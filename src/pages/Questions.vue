@@ -47,7 +47,7 @@
             <h3 class="bold">Loyalhub поможет в решении ваших вопросов</h3>
             <div
               :class="$q.screen.lt.lg ? 'body' : 'subtitle'"
-              class="mt-lg-20 mt-sm-4"
+              class="mt-lg-10 mt-sm-4"
             >
               Вот ответы на самые частые из них. <br v-if="$q.screen.gt.md" />
               Или можно просто написать нам в телеграм и спросить
@@ -66,7 +66,8 @@
           <q-expansion-item
             v-for="(el, index) in questions"
             :key="index"
-            v-model="el.expanded"
+            :model-value="el.expanded"
+            @update:model-value="changeExpandedState(index)"
             :class="$q.screen.lt.lg ? 'rounded-12' : 'rounded-15'"
             class="bg-secondary2 px-lg-11 px-sm-6 py-lg-10 py-sm-6 cursor-pointer full-width"
           >
@@ -136,6 +137,13 @@ const questions = ref([
     expanded: false,
   },
 ]);
+
+const changeExpandedState = (index: number) => {
+  questions.value[index].expanded = !questions.value[index].expanded;
+  questions.value
+    .filter((_, _index) => _index !== index)
+    .forEach((el) => (el.expanded = false));
+};
 </script>
 
 <style lang="scss" scoped>

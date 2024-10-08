@@ -68,11 +68,10 @@
                 @click="store.requestModal = true"
               />
               <CButton
-                :goal-event="METRIKA_GOAL_EVENT.REQUEST_FORM_OPENED"
                 class="col secondary"
                 height="48px"
                 label="Подобрать решение"
-                @click="store.requestModal = true"
+                @click="scrollHandler('tariffs')"
               />
             </div>
           </div>
@@ -125,6 +124,9 @@
               <div
                 class="column items-center full-height"
                 style="overflow: hidden; z-index: 2 !important"
+                :style="`
+                  height: ${$q.screen.lt.lg ? '476px !important' : ''} ;
+                `"
               >
                 <h3
                   v-if="$q.screen.gt.md"
@@ -154,13 +156,13 @@
     <div
       v-if="$q.screen.lt.lg"
       class="c-container"
-      style="position: sticky; bottom: 20px; z-index: 2"
+      style="position: absolute; bottom: 20px; z-index: 2"
     >
       <CButton
         height="48px"
         label="Подобрать решение"
         width="100%"
-        @click="store.requestModal = true"
+        @click="scrollHandler('tariffs')"
       />
     </div>
     <div v-if="$q.screen.lt.lg" class="full-width dimmed-block"></div>
@@ -175,7 +177,7 @@ import CButton from 'components/templates/buttons/CButton.vue';
 import SwiperContainer from 'components/containers/SwiperContainer.vue';
 import { computed, ref } from 'vue';
 import { useElementSize } from '@vueuse/core';
-import { openLink, store } from 'src/models/store';
+import { openLink, scrollHandler, store } from 'src/models/store';
 import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 
 const featuresSmSpot = ref<HTMLDivElement | null>(null);
@@ -189,11 +191,11 @@ const height = computed(() => {
 const features = [
   {
     title: '1500+',
-    text: 'Заказов проходят через платформу ежедневно',
+    text: 'Проходит заказов ежедневно',
   },
   {
     title: '35%',
-    text: 'Выше средний чек при заказе через Loyalhub',
+    text: 'Увеличение среднего чека',
   },
   {
     title: '200+',
@@ -209,6 +211,7 @@ const products = [
     textColor: 'black1',
     smWidth: '105%',
     smMaxWidth: '470px',
+    smPosition: 'top',
   },
   {
     image: 'program2.png',
@@ -217,6 +220,7 @@ const products = [
     textColor: 'white',
     smWidth: '110%',
     smMaxWidth: '470px',
+    smPosition: 'top',
   },
   {
     image: 'program3.png',
@@ -225,6 +229,7 @@ const products = [
     textColor: 'black1',
     smWidth: '200%',
     smMaxWidth: '610px',
+    smPosition: 'top',
   },
   {
     image: 'program4.png',
@@ -233,6 +238,7 @@ const products = [
     textColor: 'white',
     smWidth: '100%',
     smMaxWidth: '470px',
+    smPosition: 'top',
   },
   {
     image: 'program5.png',
@@ -241,6 +247,7 @@ const products = [
     textColor: 'black1',
     smWidth: '200%',
     smMaxWidth: '610px',
+    smPosition: 'top',
   },
 ];
 </script>

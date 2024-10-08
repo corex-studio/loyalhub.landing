@@ -5,7 +5,7 @@
     >
       <img
         v-if="$q.screen.gt.sm"
-        :height="$q.screen.gt.lg ? 56 : 52"
+        height="48px"
         alt="logo"
         src="assets/loyalhubLogo.png"
       />
@@ -65,13 +65,10 @@
 </template>
 <script lang="ts" setup>
 import CButton from 'src/components/templates/buttons/CButton.vue';
-import { openLink, store } from 'src/models/store';
+import { openLink, scrollHandler, store } from 'src/models/store';
 import CIcon from 'src/components/templates/buttons/CIcon.vue';
-import { scroll } from 'quasar';
 import { METRIKA_GOAL_EVENT } from 'boot/metrika';
 import CIconButton from 'components/templates/buttons/CIconButton.vue';
-
-const { setVerticalScrollPosition, getScrollTarget } = scroll;
 
 const tabs = [
   {
@@ -130,24 +127,10 @@ const tabs = [
     },
   },
 ];
-
-const scrollHandler = (spot: string) => {
-  const targetSpot = document.getElementById(spot);
-  if (!targetSpot) return;
-  const target = getScrollTarget(targetSpot);
-  const offset = targetSpot.offsetTop;
-  const duration = 800;
-  if (spot !== 'top')
-    setTimeout(() => {
-      setVerticalScrollPosition(target, offset, duration);
-    }, 200);
-  else setVerticalScrollPosition(target, offset, duration);
-};
 </script>
 
 <style lang="scss" scoped>
 .header-block {
-  height: 56px;
   z-index: 1;
 }
 

@@ -11,7 +11,7 @@
   >
     <div class="column full-width px-8 no-wrap">
       <div class="row full-width justify-between">
-        <img src="assets/loyalhubLogo.png" width="165px" />
+        <img src="assets/loyalhubLogo.png" height="48px" />
         <CIcon
           class="mt-3 cursor-pointer"
           hover-color="accent2"

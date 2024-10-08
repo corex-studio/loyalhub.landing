@@ -106,8 +106,8 @@
               style="
                 position: absolute;
                 bottom: 10px;
-                right: -40px;
-                min-width: 120px;
+                right: -35px;
+                min-width: 100px;
               "
               width="20%"
             />

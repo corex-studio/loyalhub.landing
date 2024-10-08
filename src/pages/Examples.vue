@@ -7,7 +7,7 @@
         </h2>
         <div
           class="mt-lg-10 mt-sm-6 subtitle text-center"
-          style="max-width: 600px"
+          style="max-width: 700px"
         >
           Ознакомьтесь с примерами сайтов и мобильных приложений, которые мы
           запустили для наших клиентов

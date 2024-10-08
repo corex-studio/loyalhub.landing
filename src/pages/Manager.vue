@@ -15,7 +15,9 @@
       </q-avatar>
       <div class="column gap-2">
         <div class="subtitle bold">Елена</div>
-        <div class="secondary">Ведущий менеджер компании Loyalhub</div>
+        <div class="secondary text-secondary3">
+          Ведущий менеджер компании Loyalhub
+        </div>
       </div>
     </div>
     <div
@@ -111,7 +113,7 @@ const expanded = ref(false);
   height: 0;
   position: absolute;
   width: 0;
-  top: -20px;
+  top: -18px;
   left: 10%;
   border: 10px solid transparent;
   border-bottom-color: white;

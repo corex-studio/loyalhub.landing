@@ -35,7 +35,6 @@
 
 .regular {
   font-family: 'Involve-Regular', sans-serif !important;
-
 }
 
 h1 {
@@ -75,7 +74,7 @@ h5 {
 
 .subtitle {
   font-size: 22px;
-  line-height: 30px;
+  line-height: 28px;
   font-weight: 500;
 }
 
@@ -97,7 +96,8 @@ h5 {
   font-weight: 400;
 }
 
-body.screen--md, body.screen--sm, {
+body.screen--md,
+body.screen--sm {
   h1 {
     font-size: 40px;
     line-height: 44px;
@@ -144,8 +144,8 @@ body.screen--md, body.screen--sm, {
   }
 
   .secondary {
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 14px;
+    line-height: 20px;
     font-weight: 500;
   }
 
@@ -155,5 +155,3 @@ body.screen--md, body.screen--sm, {
     font-weight: 400;
   }
 }
-
-

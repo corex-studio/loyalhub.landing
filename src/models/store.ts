@@ -1,4 +1,7 @@
 import { reactive } from 'vue';
+import { scroll } from 'quasar';
+
+const { setVerticalScrollPosition, getScrollTarget } = scroll;
 
 export class Store {
   images = {
@@ -13,6 +16,19 @@ export const beautifyNumber = (x: number, toFixed = false) => {
   const parts = x.toString().split('.');
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   return parts.join('.');
+};
+
+export const scrollHandler = (spot: string) => {
+  const targetSpot = document.getElementById(spot);
+  if (!targetSpot) return;
+  const target = getScrollTarget(targetSpot);
+  const offset = targetSpot.offsetTop;
+  const duration = 800;
+  if (spot !== 'top')
+    setTimeout(() => {
+      setVerticalScrollPosition(target, offset, duration);
+    }, 200);
+  else setVerticalScrollPosition(target, offset, duration);
 };
 
 export const openLink = (link: string) => {

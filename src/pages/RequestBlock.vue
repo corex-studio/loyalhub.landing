@@ -33,40 +33,62 @@
             Давайте покажем, <br />
             как все работает
           </h2>
-          <div class="mt-lg-14 mt-sm-6 body">
-            Оставьте контакты - мы напишем вам в течение 2 дней, чтобы обсудить
-            проект
-          </div>
-          <div class="column gap-8 full-width mt-lg-25 mt-sm-15">
-            <CInput
-              v-model="data.phone"
-              :height="$q.screen.lt.lg ? '48px' : '50px'"
-              class="col subtitle"
-              label="Телефон"
-              mask="+7 (###) ###-##-##"
-              placeholder="+7 (###) ## ##-##"
-              unmasked-value
-            />
-            <CInput
-              v-model="data.name"
-              :height="$q.screen.lt.lg ? '48px' : '50px'"
-              class="col subtitle"
-              label="Ваше имя"
-            />
-            <CButton
-              :disabled="!isActionAvailable"
-              :height="$q.screen.lt.lg ? '48px' : '50px'"
-              :loading="loading"
-              color="accent1"
-              label="Оставить заявку"
-              @click="send()"
-            />
-            <div class="secondary row mt-lg-0 full-width justify-center">
-              <div class="text-center" style="max-width: 370px">
-                Нажимая на кнопку, вы соглашаетесь на обработку персональных
-                данных
-              </div>
+          <div class="row full-width justify-center">
+            <div
+              :style="`max-width: ${$q.screen.lt.lg ? '450px' : ''}`"
+              class="mt-lg-10 mt-sm-6 body text-center"
+            >
+              Оставьте контакты - мы напишем вам в течение 2 дней, чтобы
+              обсудить проект
             </div>
+          </div>
+          <div>
+            <q-form
+              class="column full-width mt-lg-25 mt-sm-15"
+              @submit="send()"
+              @validation-error="validationErrorHandler"
+            >
+              <CInput
+                v-model="data.phone"
+                :height="$q.screen.lt.lg ? '48px' : '50px'"
+                :rules="[
+                  rules.required,
+                  (v: string) =>
+                    v.length < 10 ? 'Телефон некорректный' : true,
+                ]"
+                class="col subtitle input"
+                label="Телефон"
+                mask="+7 (###) ###-##-##"
+                placeholder="+7 (---) --- -- --"
+                unmasked-value
+                @blur="phoneError = !data.phone || data.phone.length < 10"
+                @update:model-value="phoneError = !$event || $event.length < 10"
+              />
+              <CInput
+                v-model="data.name"
+                :height="$q.screen.lt.lg ? '48px' : '50px'"
+                class="col subtitle input"
+                :class="phoneError ? 'mt-12' : 'mt-8'"
+                :rules="[rules.required]"
+                label="Ваше имя"
+                @blur="nameError = !data.name"
+                @update:model-value="nameError = !$event"
+              />
+              <CButton
+                :height="$q.screen.lt.lg ? '48px' : '50px'"
+                :class="nameError ? 'mt-16' : 'mt-12'"
+                :loading="loading"
+                color="accent1"
+                label="Оставить заявку"
+                type="submit"
+              />
+              <div class="caption row mt-5 full-width justify-center">
+                <div class="text-center" style="max-width: 370px">
+                  Нажимая на кнопку, вы соглашаетесь на обработку персональных
+                  данных
+                </div>
+              </div>
+            </q-form>
           </div>
         </div>
         <div
@@ -106,16 +128,20 @@
 
 <script lang="ts" setup>
 import CInput from 'components/templates/inputs/CInput.vue';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import CButton from 'components/templates/buttons/CButton.vue';
 import { sendRequest } from 'src/models/sendRequest';
 import { METRIKA_GOAL_EVENT, useMetrikaTick } from 'boot/metrika';
+import rules from 'src/corexModels/rules';
 
 const loading = ref(false);
 
 const { metrikaTick } = useMetrikaTick();
 
 const completed = ref(false);
+
+const phoneError = ref(false);
+const nameError = ref(false);
 
 const getEmptyData = () => {
   return {
@@ -133,11 +159,14 @@ const data = ref<{
   email: string | null;
 }>(getEmptyData());
 
-const isActionAvailable = computed(() => {
-  return (
-    data.value.phone && data.value.phone.length >= 10 && data.value.name?.length
-  );
-});
+const validationErrorHandler = (v: any) => {
+  if (v.label == 'Телефон') {
+    phoneError.value = true;
+  }
+  if (v.label == 'Ваше имя') {
+    nameError.value = true;
+  }
+};
 
 const send = async () => {
   loading.value = true;
@@ -169,5 +198,12 @@ body.screen--sm {
   .parent-block {
     padding: 80px 0;
   }
+}
+
+.input :deep(.q-field__messages) {
+  // background-color: rgba(255, 255, 255, 0.112);
+  // border-radius: 6px;
+  // padding: 4px 10px;
+  color: $danger !important;
 }
 </style>

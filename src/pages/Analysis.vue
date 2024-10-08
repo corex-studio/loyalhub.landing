@@ -68,7 +68,7 @@
             </div>
           </div>
           <div class="column gap-6 px-lg-25 pb-lg-16 pb-sm-10 mt-15">
-            <div class="secondary">До бесплатного анализа:</div>
+            <div class="secondary text-secondary3">До бесплатного анализа:</div>
             <div class="row full-width progress-block">
               <div
                 :style="`width: ${getProgress()}%`"

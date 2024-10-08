@@ -3,7 +3,7 @@
     <div class="column full-width no-wrap items-center pb-5">
       <h2 class="bold text-center">Почему выбирают Loyalhub?</h2>
       <div
-        class="row full-width justify-center gap-lg-8 gap-sm-4 mt-lg-20 mt-sm-10"
+        class="row full-width justify-center gap-lg-8 gap-sm-4 mt-lg-15 mt-sm-10"
       >
         <div
           v-for="(item, index) in reasons"
@@ -202,7 +202,7 @@ const selectedReason = ref<Reason>(reasons[0]);
 }
 
 .content-block {
-  height: 340px;
+  height: 320px;
   border-radius: 30px;
 }
 

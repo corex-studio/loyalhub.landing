@@ -1,5 +1,5 @@
 <template>
-  <section class="default-parent-block">
+  <section class="default-parent-block relative-position">
     <div class="c-container">
       <h2 class="bold text-center">Отзывы</h2>
       <div class="full-width mt-lg-20 mt-sm-15">
@@ -13,7 +13,6 @@
           auto-play
           class="swiper-block"
           loop
-          no-navigation
           style="width: 100%"
         >
           <template
@@ -31,17 +30,18 @@
             }"
           >
             <div
-              :style="`height: ${$q.screen.lt.lg ? '320' : '400'}px`"
-              class="rounded-30 px-lg-15 px-sm-8 px-md-12 pt-10 pb-lg-15 pb-sm-10 bg-secondary1 relative-position column no-wrap justify-between"
+              :style="`height: ${$q.screen.lt.lg ? '400' : '440'}px`"
+              class="rounded-30 px-lg-15 px-sm-8 px-md-12 pt-10 pb-lg-12 pb-sm-10 bg-secondary1 relative-position column no-wrap justify-between"
               style="overflow: hidden; cursor: default"
             >
               <div
-                :style="`height: ${$q.screen.lt.lg ? '76%' : '81%'}`"
+                :style="`height: ${$q.screen.lt.lg ? '86%' : '81%'}`"
                 class="column"
               >
                 <q-img
                   alt="vector"
                   fit="cover"
+                  height="100%"
                   src="assets/reviewVector.svg"
                   style="position: absolute; left: 0; bottom: 0; z-index: 0"
                 />
@@ -57,16 +57,16 @@
                   {{ item.text }}
                 </div>
               </div>
-              <div class="row no-wrap full-width gap-6 items-center">
-                <q-avatar size="64px">
+              <div class="row no-wrap full-width gap-7 items-center">
+                <q-avatar :size="$q.screen.lt.lg ? '50px' : '64px'">
                   <q-img
                     :alt="`company ${item.from.name}`"
                     :src="`assets/companiesLogo/${item.from.image}`"
-                    height="64px"
-                    width="64px"
+                    :height="$q.screen.lt.lg ? '50px' : '64px'"
+                    :width="$q.screen.lt.lg ? '50px' : '64px'"
                   />
                 </q-avatar>
-                <div class="column gap-1" style="z-index: 1">
+                <div class="column gap-2" style="z-index: 1">
                   <div class="subtitle bold">
                     {{ item.from.name }}
                   </div>
@@ -121,6 +121,14 @@ const reviews = [
     text:
       'Loyalhub помог нам внедрить мобильное приложение с системой лояльности, меню и бронированием. Это решение значительно упростило управление клиентской базой и улучшило взаимодействие с нашими гостями. Количество постоянных клиентов выросло, а удобство бронирования стало большим плюсом для наших гостей.\n' +
       'Что отмечу: профессионализм сотрудников, современный подход к решению задач, оперативное решение многих вопросов',
+  },
+  {
+    from: {
+      name: 'Точка вкуса',
+      position: 'Безверхий Евгений , совладелец',
+      image: 'smTochkaLogo.png',
+    },
+    text: 'Сайт для доставки и самовывоза, который нам предложил Loyalhub, изменил наш бизнес в лучшую сторону. Процессы стали быстрее, а клиенты довольны удобством заказа. Особенно радует интеграция с CRM — мы теперь лучше понимаем потребности наших гостей и можем предлагать им актуальные предложения.',
   },
   {
     from: {

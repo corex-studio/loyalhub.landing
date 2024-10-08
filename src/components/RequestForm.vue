@@ -4,16 +4,17 @@
       <h3 v-if="model" class="bold text-center">Оставьте заявку</h3>
       <h5 v-else class="bold text-center">Оставьте заявку</h5>
       <div
-        :class="model ? 'mt-10 body' : 'mt-3 secondary'"
+        :class="model ? 'mt-4 body' : 'mt-3 secondary'"
         :style="$q.screen.sm ? '' : 'width: 75%'"
         class="text-center"
       >
         Наши менеджеры свяжутся с вами в ближайшее время.
       </div>
       <q-form
-        :class="model ? 'mt-12' : 'mt-10'"
+        :class="model ? 'mt-14' : 'mt-10'"
         class="full-width"
         @submit="send()"
+        @validation-error="validationErrorHandler"
       >
         <CInput
           v-model="data.phone"
@@ -25,7 +26,7 @@
           height="50px"
           label="Телефон"
           mask="+7 (###) ###-##-##"
-          placeholder="+7 (####) ## ##-##"
+          placeholder="+7 (---) --- -- --"
           unmasked-value
           width="100%"
           @blur="phoneError = !data.phone || data.phone.length < 10"
@@ -43,7 +44,6 @@
         />
         <CButton
           :class="nameError ? 'mt-16' : model ? 'mt-12' : 'mt-8'"
-          :disabled="!isActionAvailable"
           :loading="loading"
           color="accent1"
           height="50px"
@@ -52,11 +52,7 @@
           width="100%"
         />
         <div class="row full-width justify-center mt-7">
-          <div
-            :class="model ? 'body' : 'secondary'"
-            class="text-center"
-            style="max-width: 370px"
-          >
+          <div class="text-center caption" style="max-width: 370px">
             Нажимая на кнопку, вы соглашаетесь на обработку персональных данных
           </div>
         </div>
@@ -87,7 +83,7 @@ import rules from 'src/corexModels/rules';
 import CButton from 'components/templates/buttons/CButton.vue';
 import CInput from 'components/templates/inputs/CInput.vue';
 import { METRIKA_GOAL_EVENT, useMetrikaTick } from 'boot/metrika';
-import { computed, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { sendRequest } from 'src/models/sendRequest';
 
 defineProps<{
@@ -101,6 +97,15 @@ const completed = ref(false);
 
 const phoneError = ref(false);
 const nameError = ref(false);
+
+const validationErrorHandler = (v: any) => {
+  if (v.label == 'Телефон') {
+    phoneError.value = true;
+  }
+  if (v.label == 'Ваше имя') {
+    nameError.value = true;
+  }
+};
 
 onMounted(() => {
   phoneError.value = false;
@@ -125,12 +130,6 @@ const data = ref<{
   // description: string | null;
   // email: string | null;
 }>(getEmptyData());
-
-const isActionAvailable = computed(() => {
-  return (
-    data.value.phone && data.value.phone.length >= 10 && data.value.name?.length
-  );
-});
 
 const goToTelegram = () => {
   metrikaTick({ goalEvent: METRIKA_GOAL_EVENT.TELEGRAM_AFTER_SUBMIT_REQUEST });
